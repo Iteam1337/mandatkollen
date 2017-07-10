@@ -24,6 +24,11 @@
   text-align: right;
 }
 
+.App section {
+  display: inline-table;
+  width: 50%;
+}
+
 .App .below label {
   text-decoration: line-through
 }

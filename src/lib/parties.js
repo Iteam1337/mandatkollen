@@ -15,10 +15,12 @@ const control = party => ({
 const pickSeat = (party, nr) => ({
   ...party,
   numberForComparison: party.votes / (party.seats ? party.seats * 2: 1.2), 
-  seats: party.seats+1
+  seats: party.seats + 1
 })
 
 const calculateSeatPercentage = party => ({...party, seatPercentage: (party.seats || 0) / 349})
+
+const sort = (a, b) => a.id - b.id
 
 const selectAndAssignSeat = (parties, nr) => {
   return parties
@@ -27,7 +29,7 @@ const selectAndAssignSeat = (parties, nr) => {
     .map((party, i) => (i === 0 ? pickSeat(party, nr) : party))
     .concat(parties.filter(party => !party.eligable))
     .map(calculateSeatPercentage)
-    .sort((a,b) => a.id - b.id)
+    .sort(sort)
 }
 
 const balanceRemainingVotes = (parties, maxVotes) => ((parties, totalVotes) => parties.map(party => ({
@@ -41,5 +43,6 @@ export {
   selectAndAssignSeat,
   pickSeat,
   control,
+  sort,
   countTotal
 }
