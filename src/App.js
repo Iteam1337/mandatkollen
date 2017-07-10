@@ -32,6 +32,7 @@ class App extends Component {
           {this.props.parties.map(party => (
             <Range party={party} />
           ))}
+          <small>Källa: Inizio juni 2017</small>
         </p>
         {regering.length ? <p className="App-summary">
           <section>
