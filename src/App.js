@@ -1,26 +1,24 @@
-import React, { Component } from 'pureact';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'pureact'
+import logo from './logo.svg'
+import './App.css'
 import store from './store'
-import Charts from './Charts'
 
 const updatePartyValue = (partyName, value) => store.dispatch({type: 'UPDATE_PARTY_VALUE', partyName, value})
 const updatePartySelection = (partyName, value) => store.dispatch({type: 'UPDATE_PARTY_SELECTION', partyName, value})
 
 const Range = ({party}) => (
-  <div className={ party.eligable ? "valid" : "below"}>
+  <div className={ party.eligable ? 'valid' : 'below'}>
     <label>{party.name}</label>
     <input type="checkbox" checked={party.selected} onchange={e => updatePartySelection(party.name, e.target.checked)} />
     <input type="range" value={party.percentage} oninput={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} step="1" max="60" min="0" />
-    <input type="text" value={party.percentage} onchange={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} />% 
+    <input type="text" value={party.percentage} onchange={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} />%
   </div>
 )
 
 class App extends Component {
-  render() {
-
-    const regering = this.props.parties.filter(a => a.selected && a.eligable).sort((a,b) => b.seatPercentage - a.seatPercentage)
-    const opposition = this.props.parties.filter(a => !a.selected && a.eligable).sort((a,b) => b.seatPercentage - a.seatPercentage)
+  render () {
+    const regering = this.props.parties.filter(a => a.selected && a.eligable).sort((a, b) => b.seatPercentage - a.seatPercentage)
+    const opposition = this.props.parties.filter(a => !a.selected && a.eligable).sort((a, b) => b.seatPercentage - a.seatPercentage)
     const regeringPercentage = Math.round(regering.reduce((t, party) => t + party.seatPercentage, 0) * 1000) / 10
     const oppositionPercentage = Math.round(opposition.reduce((t, party) => t + party.seatPercentage, 0) * 1000) / 10
 
@@ -56,8 +54,8 @@ class App extends Component {
           </section>
         </p> : null}
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
