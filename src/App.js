@@ -9,7 +9,8 @@ const Range = ({party}) => (
   <div className={ party.eligable ? "valid" : "below"}>
     <label>{party.name}</label>
     <input type="range" value={party.percentage} oninput={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} step="1" max="60" min="0" />
-    <input type="text" value={party.percentage} onchange={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} />% {party.seats} mandat
+    <input type="text" value={party.percentage} onchange={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} />% 
+    <label>{party.seats || "0"} mandat ({Math.round(party.seatPercentage * 1000)/10}%)</label>
   </div>
 )
 
@@ -25,9 +26,6 @@ class App extends Component {
           {this.props.parties.map(party => (
             <Range party={party} />
           ))}
-          <span class={{valid: this}}>
-          Totalt: {Math.round(this.props.parties.reduce((total, party) => total+party.percentage,0))}%
-          </span>
         </p>
       </div>
     );

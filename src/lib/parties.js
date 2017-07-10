@@ -18,12 +18,15 @@ const pickSeat = (party, nr) => ({
   seats: party.seats+1
 })
 
+const calculateSeatPercentage = party => ({...party, seatPercentage: (party.seats || 0) / 349})
+
 const selectAndAssignSeat = (parties, nr) => {
   return parties
     .sort((a, b) => a.numberForComparison > b.numberForComparison ? -1 : a === b ? Math.random() > 0.5 : 1)
     .filter(party => party.eligable)
     .map((party, i) => (i === 0 ? pickSeat(party, nr) : party))
     .concat(parties.filter(party => !party.eligable))
+    .map(calculateSeatPercentage)
     .sort((a,b) => a.id - b.id)
 }
 
