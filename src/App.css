@@ -19,13 +19,17 @@
 }
 
 .App label {
-  width: 160px;
+  width: 180px;
   display: inline-table;
   text-align: right;
 }
 
+.App .below label {
+  text-decoration: line-through
+}
+
 .App input[type=text]{
-  width:20px;
+  width:30px;
 }
 
 @keyframes App-logo-spin {

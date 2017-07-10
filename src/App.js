@@ -3,13 +3,13 @@ import logo from './logo.svg';
 import './App.css';
 import store from './store'
 
-const updatePartyValue = (party, value) => store.dispatch({type: 'UPDATE_PARTY_VALUE', party, value})
+const updatePartyValue = (partyName, value) => store.dispatch({type: 'UPDATE_PARTY_VALUE', partyName, value})
 
-const Range = ({name, value}) => (
-  <div>
-    <label htmlFor="SD">{name}</label>
-    <input type="range" value={value} oninput={e => updatePartyValue(name, parseInt(e.target.value, 10))} max="60" min="0" name={name} id={name} />
-    <input type="text" value={value} onchange={e => updatePartyValue(name, parseInt(e.target.value, 10))} />%
+const Range = ({party}) => (
+  <div className={ party.eligable ? "valid" : "below"}>
+    <label>{party.name}</label>
+    <input type="range" value={party.percentage} oninput={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} step="1" max="60" min="0" />
+    <input type="text" value={party.percentage} onchange={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} />% {party.seats} mandat
   </div>
 )
 
@@ -22,11 +22,12 @@ class App extends Component {
           <h2>Riksdagskollen</h2>
         </div>
         <p className="App-intro">
-          {Object.keys(this.props.parties).map(party => (
-            <Range name={party} value={this.props.parties[party].value} />
+          {this.props.parties.map(party => (
+            <Range party={party} />
           ))}
-          Totalt: {Math.round(Object.keys(this.props.parties).reduce((total, party) => total+this.props.parties[party].value,0))}
-          
+          <span class={{valid: this}}>
+          Totalt: {Math.round(this.props.parties.reduce((total, party) => total+party.percentage,0))}%
+          </span>
         </p>
       </div>
     );
