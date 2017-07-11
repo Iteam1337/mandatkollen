@@ -12,6 +12,7 @@
   height: 150px;
   padding: 20px;
   color: white;
+  margin-bottom: 20px;
 }
 
 .App-intro {
@@ -19,9 +20,9 @@
 }
 
 .App label {
-  width: 180px;
+  width: 50px;
   display: inline-table;
-  text-align: right;
+  color: #444;
 }
 
 .App section {
@@ -29,12 +30,16 @@
   width: 50%;
 }
 
-.App .below label {
-  text-decoration: line-through
+.App .below h3 {
+  text-decoration: line-through;
+  color: #999;
 }
 
 .App input[type=text]{
-  width:30px;
+  width: 2em;
+  font-size: 1em;
+  border: 0;
+  text-align: right;
 }
 
 @keyframes App-logo-spin {
