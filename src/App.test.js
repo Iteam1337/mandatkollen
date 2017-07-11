@@ -70,11 +70,10 @@ it('should mix seats from each party evenly when they have equally amount of vot
 })
 
 it('should add one more seats to the party with highest amount of votes', () => {
-  const parties = [...state.parties, {id:3, votes: 11}].map(calculatePercentages(state.parties))
+  const parties = [...state.parties, {id: 3, votes: 11}].map(calculatePercentages(state.parties))
   const result = range(30)
     .reduce((parties, nr) => {
       const seats = selectAndAssignSeat(parties, nr)
-      console.log('seats', nr, seats)
       return seats
     }, parties)
   expect(result).toHaveLength(3)

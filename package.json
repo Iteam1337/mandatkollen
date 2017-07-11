@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "pureact": "^0.9.8"
+    "parliament-svg": "^1.0.1",
+    "pureact": "^0.10",
+    "virtual-dom-stringify": "^3.0.1"
   },
   "devDependencies": {
     "react-scripts": "1.0.10"

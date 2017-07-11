@@ -7,14 +7,14 @@ import {
 } from '../lib/parties'
 
 const rawState = [
-  {id: 1, name: 'Kristdemokraterna', votes: 44},
-  {id: 2, name: 'Moderaterna', votes: 164},
-  {id: 3, name: 'Liberalerna', votes: 42},
-  {id: 4, name: 'Centerpartiet', votes: 128},
-  {id: 5, name: 'Socialdemokraterna', votes: 274},
-  {id: 6, name: 'Miljöpartiet', votes: 31},
-  {id: 7, name: 'Vänsterpartiet', votes: 67},
-  {id: 8, name: 'Sverigedemokraterna', votes: 204},
+  {id: 1, name: 'Kristdemokraterna', votes: 44, colour: '#6BB6EB'},
+  {id: 2, name: 'Moderaterna', votes: 164, colour: '#1B48E1'},
+  {id: 3, name: 'Liberalerna', votes: 42, colour: '#6BB6EB'},
+  {id: 4, name: 'Centerpartiet', votes: 128, colour: '#DDDC01'},
+  {id: 5, name: 'Socialdemokraterna', votes: 274, colour: '#EF2022'},
+  {id: 6, name: 'Miljöpartiet', votes: 31, colour: '#81CE3E'},
+  {id: 7, name: 'Vänsterpartiet', votes: 67, colour: '#BD0002'},
+  {id: 8, name: 'Sverigedemokraterna', votes: 204, colour: '#DDDC01'},
   {id: 9, name: 'FI', votes: 24},
   {id: 10, name: 'Övriga', votes: 22}
 ]

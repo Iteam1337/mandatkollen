@@ -2,6 +2,7 @@ import React, { Component } from 'pureact'
 import logo from './logo.svg'
 import './App.css'
 import store from './store'
+import Seating from './Seating'
 
 const updatePartyValue = (partyName, value) => store.dispatch({type: 'UPDATE_PARTY_VALUE', partyName, value})
 const updatePartySelection = (partyName, value) => store.dispatch({type: 'UPDATE_PARTY_SELECTION', partyName, value})
@@ -32,8 +33,8 @@ class App extends Component {
           {this.props.parties.map(party => (
             <Range party={party} />
           ))}
-          <small>Källa: Inizio juni 2017</small>
         </p>
+        <Seating parties={this.props.parties} seatCount={false} />
         {regering.length ? <p className="App-summary">
           <section>
           <h1>Regeringsalternativ {regeringPercentage}%</h1>
@@ -54,6 +55,7 @@ class App extends Component {
           ))}
           </section>
         </p> : null}
+        <small>Mätning: Inizio juni 2017. Visualisering: Iteam. Idé: Lennox PR</small>
       </div>
     )
   }
