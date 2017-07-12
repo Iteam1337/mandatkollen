@@ -44,12 +44,15 @@ class App extends Component {
             <Labels key="regering" parties={regering} />
           </fieldset>
           <fieldset>
-            <legend>Övriga {centerPercentage}%</legend>
-            <Labels key="center" parties={center} />
-          </fieldset>
-          <fieldset>
-            <legend>{oppositionPercentage}%</legend>
-            <Labels key="opposition" parties={opposition} />
+            <legend>Summa {centerPercentage + oppositionPercentage}%</legend>
+            <fieldset>
+              <legend>Övriga {centerPercentage}%</legend>
+              <Labels key="center" parties={center} />
+            </fieldset>
+            <fieldset>
+              <legend>{oppositionPercentage}%</legend>
+              <Labels key="opposition" parties={opposition} />
+            </fieldset>
           </fieldset>
         </div>
         <small>Källa: Riksdagskollen. Av: Iteam och Lennox PR.</small>
