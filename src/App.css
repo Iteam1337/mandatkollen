@@ -15,8 +15,26 @@
   margin-bottom: 20px;
 }
 
+.App-footer {
+  background-color: #222;
+  margin-top: 40px;
+  padding: 20px;
+  color: white;
+  margin-bottom: 20px;
+}
+
 .App-intro {
   font-size: large;
+}
+
+.App-summary {
+  position: absolute;
+  top: 210px;
+  left: 10vw;
+  right: 10vw;
+  background: rgba(255,255,255,0.8);
+  height: 300px;
+  margin: auto;
 }
 
 .App label {
