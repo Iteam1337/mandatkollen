@@ -13,12 +13,14 @@ const updatePartyOpposition = (partyName, value) => store.dispatch({type: 'UPDAT
 
 const Range = ({party}) => (
   <div className={party.eligable ? 'valid' : 'below'}>
-    <h3>{party.name}
+    <h3>
+      {party.name}
       <input type="text" value={party.percentage} onchange={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} />%
     </h3>
     { party.selected ? null : <button onclick={e => updatePartySelection(party.name, true)}>◀️</button>}
     <Slider party={party} oninput={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} />
     { party.opposition ? null : <button onclick={e => updatePartyOpposition(party.name, true)}>▶️</button>}
+    { party.opposition ? <button onclick={e => updatePartySelection(party.name, false)}>⤵️</button> : null}
   </div>
 )
 
@@ -31,6 +33,7 @@ class App extends Component {
     const regeringPercentage = Math.round(regering.reduce((t, party) => t + party.seatPercentage, 0) * 1000) / 10
     const oppositionPercentage = Math.round(opposition.reduce((t, party) => t + party.seatPercentage, 0) * 1000) / 10
     const centerPercentage = Math.round(center.reduce((t, party) => t + party.seatPercentage, 0) * 1000) / 10
+    const sumPercentage = Math.round((centerPercentage + regeringPercentage) * 10) / 10
     return (
       <div className="App">
         <div className="App-header">
@@ -40,19 +43,19 @@ class App extends Component {
 
         <div className="legend">
           <fieldset>
-            <legend>{regeringPercentage}%</legend>
-            <Labels key="regering" parties={regering} />
-          </fieldset>
-          <fieldset>
-            <legend>Summa {centerPercentage + oppositionPercentage}%</legend>
+            <legend>Summa {sumPercentage}%</legend>
+            <fieldset>
+              <legend>{regeringPercentage}%</legend>
+              <Labels key="regering" parties={regering} />
+            </fieldset>
             <fieldset>
               <legend>Övriga {centerPercentage}%</legend>
               <Labels key="center" parties={center} />
             </fieldset>
-            <fieldset>
-              <legend>{oppositionPercentage}%</legend>
-              <Labels key="opposition" parties={opposition} />
-            </fieldset>
+          </fieldset>
+          <fieldset>
+            <legend>{oppositionPercentage}%</legend>
+            <Labels key="opposition" parties={opposition} />
           </fieldset>
         </div>
         <small>Källa: Riksdagskollen. Av: Iteam och Lennox PR.</small>
@@ -81,7 +84,9 @@ class App extends Component {
 
           <h3>Så funkar det:</h3>
           <p>
-          I visualiseringen fördelas mandaten över Riksdagens 349 platser utifrån ett hypotetiskt valresultat som du bestämmer. Om du flyttar ett reglage för ett parti så anpassas alla de andra partiernas andelar proportionerligt. Om ett parti hamnar under riksdagsspärren på 4 procent så tilldelas de inga mandat. Fördelningen av mandat är justerade enligt 2018 års regler för mandatfördelning.
+          I visualiseringen fördelas mandaten över Riksdagens 349 platser utifrån ett hypotetiskt valresultat som du bestämmer. Om du flyttar ett reglage för ett parti så anpassas alla de andra partiernas andelar proportionerligt. 
+          Om ett parti hamnar under riksdagsspärren på 4 procent så tilldelas de inga mandat.
+          Fördelningen av mandat är justerade enligt 2018 års regler för mandatfördelning.
           Har du förslag på hur vi kan förbättra den här tjänsten? Kontakta christian.landgren@iteam.se.</p>
 
           <a href="https://iteam.se"><img className="logo" src="https://iteam.se/content/images/iteam_white.png"/></a>
