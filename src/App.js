@@ -1,5 +1,5 @@
 import React, { Component } from 'pureact'
-import logo from './logo.svg'
+import logo from './logo.png'
 import './App.css'
 import store from './store'
 import Seating from './Seating'
@@ -73,8 +73,8 @@ class App extends Component {
           <h2>Om Riksdagskollen</h2>
           <p>Riksdagskollen är ett verktyg för att underlätta för medborgare, journalister och analytiker att visualisera och dra slutsatser kring de parlamentariska effekterna av olika hypotetiska valresultat. 
           Du får gärna använda skärmdumpar från Riksdagskollen i egna poster och artiklar så länge du anger källan.</p>
-          <p>Riksdagskollen är utvecklad av Iteam efter en idé från Lennox PR.
-          Vill du använda Riksdagskollen som en inbäddad funktion på din hemsida eller nyhetstjänst? Kontakta pr@iteam.se.</p>
+          <p>Riksdagskollen är utvecklad av Iteam och Lennox PR.
+          Vill du använda Riksdagskollen som en inbäddad funktion på din hemsida eller nyhetstjänst? Kontakta robert.svensson@lennoxpr.se</p>
 
           <h3>Så funkar det:</h3>
           <p>

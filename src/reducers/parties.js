@@ -15,7 +15,7 @@ const rawState = [
   {id: 6, name: 'Socialdemokr.', votes: 274, selected: true, colour: '#c13b38', abbrivation: 'S'},
   {id: 7, name: 'Miljöpartiet', votes: 31, selected: true, colour: '#acc768', abbrivation: 'MP'},
   {id: 8, name: 'Vänsterpartiet', votes: 67, colour: '#992522', abbrivation: 'V'},
-  {id: 9, name: 'FI', votes: 24, color: '#fab', abbrivation: 'FI'},
+  {id: 9, name: 'FI', votes: 24, colour: '#fab', abbrivation: 'FI'},
   {id: 10, name: 'Övriga', votes: 22, abbrivation: 'Ö'}
 ]
 
