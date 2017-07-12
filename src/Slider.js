@@ -10,5 +10,5 @@ color-stop(${value} ${color}),
 color-stop(0.9 #b8b7b8)
 )`
 
-export default ({value, color, step, min, max, oninput, key}) => 
-  <input key={key} type="range" style={{backgroundColor: backgroundStyle(value / max, color)}} oninput={oninput} value={value} step={step} min={min} max={max} />
+export default ({party, oninput}) =>
+  <input className={party.abbrivation} key={party.id} type="range" oninput={oninput} value={party.percentage} step="1" min="0" max="60" />

@@ -1,3 +1,18 @@
+.legend {
+    display: block;
+    margin-top:10px;
+}
+
+fieldset {
+  padding:5px;
+  display: inline-table;
+  border: 1px solid #8e8e8e;
+  border-radius: 5px;
+}
+
+fieldset ul {
+  margin: 0;
+}
 
 .labels {
     list-style-type: none;
@@ -7,7 +22,6 @@
 .labels li {
     border: 1px transparent;
     padding: 2px;
-    margin-bottom: 30px;
     display: inline-table;
 }
 
@@ -24,38 +38,42 @@
     margin: 10px;
 }
 
-.labels .s .bar {
+.s .bar {
     background: #c13b38
 }
 
-.labels .m .bar {
+.m .bar {
     background: #88c7d9
 }
 
-.labels .sd .bar {
+.sd .bar {
     background: #e7d960
 }
 
-.labels .kd .bar {
+.kd .bar {
     background: #366da3
 }
 
-.labels .v .bar {
-    background: #b02522
+.v .bar {
+    background: #992522
 }
 
-.labels .l .bar {
+.l .bar {
     background: #378cab
 }
 
-.labels .c .bar {
+.c .bar {
     background: #78ae5a
 }
 
-.labels .mp .bar {
+.mp .bar {
     background: #acc768
 }
 
-.labels .fi .bar {
+.fi .bar {
     background: #fab
+}
+
+.ö .bar {
+    background: #000
 }

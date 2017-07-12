@@ -12,12 +12,12 @@ const updatePartySelection = (partyName, value) => store.dispatch({type: 'UPDATE
 const updatePartyOpposition = (partyName, value) => store.dispatch({type: 'UPDATE_PARTY_OPPOSITION', partyName, value})
 
 const Range = ({party}) => (
-  <div className={ party.eligable ? 'valid' : 'below'}>
+  <div className={party.eligable ? 'valid' : 'below'}>
     <h3>{party.name}
       <input type="text" value={party.percentage} onchange={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} />%
     </h3>
     { party.selected ? null : <button onclick={e => updatePartySelection(party.name, true)}>◀️</button>}
-    <Slider value={party.percentage} color={party.colour} oninput={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} step="1" max="60" min="0" />
+    <Slider party={party} oninput={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} />
     { party.opposition ? null : <button onclick={e => updatePartyOpposition(party.name, true)}>▶️</button>}
   </div>
 )
@@ -34,31 +34,38 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <h2>Riksdagskollen</h2>
         </div>
         <Seating parties={this.props.parties.reverse()} seatCount={false} />
-        <small>Visualisering: Iteam. Idé: Lennox PR. Grunddata: Inizio juni 2017. </small>
 
-         {regering.length ? <p className="App-summary">
-          <section>
-            <h1>Vänstern {regeringPercentage}%</h1>
+        <div className="legend">
+          <fieldset>
+            <legend>{regeringPercentage}%</legend>
             <Labels key="regering" parties={regering} />
-          </section>
-          <section>
-            <h1>Högern {oppositionPercentage}%</h1>
-            <Labels key="opposition" parties={opposition} />
-          </section>
-          <section>
-            <h1>Vågmästare {centerPercentage}%</h1>
+          </fieldset>
+          <fieldset>
+            <legend>Övriga {centerPercentage}%</legend>
             <Labels key="center" parties={center} />
-          </section>
-        </p> : null}
-        
-        <h2>Simulera resultat</h2>
-        <p>Här kan du laborera och plocka ihop ditt eget alternativ.</p>
+          </fieldset>
+          <fieldset>
+            <legend>{oppositionPercentage}%</legend>
+            <Labels key="opposition" parties={opposition} />
+          </fieldset>
+        </div>
+        <small>Källa: Riksdagskollen. Av: Iteam och Lennox PR.</small>
+        <h2>Hypotetiskt valresultat</h2>
         <section>
-          {this.props.parties.reverse().map(party => (
+          {this.props.parties.filter(x => x.selected).reverse().map(party => (
+            <Range party={party} />
+          ))}
+        </section>
+        <section>
+          {this.props.parties.filter(x => x.opposition).reverse().map(party => (
+            <Range party={party} />
+          ))}
+        </section>
+        <section>
+          {this.props.parties.filter(x => !x.selected && !x.opposition).reverse().map(party => (
             <Range party={party} />
           ))}
         </section>
@@ -74,6 +81,8 @@ class App extends Component {
           I visualiseringen fördelas mandaten över Riksdagens 349 platser utifrån ett hypotetiskt valresultat som du bestämmer. Om du flyttar ett reglage för ett parti så anpassas alla de andra partiernas andelar proportionerligt. Om ett parti hamnar under riksdagsspärren på 4 procent så tilldelas de inga mandat. Fördelningen av mandat är justerade enligt 2018 års regler för mandatfördelning.
           Har du förslag på hur vi kan förbättra den här tjänsten? Kontakta christian.landgren@iteam.se.</p>
 
+          <a href="https://iteam.se"><img className="logo" src="https://iteam.se/content/images/iteam_white.png"/></a>
+          <a href="http://lennoxpr.se"><img className="logo" src="http://lennoxpr.se/wp-content/uploads/2017/04/logo-lennox.png"/></a>
         </div>
       </div>
     )

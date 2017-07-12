@@ -9,18 +9,26 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
-  padding: 20px;
+  height: 70px;
+  padding: 10px;
   color: white;
   margin-bottom: 20px;
 }
 
 .App-footer {
-  background-color: #222;
+  background-color: #000;
   margin-top: 40px;
   padding: 20px;
   color: white;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
+}
+
+.App-footer .logo {
+  margin: 20px;
+  width: 20vw;
+  margin-bottom: 0;
+  display: inline-table;
+  vertical-align: middle;
 }
 
 .App-intro {
@@ -58,6 +66,11 @@
   font-size: 1em;
   border: 0;
   text-align: right;
+}
+
+
+.party.selected{
+  margin-left: -30px;
 }
 
 @keyframes App-logo-spin {
