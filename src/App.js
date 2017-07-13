@@ -17,10 +17,10 @@ const Range = ({party}) => (
       {party.name}
       <input type="text" value={party.percentage} onchange={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} />%
     </h3>
-    { party.selected ? null : <button onclick={e => updatePartySelection(party.name, true)}>◀️</button>}
+    { party.selected ? null : <button onclick={e => updatePartySelection(party.name, true)}>◀</button>}
     <Slider party={party} oninput={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} />
-    { party.opposition ? null : <button onclick={e => updatePartyOpposition(party.name, true)}>▶️</button>}
-    { party.opposition ? <button onclick={e => updatePartySelection(party.name, false)}>⤵️</button> : null}
+    { party.opposition ? null : <button onclick={e => updatePartyOpposition(party.name, true)}>▶</button>}
+    { party.opposition ? <button onclick={e => updatePartySelection(party.name, false)}>⤵</button> : null}
   </div>
 )
 
@@ -58,7 +58,7 @@ class App extends Component {
             <Labels key="opposition" parties={opposition} />
           </fieldset>
         </div>
-        <small>Källa: Riksdagskollen. Av: Iteam och Lennox PR.</small>
+        <small>Grafik: Riksdagskollen. Av: Iteam och Lennox PR.</small>
         <h2>Hypotetiskt valresultat</h2>
         <section>
           {this.props.parties.filter(x => x.selected).reverse().map(party => (

@@ -1,9 +1,10 @@
 {
   "name": "rikdsdagskollen",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "homepage": "https://riksdagskollen.iteam.life",
   "dependencies": {
-    "parliament-svg": "^1.0.1",
+    "parliament-svg": "irony/parliament-svg",
     "pureact": "^0.10",
     "roboto-fontface": "^0.8.0"
   },
