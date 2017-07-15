@@ -1,4 +1,4 @@
-import parliamentSVG from 'parliament-svg'
+import parliamentSVG from 'parliament-svg/dist'
 
 const obj = parties =>
   parties.reduce((result, party) => ({...result, [party.name]: party}), {})
