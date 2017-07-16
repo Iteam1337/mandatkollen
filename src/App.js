@@ -14,13 +14,14 @@ const updatePartyOpposition = (partyName, value) => store.dispatch({type: 'UPDAT
 const Range = ({party}) => (
   <div className={party.eligable ? 'valid' : 'below'}>
     <h3>
+      { party.selected || party.opposition ? null : <button onclick={e => updatePartySelection(party.name, true)}>◀</button>}
+      { party.opposition ? <button onclick={e => updatePartySelection(party.name, false)}>◀</button> : null}
       {party.name}
       <input type="text" value={party.percentage} onchange={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} />%
+      { party.opposition ? null : <button onclick={e => updatePartyOpposition(party.name, true)}>▶</button>}
     </h3>
-    { party.selected ? null : <button onclick={e => updatePartySelection(party.name, true)}>◀</button>}
+
     <Slider party={party} oninput={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} />
-    { party.opposition ? null : <button onclick={e => updatePartyOpposition(party.name, true)}>▶</button>}
-    { party.opposition ? <button onclick={e => updatePartySelection(party.name, false)}>⤵</button> : null}
   </div>
 )
 
@@ -60,21 +61,23 @@ class App extends Component {
         </div>
         <small>Grafik: Riksdagskollen. Av: Iteam och Lennox PR.</small>
         <h2>Hypotetiskt valresultat</h2>
-        <section>
-          {this.props.parties.filter(x => x.selected).reverse().map(party => (
-            <Range party={party} />
-          ))}
-        </section>
-        <section>
-          {this.props.parties.filter(x => x.opposition).reverse().map(party => (
-            <Range party={party} />
-          ))}
-        </section>
-        <section>
-          {this.props.parties.filter(x => !x.selected && !x.opposition).reverse().map(party => (
-            <Range party={party} />
-          ))}
-        </section>
+        <div className="sliders">
+          <section>
+            {this.props.parties.filter(x => x.selected).reverse().map(party => (
+              <Range party={party} />
+            ))}
+          </section>
+          <section>
+            {this.props.parties.filter(x => !x.selected && !x.opposition).reverse().map(party => (
+              <Range party={party} />
+            ))}
+          </section>
+          <section>
+            {this.props.parties.filter(x => x.opposition).reverse().map(party => (
+              <Range party={party} />
+            ))}
+          </section>
+        </div>
         <div className="App-footer">
           <h2>Om Riksdagskollen</h2>
           <p>Riksdagskollen är ett verktyg för att underlätta för medborgare, journalister och analytiker att visualisera och dra slutsatser kring de parlamentariska effekterna av olika hypotetiska valresultat. 

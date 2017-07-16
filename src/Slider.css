@@ -1,67 +1,61 @@
 input[type="range"]{
-	-webkit-appearance: none;
-    background: #b8b7b8;
-    width: 30vw;
-    height: 4px;
-    border-radius: 4px;
-    position: relative;
-    background-image: -webkit-gradient(
-        linear,
-        left top,
-        right top,
-        color-stop(0.2, #007aff),
-        color-stop(0.9, #b8b7b8)
-    );
+  -webkit-appearance: none;
+  background: #b8b7b8;
+  width: 30vw;
+  height: 4px;
+  border-radius: 4px;
+  position: relative;
+  
 }
 
 input[type="range"]::-webkit-slider-thumb{
-    -webkit-appearance: none;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    background: #fff;
-    box-shadow: 0px 2px 4px rgba(0,0,0,.2);
+  -webkit-appearance: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0px 2px 4px rgba(0,0,0,.2);
   cursor: pointer;
 }
 
 
 
 input[type="range"].s ::-webkit-slider-thumb {
-    background: #c13b38
+  background: #c13b38
 }
 
 .m input[type="range"]::-webkit-slider-thumb {
-    background: #88c7d9
+  background: #88c7d9
 }
 
 .sd input[type="range"]::-webkit-slider-thumb {
-    background: #e7d960
+  background: #e7d960
 }
 
 .kd input[type="range"]::-webkit-slider-thumb {
-    background: #366da3
+  background: #366da3
 }
 
 .v input[type="range"]::-webkit-slider-thumb {
-    background: #992522
+  background: #992522
 }
 
 .l input[type="range"]::-webkit-slider-thumb {
-    background: #378cab
+  background: #378cab
 }
 
 .c input[type="range"]::-webkit-slider-thumb {
-    background: #78ae5a
+  background: #78ae5a
 }
 
 .mp input[type="range"]::-webkit-slider-thumb {
-    background: #acc768
+  background: #acc768
 }
 
 .fi input[type="range"]::-webkit-slider-thumb {
-    background: #fab
+  background: #fab
 }
 
 .ö input[type="range"]::-webkit-slider-thumb {
-    background: #000
+  background: #000
 }

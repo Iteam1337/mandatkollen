@@ -45,15 +45,37 @@
   margin: auto;
 }
 
+
+
 .App label {
   width: 50px;
   display: inline-table;
   color: #444;
 }
 
+.App {
+  flex-flow: column;
+  display: flex;
+}
+
+.App .sliders{
+  flex-flow: row;
+  display: flex;
+}
+
 .App section {
-  display: inline-table;
-  width: 50%;
+  flex: 0.33;
+}
+
+.App section span {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.App section h3 {
+  text-align: left;
+  padding: 0 10px;
 }
 
 .App .below h3 {
