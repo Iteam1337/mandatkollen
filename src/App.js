@@ -18,7 +18,8 @@ const Range = ({party}) => (
       { party.opposition ? <button onclick={e => updatePartySelection(party.name, false)}>◀</button> : null}
       {party.name}
       <input type="text" value={party.percentage} onchange={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} />%
-      { party.opposition ? null : <button onclick={e => updatePartyOpposition(party.name, true)}>▶</button>}
+      { !party.opposition && !party.selected ? <button onclick={e => updatePartyOpposition(party.name, true)}>▶</button> : null}
+      { party.selected  ? <button onclick={e => updatePartySelection(party.name, false)}>▶</button> : null}
     </h3>
 
     <Slider party={party} oninput={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} />

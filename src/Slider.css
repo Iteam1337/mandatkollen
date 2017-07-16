@@ -20,42 +20,42 @@ input[type="range"]::-webkit-slider-thumb{
 
 
 
-input[type="range"].s ::-webkit-slider-thumb {
+input.s {
   background: #c13b38
 }
 
-.m input[type="range"]::-webkit-slider-thumb {
+input.m {
   background: #88c7d9
 }
 
-.sd input[type="range"]::-webkit-slider-thumb {
+input.sd {
   background: #e7d960
 }
 
-.kd input[type="range"]::-webkit-slider-thumb {
+input.kd  {
   background: #366da3
 }
 
-.v input[type="range"]::-webkit-slider-thumb {
+input.v {
   background: #992522
 }
 
-.l input[type="range"]::-webkit-slider-thumb {
+input.l {
   background: #378cab
 }
 
-.c input[type="range"]::-webkit-slider-thumb {
+input.c {
   background: #78ae5a
 }
 
-.mp input[type="range"]::-webkit-slider-thumb {
+input.mp {
   background: #acc768
 }
 
-.fi input[type="range"]::-webkit-slider-thumb {
+input.fi {
   background: #fab
 }
 
-.ö input[type="range"]::-webkit-slider-thumb {
+input.ö {
   background: #000
 }
