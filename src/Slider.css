@@ -1,6 +1,5 @@
 input[type="range"]{
   -webkit-appearance: none;
-  background: #b8b7b8;
   width: 30vw;
   height: 4px;
   border-radius: 4px;
