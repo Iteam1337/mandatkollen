@@ -9,7 +9,7 @@ const Labels = ({parties}) => (
       </div>
     <span className="value">{party.seats}</span>
     </li>)}
-  </ul> 
+  </ul>
 )
 
 export default Labels

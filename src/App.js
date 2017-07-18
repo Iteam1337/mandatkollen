@@ -36,6 +36,7 @@ class App extends Component {
     const oppositionPercentage = Math.round(opposition.reduce((t, party) => t + party.seatPercentage, 0) * 1000) / 10
     const centerPercentage = Math.round(center.reduce((t, party) => t + party.seatPercentage, 0) * 1000) / 10
     const sumPercentage = Math.round((centerPercentage + regeringPercentage) * 10) / 10
+
     return (
       <div className="App">
         <div className="App-header">
@@ -43,26 +44,24 @@ class App extends Component {
         </div>
         <Seating parties={this.props.parties.reverse()} seatCount={false} />
 
-        <div className="legend">
-          <fieldset>
-            <legend>Summa {sumPercentage}%</legend>
-            <fieldset>
-              <legend>{regeringPercentage}%</legend>
-              <Labels key="regering" parties={regering} />
-            </fieldset>
-            <fieldset>
-              <legend>Övriga {centerPercentage}%</legend>
-              <Labels key="center" parties={center} />
-            </fieldset>
-          </fieldset>
-          <fieldset>
-            <legend>{oppositionPercentage}%</legend>
+        <div className="LegendContainer">
+          <div className="LegendGroup">
+            <h1>Regering {regeringPercentage}%</h1>
+            <Labels key="regeringen" parties={regering} />
+          </div>
+          <div className="LegendGroup">
+            <h1>Övriga {centerPercentage}%</h1>
+            <Labels key="center" parties={center} />
+          </div>
+          <div className="LegendGroup">
+            <h1>Opposition {oppositionPercentage}%</h1>
             <Labels key="opposition" parties={opposition} />
-          </fieldset>
+          </div>
         </div>
+
         <small>Grafik: Riksdagskollen. Av: Iteam och Lennox PR.</small>
         <h2>Hypotetiskt valresultat</h2>
-        <div className="sliders">
+         <div className="sliders">
           <section>
             {this.props.parties.filter(x => x.selected).reverse().map(party => (
               <Range party={party} />
@@ -81,14 +80,14 @@ class App extends Component {
         </div>
         <div className="App-footer">
           <h2>Om Riksdagskollen</h2>
-          <p>Riksdagskollen är ett verktyg för att underlätta för medborgare, journalister och analytiker att visualisera och dra slutsatser kring de parlamentariska effekterna av olika hypotetiska valresultat. 
+          <p>Riksdagskollen är ett verktyg för att underlätta för medborgare, journalister och analytiker att visualisera och dra slutsatser kring de parlamentariska effekterna av olika hypotetiska valresultat.
           Du får gärna använda skärmdumpar från Riksdagskollen i egna poster och artiklar så länge du anger källan.</p>
           <p>Riksdagskollen är utvecklad av Iteam och Lennox PR.
           Vill du använda Riksdagskollen som en inbäddad funktion på din hemsida eller nyhetstjänst? Kontakta robert.svensson@lennoxpr.se</p>
 
           <h3>Så funkar det:</h3>
           <p>
-          I visualiseringen fördelas mandaten över Riksdagens 349 platser utifrån ett hypotetiskt valresultat som du bestämmer. Om du flyttar ett reglage för ett parti så anpassas alla de andra partiernas andelar proportionerligt. 
+          I visualiseringen fördelas mandaten över Riksdagens 349 platser utifrån ett hypotetiskt valresultat som du bestämmer. Om du flyttar ett reglage för ett parti så anpassas alla de andra partiernas andelar proportionerligt.
           Om ett parti hamnar under riksdagsspärren på 4 procent så tilldelas de inga mandat.
           Fördelningen av mandat är justerade enligt 2018 års regler för mandatfördelning.
           Har du förslag på hur vi kan förbättra den här tjänsten? Kontakta christian.landgren@iteam.se.</p>

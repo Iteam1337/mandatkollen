@@ -90,6 +90,20 @@
   text-align: right;
 }
 
+.LegendContainer {
+  display: flex;
+}
+
+.LegendContainer h1 {
+  font-size: 18px;
+  font-weight: normal;
+  text-align: center;
+  margin: 20px 0 0 0;
+}
+
+.LegendGroup {
+  flex-grow: 1;
+}
 
 .party.selected{
   margin-left: -30px;
