@@ -23,6 +23,12 @@
   margin-bottom: 0px;
 }
 
+.App-divider {
+  margin-top: 40px;
+  padding: 20px;
+  margin-bottom: 0px;
+}
+
 .App-footer .logo {
   margin: 20px;
   width: 20vw;
@@ -76,6 +82,8 @@
 .App section h3 {
   text-align: left;
   padding: 0 10px;
+  display: block;
+
 }
 
 .App .below h3 {

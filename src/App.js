@@ -10,17 +10,22 @@ import Switch from './Switch'
 const updatePartyValue = (partyName, value) => store.dispatch({type: 'UPDATE_PARTY_VALUE', partyName, value})
 const updatePartySelection = (partyName, value) => store.dispatch({type: 'UPDATE_PARTY_SELECTION', partyName, value})
 const updatePartyOpposition = (partyName, value) => store.dispatch({type: 'UPDATE_PARTY_OPPOSITION', partyName, value})
+const updateCoalitions = (value) => store.dispatch({type: 'EDIT_COALITIONS', value})
 
-const Range = ({party}) => (
+const Range = ({party, editCoalitions}) => (
   <div className={party.eligable ? 'valid' : 'below'}>
-    <h3>
-      { party.selected || party.opposition ? null : <button onclick={e => updatePartySelection(party.name, true)}>◀</button>}
-      { party.opposition ? <button onclick={e => updatePartySelection(party.name, false)}>◀</button> : null}
+    { editCoalitions ? <h3>
+      { party.selected || party.opposition ? null : <button onclick={e => updatePartySelection(party.name, true)}>⇠</button>}
+      { party.opposition ? <button onclick={e => updatePartySelection(party.name, false)}>⇠</button> : null}
       {party.name}
-      <input type="text" value={party.percentage} onchange={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} />%
-      { !party.opposition && !party.selected ? <button onclick={e => updatePartyOpposition(party.name, true)}>▶</button> : null}
-      { party.selected  ? <button onclick={e => updatePartySelection(party.name, false)}>▶</button> : null}
-    </h3>
+      { !party.opposition && !party.selected ? <button onclick={e => updatePartyOpposition(party.name, true)}>⇢</button> : null}
+      { party.selected  ? <button onclick={e => updatePartySelection(party.name, false)}>⇢</button> : null}
+    </h3> : (
+      <h3>
+        <input type="text" value={party.percentage} onkeyup={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} />%&nbsp;
+        {party.name}
+      </h3>
+    )}
 
     <Slider party={party} oninput={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} />
   </div>
@@ -29,9 +34,10 @@ const Range = ({party}) => (
 
 class App extends Component {
   render () {
-    const regering = this.props.parties.filter(a => a.selected && a.eligable).sort((a, b) => b.id - a.id)
-    const opposition = this.props.parties.filter(a => a.opposition && a.eligable).sort((a, b) => b.id - a.id)
-    const center = this.props.parties.filter(a => a.eligable && !a.opposition && !a.selected).sort((a, b) => b.id - a.seatPercentage)
+    const {parties, coalitions} = this.props
+    const regering = parties.filter(a => a.selected && a.eligable).sort((a, b) => b.id - a.id)
+    const opposition = parties.filter(a => a.opposition && a.eligable).sort((a, b) => b.id - a.id)
+    const center = parties.filter(a => a.eligable && !a.opposition && !a.selected).sort((a, b) => b.id - a.id)
     const regeringPercentage = Math.round(regering.reduce((t, party) => t + party.seatPercentage, 0) * 1000) / 10
     const oppositionPercentage = Math.round(opposition.reduce((t, party) => t + party.seatPercentage, 0) * 1000) / 10
     const centerPercentage = Math.round(center.reduce((t, party) => t + party.seatPercentage, 0) * 1000) / 10
@@ -41,7 +47,7 @@ class App extends Component {
         <div className="App-header">
           <h2>Riksdagskollen</h2>
         </div>
-        <Seating parties={this.props.parties.reverse()} seatCount={false} />
+        <Seating parties={parties.slice().reverse()} seatCount={false} />
 
         <div className="legend">
           <fieldset>
@@ -64,20 +70,24 @@ class App extends Component {
         <h2>Hypotetiskt valresultat</h2>
         <div className="sliders">
           <section>
-            {this.props.parties.filter(x => x.selected).reverse().map(party => (
-              <Range party={party} />
+            {parties.filter(x => x.selected).reverse().map(party => (
+              <Range party={party} editCoalitions={coalitions.editCoalitions}/>
             ))}
           </section>
           <section>
-            {this.props.parties.filter(x => !x.selected && !x.opposition).reverse().map(party => (
-              <Range party={party} />
+            {parties.filter(x => !x.selected && !x.opposition).reverse().map(party => (
+              <Range party={party} editCoalitions={coalitions.editCoalitions}/>
             ))}
           </section>
           <section>
-            {this.props.parties.filter(x => x.opposition).reverse().map(party => (
-              <Range party={party} />
+            {parties.filter(x => x.opposition).reverse().map(party => (
+              <Range party={party} editCoalitions={coalitions.editCoalitions}/>
             ))}
           </section>
+          
+        </div>
+        <div className="App-divider">
+          <label htmlFor="coalitions">Redigera koalitioner</label><input type="checkbox" checked={coalitions.editCoalitions} onchange={e => updateCoalitions(e.target.checked)} />
         </div>
         <div className="App-footer">
           <h2>Om Riksdagskollen</h2>
