@@ -11,4 +11,4 @@ color-stop(${value} ${color})
 )`
 
 export default ({party, oninput}) =>
-  <input className={party.abbrivation.toLowerCase()} key={party.id} type="range" oninput={oninput} value={party.percentage} step="1" min="0" max="60" />
+  <input className={party.abbreviation.toLowerCase()} key={party.id} type="range" oninput={oninput} value={party.percentage} step="1" min="0" max="60" />

@@ -7,16 +7,16 @@ import {
 } from '../lib/parties'
 
 const rawState = [
-  {id: 1, name: 'Kristdemokr.', votes: 31, opposition: true, colour: '#366da3', abbrivation: 'KD'},
-  {id: 2, name: 'Moderaterna', votes: 210, opposition: true, colour: '#88c7d9', abbrivation: 'M'},
-  {id: 3, name: 'Liberalerna', votes: 57, opposition: true, colour: '#378cab', abbrivation: 'L'},
-  {id: 4, name: 'Centerpartiet', votes: 110, opposition: true, colour: '#78ae5a', abbrivation: 'C'},
-  {id: 5, name: 'Sverigedemokr.', votes: 135, colour: '#e7d960', abbrivation: 'SD'},
-  {id: 6, name: 'Socialdemokr.', votes: 314, selected: true, colour: '#c13b38', abbrivation: 'S'},
-  {id: 7, name: 'Miljöpartiet', votes: 50, selected: true, colour: '#acc768', abbrivation: 'MP'},
-  {id: 8, name: 'Vänsterpartiet', votes: 71, colour: '#992522', abbrivation: 'V'},
-  {id: 9, name: 'FI', votes: 24, colour: '#fab', abbrivation: 'FI'},
-  {id: 10, name: 'Övriga', votes: 22, abbrivation: 'Ö'}
+  {id: 1, name: 'Kristdemokr.', votes: 31, opposition: true, colour: '#366da3', abbreviation: 'KD'},
+  {id: 2, name: 'Moderaterna', votes: 210, opposition: true, colour: '#88c7d9', abbreviation: 'M'},
+  {id: 3, name: 'Liberalerna', votes: 57, opposition: true, colour: '#378cab', abbreviation: 'L'},
+  {id: 4, name: 'Centerpartiet', votes: 110, opposition: true, colour: '#78ae5a', abbreviation: 'C'},
+  {id: 5, name: 'Sverigedemokr.', votes: 135, colour: '#e7d960', abbreviation: 'SD'},
+  {id: 6, name: 'Socialdemokr.', votes: 314, selected: true, colour: '#c13b38', abbreviation: 'S'},
+  {id: 7, name: 'Miljöpartiet', votes: 50, selected: true, colour: '#acc768', abbreviation: 'MP'},
+  {id: 8, name: 'Vänsterpartiet', votes: 71, colour: '#992522', abbreviation: 'V'},
+  {id: 9, name: 'FI', votes: 24, colour: '#fab', abbreviation: 'FI'},
+  {id: 10, name: 'Övriga', votes: 22, abbreviation: 'Ö'}
 ]
 
 const range = nr => [...Array(nr).keys()]

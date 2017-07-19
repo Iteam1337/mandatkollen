@@ -3,9 +3,9 @@ import './Labels.css'
 
 const Labels = ({parties}) => (
   <ul className="labels">
-    {parties.map(party => <li className={party.abbrivation.toLowerCase()}>
+    {parties.map(party => <li className={party.abbreviation.toLowerCase()}>
       <div className="bar">
-        <p>{party.abbrivation}</p>
+        <p>{party.abbreviation}</p>
       </div>
     <span className="value">{party.seats}</span>
     </li>)}
