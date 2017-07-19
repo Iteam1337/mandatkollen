@@ -5,6 +5,7 @@ import Seating from './Seating'
 import Range from './Range'
 import Labels from './Labels'
 import Footer from './Footer'
+import Switch from './Switch'
 
 const updateCoalitions = (value) => store.dispatch({type: 'EDIT_COALITIONS', value})
 
@@ -64,7 +65,8 @@ class App extends Component {
           </section>
         </div>
         <div className="App-divider">
-          <label htmlFor="coalitions">Redigera koalitioner</label><input type="checkbox" checked={coalitions.editCoalitions} onchange={e => updateCoalitions(e.target.checked)} />
+          <h3>Redigera koalitioner</h3>
+          <Switch checked={coalitions.editCoalitions} onchange={e => updateCoalitions(e.target.checked)}/>
         </div>
         <Footer />
       </div>

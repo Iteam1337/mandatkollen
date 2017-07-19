@@ -17,6 +17,7 @@ input.cmn-toggle-round + label {
   height: 60px;
   background-color: #dddddd;
   border-radius: 60px;
+  margin: auto;
 }
 input.cmn-toggle-round + label:before,
 input.cmn-toggle-round + label:after {

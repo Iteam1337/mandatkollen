@@ -47,19 +47,19 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case 'UPDATE_PARTY_SELECTION': {
       const updatedParties = state
-        .map(party => party.name === action.partyName ? {...party, selected: action.value, opposition: false} : party)
+        .map(party => party.id === action.partyId ? {...party, selected: action.value, opposition: false} : party)
         .sort(sort)
       return updatedParties
     }
     case 'UPDATE_PARTY_OPPOSITION': {
       const updatedParties = state
-        .map(party => party.name === action.partyName ? {...party, selected: false, opposition: action.value} : party)
+        .map(party => party.id === action.partyId ? {...party, selected: false, opposition: action.value} : party)
         .sort(sort)
       return updatedParties
     }
     case 'UPDATE_PARTY_VALUE': {
       const updatedParties = state
-        .map(party => party.name === action.partyName ? updateVotes(party, action.value) : party)
+        .map(party => party.id === action.partyId ? updateVotes(party, action.value) : party)
         .map(percentage)
 
       return balanceAndCalculateSeats(updatedParties)
