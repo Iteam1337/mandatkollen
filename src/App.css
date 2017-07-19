@@ -80,7 +80,6 @@
 }
 
 .App section h3 {
-  text-align: left;
   padding: 0 10px;
   display: block;
 
@@ -90,6 +89,7 @@
   text-decoration: line-through;
   color: #999;
 }
+
 
 .App input[type=text]{
   width: 2em;

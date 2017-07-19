@@ -17,17 +17,17 @@ const Range = ({party, editCoalitions}) => (
     { editCoalitions ? <h3>
       { party.selected || party.opposition ? null : <button onclick={e => updatePartySelection(party.name, true)}>⇠</button>}
       { party.opposition ? <button onclick={e => updatePartySelection(party.name, false)}>⇠</button> : null}
-      {party.name}
+      {party.abbrivation}
       { !party.opposition && !party.selected ? <button onclick={e => updatePartyOpposition(party.name, true)}>⇢</button> : null}
       { party.selected  ? <button onclick={e => updatePartySelection(party.name, false)}>⇢</button> : null}
     </h3> : (
       <h3>
-        <input type="text" value={party.percentage} onkeyup={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} />%&nbsp;
         {party.name}
       </h3>
     )}
 
     <Slider party={party} oninput={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} />
+        <input type="text" value={party.percentage} onkeyup={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} />%<br/>
   </div>
 )
 
@@ -70,17 +70,17 @@ class App extends Component {
         <h2>Hypotetiskt valresultat</h2>
         <div className="sliders">
           <section>
-            {parties.filter(x => x.selected).reverse().map(party => (
+            {parties.filter(x => x.selected).map(party => (
               <Range party={party} editCoalitions={coalitions.editCoalitions}/>
             ))}
           </section>
           <section>
-            {parties.filter(x => !x.selected && !x.opposition).reverse().map(party => (
+            {parties.filter(x => !x.selected && !x.opposition).map(party => (
               <Range party={party} editCoalitions={coalitions.editCoalitions}/>
             ))}
           </section>
           <section>
-            {parties.filter(x => x.opposition).reverse().map(party => (
+            {parties.filter(x => x.opposition).map(party => (
               <Range party={party} editCoalitions={coalitions.editCoalitions}/>
             ))}
           </section>
