@@ -61,7 +61,6 @@ export default function (state = initialState, action) {
       const updatedParties = state
         .map(party => party.name === action.partyName ? {...party, selected: action.value.selected, opposition: action.value.opposition} : party)
         .sort(sort)
-        console.log(updatedParties)
       return updatedParties
     }
     case 'UPDATE_PARTY_VALUE': {
