@@ -10,16 +10,13 @@ import Switch from './Switch'
 const updatePartyValue = (partyName, value) => store.dispatch({type: 'UPDATE_PARTY_VALUE', partyName, value})
 const updatePartySelection = (partyName, value) => store.dispatch({type: 'UPDATE_PARTY_SELECTION', partyName, value})
 const updatePartyOpposition = (partyName, value) => store.dispatch({type: 'UPDATE_PARTY_OPPOSITION', partyName, value})
+const updatePartyAffiliation = (partyName, value) => store.dispatch({type: 'UPDATE_PARTY_AFFILIATION', partyName, value})
 
 const Range = ({party}) => (
   <div className={party.eligable ? 'valid' : 'below'}>
     <h3>
-      { party.selected || party.opposition ? null : <button onclick={e => updatePartySelection(party.name, true)}>◀</button>}
-      { party.opposition ? <button onclick={e => updatePartySelection(party.name, false)}>◀</button> : null}
       {party.name}
       <input type="text" value={party.percentage} onchange={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} />%
-      { !party.opposition && !party.selected ? <button onclick={e => updatePartyOpposition(party.name, true)}>▶</button> : null}
-      { party.selected  ? <button onclick={e => updatePartySelection(party.name, false)}>▶</button> : null}
     </h3>
 
     <Slider party={party} oninput={e => updatePartyValue(party.name, parseInt(e.target.value, 10))} />
@@ -29,31 +26,57 @@ const Range = ({party}) => (
 
 class App extends Component {
   render () {
-    const regering = this.props.parties.filter(a => a.selected && a.eligable).sort((a, b) => b.id - a.id)
-    const opposition = this.props.parties.filter(a => a.opposition && a.eligable).sort((a, b) => b.id - a.id)
+    const regering = this.props.parties.filter(a => a.selected && a.eligable).sort((a, b) => b.seats - a.seats)
+    const opposition = this.props.parties.filter(a => a.opposition && a.eligable).sort((a, b) => a.seats - b.seats)
     const center = this.props.parties.filter(a => a.eligable && !a.opposition && !a.selected).sort((a, b) => b.id - a.seatPercentage)
+    const allParties = regering.concat(center).concat(opposition)
     const regeringPercentage = Math.round(regering.reduce((t, party) => t + party.seatPercentage, 0) * 1000) / 10
     const oppositionPercentage = Math.round(opposition.reduce((t, party) => t + party.seatPercentage, 0) * 1000) / 10
     const centerPercentage = Math.round(center.reduce((t, party) => t + party.seatPercentage, 0) * 1000) / 10
     const sumPercentage = Math.round((centerPercentage + regeringPercentage) * 10) / 10
+
+    const dragover = event => {
+      event.preventDefault()
+      event.dataTransfer.dropEffect = "move"
+    }
+
+    const dropUpdate = (arg) => event => {
+      event.preventDefault()
+      updatePartyAffiliation(event.dataTransfer.getData('text'), arg)
+    }
+
+    const dropRegeringen = dropUpdate({
+      selected: true,
+      opposition: false
+    })
+
+    const dropOpposition = dropUpdate({
+      selected: false,
+      opposition: true
+    })
+
+    const dropCenter = dropUpdate({
+      selected: false,
+      opposition: false
+    })
 
     return (
       <div className="App">
         <div className="App-header">
           <h2>Riksdagskollen</h2>
         </div>
-        <Seating parties={this.props.parties.reverse()} seatCount={false} />
+        <Seating parties={allParties} seatCount={false} />
 
         <div className="LegendContainer">
-          <div className="LegendGroup">
+          <div className="LegendGroup" ondragover={dragover} ondrop={dropRegeringen}>
             <h1>Regering {regeringPercentage}%</h1>
             <Labels key="regeringen" parties={regering} />
           </div>
-          <div className="LegendGroup">
+          <div className="LegendGroup" ondragover={dragover} ondrop={dropCenter}>
             <h1>Övriga {centerPercentage}%</h1>
             <Labels key="center" parties={center} />
           </div>
-          <div className="LegendGroup">
+          <div className="LegendGroup" ondragover={dragover} ondrop={dropOpposition}>
             <h1>Opposition {oppositionPercentage}%</h1>
             <Labels key="opposition" parties={opposition} />
           </div>
