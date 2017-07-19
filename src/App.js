@@ -22,7 +22,7 @@ const Range = ({party, editCoalitions}) => (
       { party.selected  ? <button onclick={e => updatePartySelection(party.name, false)}>⇢</button> : null}
     </h3> : (
       <h3>
-        {party.name}
+        {party.abbrivation}
       </h3>
     )}
 
