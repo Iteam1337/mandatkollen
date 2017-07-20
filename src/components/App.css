@@ -15,20 +15,10 @@
   margin-bottom: 20px;
 }
 
-.App-footer {
-  background-color: #000;
+.App-divider {
   margin-top: 40px;
   padding: 20px;
-  color: white;
   margin-bottom: 0px;
-}
-
-.App-footer .logo {
-  margin: 20px;
-  width: 20vw;
-  margin-bottom: 0;
-  display: inline-table;
-  vertical-align: middle;
 }
 
 .App-intro {
@@ -74,14 +64,16 @@
 }
 
 .App section h3 {
-  text-align: left;
   padding: 0 10px;
+  display: block;
+
 }
 
 .App .below h3 {
   text-decoration: line-through;
   color: #999;
 }
+
 
 .App input[type=text]{
   width: 2em;

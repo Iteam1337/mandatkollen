@@ -1,0 +1,19 @@
+.App-footer {
+  background-color: #000;
+  margin-top: 40px;
+  padding: 20px;
+  color: white;
+  margin-bottom: 0px;
+}
+
+.App-footer .logo {
+  margin: 20px;
+  width: 20vw;
+  margin-bottom: 0;
+  display: inline-table;
+  vertical-align: middle;
+}
+
+.App-footer a {
+  color: #fff;
+}

@@ -4,12 +4,12 @@ import './Labels.css'
 const Label = party => {
   function dragstart (event) {
     event.dataTransfer.dropEffect = "move"
-    event.dataTransfer.setData('text/plain', party.name)
+    event.dataTransfer.setData('text/plain', party.id)
   }
 
-  return <li draggable="true" ondragstart={dragstart} className={party.abbrivation.toLowerCase()}>
+  return <li draggable="true" ondragstart={dragstart} className={party.abbreviation.toLowerCase()}>
       <div className="bar">
-        <p>{party.abbrivation}</p>
+        <p>{party.abbreviation}</p>
       </div>
     <span className="value">{party.seats}</span>
   </li>
