@@ -20,5 +20,4 @@ const Labels = ({parties}) => (
     {parties.map(Label)}
   </ul>
 )
-
 export default Labels

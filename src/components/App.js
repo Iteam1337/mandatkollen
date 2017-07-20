@@ -52,6 +52,7 @@ class App extends Component {
         <div className="App-header">
           <h2>Riksdagskollen</h2>
         </div>
+
         <Seating parties={allParties} seatCount={false} />
 
         <div className="LegendContainer">
