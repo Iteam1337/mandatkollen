@@ -72,6 +72,7 @@ class App extends Component {
 
         <small>Grafik: Riksdagskollen. Av: Iteam och Lennox PR.</small>
         <h2>Hypotetiskt valresultat</h2>
+        <p>Dra i reglagen nedan för att justera valresultatet. Dra och släpp partisymbolerna ovan för att justera simulera olika koalitionsalternativ.</p>
         <div className="sliders">
           <section>
             {parties.filter(x => x.selected).map(party => (

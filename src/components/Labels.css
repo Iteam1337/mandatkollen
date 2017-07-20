@@ -39,6 +39,10 @@ fieldset ul {
     margin: 10px;
 }
 
+.labels .handle {
+    color: rgba(255,255,255,0.3);
+}
+
 .s .bar {
     background: #c13b38
 }
