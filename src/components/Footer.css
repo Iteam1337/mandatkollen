@@ -1,14 +1,16 @@
 .App-footer {
   background-color: #000;
-  margin-top: 40px;
-  padding: 20px;
+  margin: 40px 0 0 0;
+  padding: 10vw;
   color: white;
-  margin-bottom: 0px;
+  text-align: left;
+  
 }
 
 .App-footer .logo {
   margin: 20px;
   width: 20vw;
+  max-width: 200px;
   margin-bottom: 0;
   display: inline-table;
   vertical-align: middle;

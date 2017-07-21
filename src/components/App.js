@@ -10,6 +10,25 @@ import Switch from './Switch'
 const updateCoalitions = (value) => store.dispatch({type: 'EDIT_COALITIONS', value})
 const updatePartyAffiliation = (partyId, affiliation) => store.dispatch({type: 'UPDATE_PARTY_AFFILIATION', partyId, value: affiliation })
 
+const Sliders = ({parties, editCoalitions}) => 
+  <div className="sliders">
+    <section>
+      {parties.filter(x => x.selected).map(party => (
+        <Range party={party} editCoalitions={editCoalitions}/>
+      ))}
+    </section>
+    <section>
+      {parties.filter(x => !x.selected && !x.opposition).map(party => (
+        <Range party={party} editCoalitions={editCoalitions}/>
+      ))}
+    </section>
+    <section>
+      {parties.filter(x => x.opposition).map(party => (
+        <Range party={party} editCoalitions={editCoalitions}/>
+      ))}
+    </section>
+  </div>
+
 class App extends Component {
   render () {
     const {parties, coalitions} = this.props
@@ -52,43 +71,30 @@ class App extends Component {
         <div className="App-header">
           <h2>Riksdagskollen</h2>
         </div>
+        <div className="App-main">
+          <Seating parties={allParties} seatCount={false} />
 
-        <Seating parties={allParties} seatCount={false} />
+          <div className="LegendContainer">
+            <div className="LegendGroup" ondragover={dragover} ondrop={dropRegeringen}>
+              <h1>Regering {regeringPercentage}%</h1>
+              <Labels key="regeringen" parties={regering} />
+            </div>
+            <div className="LegendGroup" ondragover={dragover} ondrop={dropCenter}>
+              <h1>Övriga {centerPercentage}%</h1>
+              <Labels key="center" parties={center} />
+            </div>
+            <div className="LegendGroup" ondragover={dragover} ondrop={dropOpposition}>
+              <h1>Opposition {oppositionPercentage}%</h1>
+              <Labels key="opposition" parties={opposition} />
+            </div>
+          </div>
 
-        <div className="LegendContainer">
-          <div className="LegendGroup" ondragover={dragover} ondrop={dropRegeringen}>
-            <h1>Regering {regeringPercentage}%</h1>
-            <Labels key="regeringen" parties={regering} />
-          </div>
-          <div className="LegendGroup" ondragover={dragover} ondrop={dropCenter}>
-            <h1>Övriga {centerPercentage}%</h1>
-            <Labels key="center" parties={center} />
-          </div>
-          <div className="LegendGroup" ondragover={dragover} ondrop={dropOpposition}>
-            <h1>Opposition {oppositionPercentage}%</h1>
-            <Labels key="opposition" parties={opposition} />
-          </div>
-        </div>
-
-        <small>Grafik: Riksdagskollen. Av: Iteam och Lennox PR.</small>
-        <h2>Hypotetiskt valresultat</h2>
-        <p>Dra i reglagen nedan för att justera valresultatet. Dra och släpp partisymbolerna ovan för att justera simulera olika koalitionsalternativ.</p>
-        <div className="sliders">
-          <section>
-            {parties.filter(x => x.selected).map(party => (
-              <Range party={party} editCoalitions={coalitions.editCoalitions}/>
-            ))}
-          </section>
-          <section>
-            {parties.filter(x => !x.selected && !x.opposition).map(party => (
-              <Range party={party} editCoalitions={coalitions.editCoalitions}/>
-            ))}
-          </section>
-          <section>
-            {parties.filter(x => x.opposition).map(party => (
-              <Range party={party} editCoalitions={coalitions.editCoalitions}/>
-            ))}
-          </section>
+          <small>Grafik: Riksdagskollen. Av: Iteam och Lennox PR.</small>
+          <div className="App-divider">
+            <h2>Hypotetiskt valresultat</h2>
+            <p>Dra i reglagen nedan för att justera valresultatet. Dra och släpp partisymbolerna ovan för att justera simulera olika koalitionsalternativ.</p>
+          </div>         
+          <Sliders parties={parties} editCoalitions={coalitions.editCoalitions} />
         </div>
         <div className="App-divider">
           <h3>Redigera koalitioner</h3>

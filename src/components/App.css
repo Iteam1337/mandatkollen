@@ -15,6 +15,11 @@
   margin-bottom: 20px;
 }
 
+.App-main {
+  max-width: 600px;
+  margin: auto;
+}
+
 .App-divider {
   margin-top: 40px;
   padding: 20px;
@@ -35,8 +40,6 @@
   margin: auto;
 }
 
-
-
 .App label {
   width: 50px;
   display: inline-table;
@@ -54,12 +57,15 @@
 }
 
 .App section {
-  flex: 0.33;
+  border: 1px solid #e3e3e3;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 5px;
 }
 
 .App section span {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex: 1;
 }
 
