@@ -92,12 +92,13 @@ class App extends Component {
           <small>Grafik: Riksdagskollen. Av: Iteam och Lennox PR.</small>
           <div className="App-divider">
             <h2>Hypotetiskt valresultat</h2>
-            <p>Dra i reglagen nedan för att justera valresultatet. Dra och släpp partisymbolerna ovan för att justera simulera olika koalitionsalternativ.</p>
+            <p>Dra i reglagen nedan för att simulera ett valresultatet.</p>
           </div>         
           <Sliders parties={parties} editCoalitions={coalitions.editCoalitions} />
         </div>
         <div className="App-divider">
           <h3>Redigera koalitioner</h3>
+          <p>Dra och släpp partisymbolerna i grafiken ovan för att justera simulera olika koalitionsalternativ, eller använd reglaget nedan för att visa pilknappar. </p>
           <Switch checked={coalitions.editCoalitions} onchange={e => updateCoalitions(e.target.checked)}/>
         </div>
         <Footer />
