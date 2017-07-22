@@ -5,7 +5,7 @@ import store from '../store'
 const updatePartyValue = (partyId, value) => store.dispatch({type: 'UPDATE_PARTY_VALUE', partyId, value})
 const updatePartyAffiliation = (partyId, affiliation) => store.dispatch({type: 'UPDATE_PARTY_AFFILIATION', partyId, affiliation })
 
-const Range = ({party, editCoalitions}) => (
+const Mixer = ({party, editCoalitions}) => (
   <div className={[party.eligable ? 'valid' : 'below', 'App-range'].join(' ')}>
     <h3 className={party.abbreviation.toLowerCase()}>
       {party.abbreviation}
@@ -21,9 +21,9 @@ const Range = ({party, editCoalitions}) => (
       </span>
     : <span>
         <Slider party={party} oninput={e => updatePartyValue(party.id, parseInt(e.target.value, 10) / 10)} />
-        <input type="text" value={party.percentage} onkeyup={e => updatePartyValue(party.id, parseInt(e.target.value, 10))} />
+        <input type="text" value={party.percentage} onkeyup={e => updatePartyValue(party.id, parseInt(e.target.value.replace(',', '.') || '0', 10))} />
       </span>}
   </div>
 )
 
-export default Range
+export default Mixer

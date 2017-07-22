@@ -25,9 +25,11 @@
 }
 
 .App-divider {
-  margin-top: 40px;
   padding: 20px;
   margin-bottom: 0px;
+  max-width: 600px;
+  display: flex;
+  flex-flow: row;
 }
 
 .App-intro {
@@ -55,10 +57,11 @@
   display: flex;
 }
 
-.App .sliders{
+.App-sliders{
   flex-flow: row;
   display: flex;
   overflow-x: auto;
+  margin-top: 20px;
 }
 
 .App section {

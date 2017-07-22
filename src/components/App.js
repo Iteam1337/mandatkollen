@@ -2,7 +2,7 @@ import React, { Component } from 'pureact'
 import './App.css'
 import store from '../store'
 import Seating from './Seating'
-import Range from './Range'
+import Mixer from './Mixer'
 import Labels from './Labels'
 import Footer from './Footer'
 import Switch from './Switch'
@@ -11,20 +11,20 @@ const updateCoalitions = (value) => store.dispatch({type: 'EDIT_COALITIONS', val
 const updatePartyAffiliation = (partyId, affiliation) => store.dispatch({type: 'UPDATE_PARTY_AFFILIATION', partyId, affiliation })
 
 const Sliders = ({parties, editCoalitions}) => 
-  <div className="sliders">
+  <div className="App-sliders">
     <section>
       {parties.filter(x => x.affiliation === 'regering').map(party => (
-        <Range party={party} editCoalitions={editCoalitions}/>
+        <Mixer party={party} editCoalitions={editCoalitions}/>
       ))}
     </section>
     <section>
       {parties.filter(x =>x.affiliation === 'center').map(party => (
-        <Range party={party} editCoalitions={editCoalitions}/>
+        <Mixer party={party} editCoalitions={editCoalitions}/>
       ))}
     </section>
     <section>
       {parties.filter(x => x.affiliation === 'opposition').map(party => (
-        <Range party={party} editCoalitions={editCoalitions}/>
+        <Mixer party={party} editCoalitions={editCoalitions}/>
       ))}
     </section>
   </div>
@@ -75,17 +75,12 @@ class App extends Component {
           </div>
 
           <small>Grafik: Riksdagskollen. Av: Iteam och Lennox PR.</small>
-          <div className="App-divider">
-            <h2>Hypotetiskt valresultat</h2>
-            <p>Dra i reglagen nedan för att simulera ett valresultatet.</p>
-          </div>         
           <Sliders parties={parties} editCoalitions={coalitions.editCoalitions} />
           {(totalPercentage < 99.6 || totalPercentage > 100.4) ? <p className="invalid">Vänligen justera  manuellt. Totalt antal procent: {totalPercentage}%</p> : null}
-        </div>
-        <div className="App-divider">
-          <h3>Redigera koalitioner</h3>
-          <p>Dra och släpp partisymbolerna i grafiken ovan för att justera simulera olika koalitionsalternativ, eller använd reglaget nedan för att visa pilknappar. </p>
-          <Switch checked={coalitions.editCoalitions} onchange={e => updateCoalitions(e.target.checked)}/>
+          <div className="App-divider">
+            <p>Dra och släpp partisymbolerna i grafiken ovan eller använd pilknappar:</p>
+            <Switch checked={coalitions.editCoalitions} onchange={e => updateCoalitions(e.target.checked)}/>
+          </div>
         </div>
         <Footer />
       </div>
