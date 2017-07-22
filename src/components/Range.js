@@ -3,25 +3,26 @@ import Slider from './Slider'
 import store from '../store'
 
 const updatePartyValue = (partyId, value) => store.dispatch({type: 'UPDATE_PARTY_VALUE', partyId, value})
-const updatePartySelection = (partyId, value) => store.dispatch({type: 'UPDATE_PARTY_SELECTION', partyId, value})
-const updatePartyOpposition = (partyId, value) => store.dispatch({type: 'UPDATE_PARTY_OPPOSITION', partyId, value})
+const updatePartyAffiliation = (partyId, affiliation) => store.dispatch({type: 'UPDATE_PARTY_AFFILIATION', partyId, affiliation })
 
 const Range = ({party, editCoalitions}) => (
-  <div className={party.eligable ? 'valid' : 'below'}>
-    { editCoalitions ? <h3>
+  <div className={[party.eligable ? 'valid' : 'below', 'App-range'].join(' ')}>
+    <h3 className={party.abbreviation.toLowerCase()}>
       {party.abbreviation}
-      { party.selected || party.opposition ? null : <button onclick={e => updatePartySelection(party.id, true)}>⇠</button>}
-      { party.opposition ? <button onclick={e => updatePartySelection(party.id, false)}>⇠</button> : null}
-      { !party.opposition && !party.selected ? <button onclick={e => updatePartyOpposition(party.id, true)}>⇢</button> : null}
-      { party.selected  ? <button onclick={e => updatePartySelection(party.id, false)}>⇢</button> : null}
-    </h3> : (
-      <h3 className={party.abbreviation.toLowerCase()}>
-        {party.abbreviation}
-      </h3>
-    )}
+    </h3>
+    { editCoalitions ? 
+      <span>
+        { party.affiliation === 'opposition' ? <button onclick={e => updatePartyAffiliation(party.id, 'center')}>⇠</button> : null }
 
-    <Slider party={party} oninput={e => updatePartyValue(party.id, parseInt(e.target.value, 10) / 10)} />
-        <input type="text" value={party.percentage} onkeyup={e => updatePartyValue(party.id, parseInt(e.target.value, 10))} />%<br/>
+        { party.affiliation === 'center' ? <button onclick={e => updatePartyAffiliation(party.id, 'regering')}>⇠</button> : null }
+        { party.affiliation === 'center' ? <button onclick={e => updatePartyAffiliation(party.id, 'opposition')}>⇢</button> : null }
+
+        { party.affiliation === 'regering' ? <button onclick={e => updatePartyAffiliation(party.id, 'center')}>⇢</button> : null }
+      </span>
+    : <span>
+        <Slider party={party} oninput={e => updatePartyValue(party.id, parseInt(e.target.value, 10) / 10)} />
+        <input type="text" value={party.percentage} onkeyup={e => updatePartyValue(party.id, parseInt(e.target.value, 10))} />
+      </span>}
   </div>
 )
 

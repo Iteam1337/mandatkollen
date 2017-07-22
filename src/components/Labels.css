@@ -24,6 +24,7 @@ fieldset ul {
     border: 1px transparent;
     padding: 2px;
     display: inline-table;
+    flex-flow: column;
 }
 
 .labels .bar {
@@ -44,7 +45,7 @@ fieldset ul {
 }
 
 .s .bar {
-    background: #c13b38
+    background: #c13b38;
 }
 
 .m .bar {

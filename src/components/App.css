@@ -69,10 +69,14 @@
   padding: 5px;
 }
 
-.App section span {
+.App section > span {
   display: flex;
   flex-direction: row;
   flex: 1;
+}
+
+.App-range {
+  flex-direction: column;
 }
 
 .App section h3 {
@@ -86,11 +90,11 @@
 }
 
 
-.App input[type=text]{
+.App section input[type=text]{
   width: 2em;
   font-size: 1em;
   border: 0;
-  text-align: right;
+  text-align: center;
 }
 
 .LegendContainer {

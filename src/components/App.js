@@ -8,22 +8,22 @@ import Footer from './Footer'
 import Switch from './Switch'
 
 const updateCoalitions = (value) => store.dispatch({type: 'EDIT_COALITIONS', value})
-const updatePartyAffiliation = (partyId, affiliation) => store.dispatch({type: 'UPDATE_PARTY_AFFILIATION', partyId, value: affiliation })
+const updatePartyAffiliation = (partyId, affiliation) => store.dispatch({type: 'UPDATE_PARTY_AFFILIATION', partyId, affiliation })
 
 const Sliders = ({parties, editCoalitions}) => 
   <div className="sliders">
     <section>
-      {parties.filter(x => x.selected).map(party => (
+      {parties.filter(x => x.affiliation === 'regering').map(party => (
         <Range party={party} editCoalitions={editCoalitions}/>
       ))}
     </section>
     <section>
-      {parties.filter(x => !x.selected && !x.opposition).map(party => (
+      {parties.filter(x =>x.affiliation === 'center').map(party => (
         <Range party={party} editCoalitions={editCoalitions}/>
       ))}
     </section>
     <section>
-      {parties.filter(x => x.opposition).map(party => (
+      {parties.filter(x => x.affiliation === 'opposition').map(party => (
         <Range party={party} editCoalitions={editCoalitions}/>
       ))}
     </section>
@@ -32,9 +32,9 @@ const Sliders = ({parties, editCoalitions}) =>
 class App extends Component {
   render () {
     const {parties, coalitions} = this.props
-    const regering = parties.filter(a => a.selected && a.eligable).sort((a, b) => b.seats - a.seats)
-    const opposition = parties.filter(a => a.opposition && a.eligable).sort((a, b) => a.seats - b.seats)
-    const center = parties.filter(a => a.eligable && !a.opposition && !a.selected).sort((a, b) => b.id - a.id)
+    const regering = parties.filter(a => a.affiliation === 'regering' && a.eligable).sort((a, b) => b.seats - a.seats)
+    const opposition = parties.filter(a => a.affiliation === 'opposition' && a.eligable).sort((a, b) => a.seats - b.seats)
+    const center = parties.filter(a => a.eligable && a.affiliation === 'center').sort((a, b) => b.id - a.id)
     const allParties = regering.concat(center).concat(opposition)
     const regeringPercentage = Math.round(regering.reduce((t, party) => t + party.seatPercentage, 0) * 1000) / 10
     const oppositionPercentage = Math.round(opposition.reduce((t, party) => t + party.seatPercentage, 0) * 1000) / 10
@@ -51,21 +51,6 @@ class App extends Component {
       updatePartyAffiliation(+event.dataTransfer.getData('text'), arg)
     }
 
-    const dropRegeringen = dropUpdate({
-      selected: true,
-      opposition: false
-    })
-
-    const dropOpposition = dropUpdate({
-      selected: false,
-      opposition: true
-    })
-
-    const dropCenter = dropUpdate({
-      selected: false,
-      opposition: false
-    })
-
     return (
       <div className="App">
         <div className="App-header">
@@ -75,15 +60,15 @@ class App extends Component {
           <Seating parties={allParties} seatCount={false} />
 
           <div className="LegendContainer">
-            <div className="LegendGroup" ondragover={dragover} ondrop={dropRegeringen}>
+            <div className="LegendGroup" ondragover={dragover} ondrop={dropUpdate('regering')}>
               <h1>Regering {regeringPercentage}%</h1>
               <Labels key="regeringen" parties={regering} />
             </div>
-            <div className="LegendGroup" ondragover={dragover} ondrop={dropCenter}>
+            <div className="LegendGroup" ondragover={dragover} ondrop={dropUpdate('center')}>
               <h1>Övriga {centerPercentage}%</h1>
               <Labels key="center" parties={center} />
             </div>
-            <div className="LegendGroup" ondragover={dragover} ondrop={dropOpposition}>
+            <div className="LegendGroup" ondragover={dragover} ondrop={dropUpdate('opposition')}>
               <h1>Opposition {oppositionPercentage}%</h1>
               <Labels key="opposition" parties={opposition} />
             </div>
@@ -95,7 +80,7 @@ class App extends Component {
             <p>Dra i reglagen nedan för att simulera ett valresultatet.</p>
           </div>         
           <Sliders parties={parties} editCoalitions={coalitions.editCoalitions} />
-          {(totalPercentage < 99.6 || totalPercentage > 100.4) ? <p className="invalid">Vänligen justera manuellt. Totalt antal procent: {totalPercentage}%</p> : null}
+          {(totalPercentage < 99.6 || totalPercentage > 100.4) ? <p className="invalid">Vänligen justera  manuellt. Totalt antal procent: {totalPercentage}%</p> : null}
         </div>
         <div className="App-divider">
           <h3>Redigera koalitioner</h3>

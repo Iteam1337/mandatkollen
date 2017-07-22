@@ -7,15 +7,17 @@ const Label = party => {
     event.dataTransfer.setData('text/plain', party.id)
   }
 
-  return <li draggable="true" ondragstart={dragstart} className={party.abbreviation.toLowerCase()}>
-      <div className="bar">
-        <p>
-          {party.abbreviation}
-          <span className="handle">⁞</span>
-        </p>
-      </div>
-    <span className="value">{party.seats}</span>
-  </li>
+  return (
+      <li draggable="true" ondragstart={dragstart} className={party.abbreviation.toLowerCase()}>
+          <div className="bar">
+            <p>
+              {party.abbreviation}
+              <span className="handle">⁞</span>
+            </p>
+          </div>
+        <span className="value">{party.seats}</span>
+    </li>
+  )
 }
 
 const Labels = ({parties}) => (

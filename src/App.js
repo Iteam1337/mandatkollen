@@ -26,9 +26,9 @@ const Range = ({party}) => (
 
 class App extends Component {
   render () {
-    const regering = this.props.parties.filter(a => a.selected && a.eligable).sort((a, b) => b.seats - a.seats)
-    const opposition = this.props.parties.filter(a => a.opposition && a.eligable).sort((a, b) => a.seats - b.seats)
-    const center = this.props.parties.filter(a => a.eligable && !a.opposition && !a.selected).sort((a, b) => b.id - a.seatPercentage)
+    const regering = this.props.parties.filter(a => a.affiliation === 'regering' && a.eligable).sort((a, b) => b.seats - a.seats)
+    const opposition = this.props.parties.filter(a => a.affiliation === 'opposition' && a.eligable).sort((a, b) => a.seats - b.seats)
+    const center = this.props.parties.filter(a => a.affiliation === 'center' && a.eligable).sort((a, b) => a.seats - b.seats)
     const allParties = regering.concat(center).concat(opposition)
     const regeringPercentage = Math.round(regering.reduce((t, party) => t + party.seatPercentage, 0) * 1000) / 10
     const oppositionPercentage = Math.round(opposition.reduce((t, party) => t + party.seatPercentage, 0) * 1000) / 10
@@ -86,17 +86,17 @@ class App extends Component {
         <h2>Hypotetiskt valresultat</h2>
          <div className="sliders">
           <section>
-            {this.props.parties.filter(x => x.selected).reverse().map(party => (
+            {this.props.parties.filter(x => x.affiliation === 'regering').reverse().map(party => (
               <Range party={party} />
             ))}
           </section>
           <section>
-            {this.props.parties.filter(x => !x.selected && !x.opposition).reverse().map(party => (
+            {this.props.parties.filter(x => x.affiliation === 'center').reverse().map(party => (
               <Range party={party} />
             ))}
           </section>
           <section>
-            {this.props.parties.filter(x => x.opposition).reverse().map(party => (
+            {this.props.parties.filter(x => x.affiliation === 'opposition').reverse().map(party => (
               <Range party={party} />
             ))}
           </section>
