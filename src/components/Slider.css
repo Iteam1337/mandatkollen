@@ -1,6 +1,6 @@
 input[type="range"]{
   -webkit-appearance: slider-vertical; /* WebKit */
-  width:50px;
+  width:5vw;
 }
 
 input[type="range"]::-webkit-slider-thumb{
@@ -15,42 +15,42 @@ input[type="range"]::-webkit-slider-thumb{
 
 
 
-input.s {
-  background: #c13b38
+.s {
+  color: #c13b38
 }
 
-input.m {
-  background: #88c7d9
+.m {
+  color: #88c7d9
 }
 
-input.sd {
-  background: #e7d960
+.sd {
+  color: #e7d960
 }
 
-input.kd  {
-  background: #366da3
+.kd  {
+  color: #366da3
 }
 
-input.v {
-  background: #992522
+.v {
+  color: #992522
 }
 
-input.l {
-  background: #378cab
+.l {
+  color: #378cab
 }
 
-input.c {
-  background: #78ae5a
+.c {
+  color: #78ae5a
 }
 
-input.mp {
-  background: #acc768
+.mp {
+  color: #acc768
 }
 
-input.fi {
-  background: #fab
+.fi {
+  color: #fab
 }
 
-input.ö {
-  background: #000
+.ö {
+  color: #000
 }

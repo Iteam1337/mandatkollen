@@ -39,7 +39,7 @@ class App extends Component {
     const regeringPercentage = Math.round(regering.reduce((t, party) => t + party.seatPercentage, 0) * 1000) / 10
     const oppositionPercentage = Math.round(opposition.reduce((t, party) => t + party.seatPercentage, 0) * 1000) / 10
     const centerPercentage = Math.round(center.reduce((t, party) => t + party.seatPercentage, 0) * 1000) / 10
-    const sumPercentage = Math.round((centerPercentage + regeringPercentage) * 10) / 10
+    const totalPercentage = Math.round(parties.reduce((t, party) => t + party.percentage, 0))
 
     const dragover = event => {
       event.preventDefault()
@@ -95,6 +95,7 @@ class App extends Component {
             <p>Dra i reglagen nedan för att simulera ett valresultatet.</p>
           </div>         
           <Sliders parties={parties} editCoalitions={coalitions.editCoalitions} />
+          {(totalPercentage < 99.6 || totalPercentage > 100.4) ? <p className="invalid">Vänligen justera manuellt. Totalt antal procent: {totalPercentage}%</p> : null}
         </div>
         <div className="App-divider">
           <h3>Redigera koalitioner</h3>
