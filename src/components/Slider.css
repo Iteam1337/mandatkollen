@@ -1,6 +1,6 @@
 input[type="range"]{
   -webkit-appearance: slider-vertical; /* WebKit */
-  width:5vw;
+  width:20px;
 }
 
 input[type="range"]::-webkit-slider-thumb{
