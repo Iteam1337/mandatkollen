@@ -17,8 +17,8 @@ fieldset ul {
 .labels {
     list-style-type: none;
     padding-left: 0;
-    flex-wrap: wrap;
     margin: 0;
+    white-space: nowrap;
 }
 .labels li {
     border: 1px transparent;

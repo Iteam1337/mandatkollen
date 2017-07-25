@@ -19,8 +19,8 @@ const Footer = (props) => (
       <h3>Underlag</h3>
       <p>Röstresultatet som visas initialt kommer från SCB <a href="http://www.scb.se/hitta-statistik/statistik-efter-amne/demokrati/partisympatier/partisympatiundersokningen-psu/pong/statistiknyhet/partisympatier-maj-2017/">valundersökning som genomfördes i maj 2017.</a></p>
 
-      <a href="https://iteam.se"><img className="logo" src="https://iteam.se/content/images/iteam_white.png"/></a>
-      <a href="http://lennoxpr.se"><img className="logo" src="http://lennoxpr.se/wp-content/uploads/2017/04/logo-lennox.png"/></a>
+      <a href="https://iteam.se"><img alt="Iteam logo" className="logo" src="https://iteam.se/content/images/iteam_white.png"/></a>
+      <a href="http://lennoxpr.se"><img alt="Lennox PR logo" className="logo" src="http://lennoxpr.se/wp-content/uploads/2017/04/logo-lennox.png"/></a>
     </div>
 )
 

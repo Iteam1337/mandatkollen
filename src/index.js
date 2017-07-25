@@ -3,10 +3,10 @@ import './index.css'
 import 'roboto-fontface/css/roboto/roboto-fontface.css'
 import App from './components/App'
 import store from './store'
-import dnd from "drag-drop-webkit-mobile"
+import {polyfill} from 'mobile-drag-drop'
+import 'mobile-drag-drop/default.css'
 
-dnd()
-
+polyfill()
 let oldTree
 store.subscribe(() => {
   const state = store.getState()

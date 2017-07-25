@@ -20,8 +20,8 @@ const Mixer = ({party, editCoalitions}) => (
         { party.affiliation === 'regering' ? <button onclick={e => updatePartyAffiliation(party.id, 'center')}>⇢</button> : null }
       </span>
     : <span>
+        <input type="text" value={party.percentage} onchange={e => updatePartyValue(party.id, parseFloat(e.target.value.replace(',', '.') || '0'))} />
         <Slider party={party} oninput={e => updatePartyValue(party.id, parseInt(e.target.value, 10) / 10)} />
-        <input type="text" value={party.percentage} onkeyup={e => updatePartyValue(party.id, parseInt(e.target.value.replace(',', '.') || '0', 10))} />
       </span>}
   </div>
 )

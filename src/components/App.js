@@ -60,15 +60,15 @@ class App extends Component {
           <Seating parties={allParties} seatCount={false} />
 
           <div className="LegendContainer">
-            <div className="LegendGroup" ondragover={dragover} ondrop={dropUpdate('regering')}>
+            <div className="LegendGroup" dragenter={e => e.preventDefault()} ondragover={dragover} ondrop={dropUpdate('regering')}>
               <h1>Regering {regeringPercentage}%</h1>
               <Labels key="regeringen" parties={regering} />
             </div>
-            <div className="LegendGroup" ondragover={dragover} ondrop={dropUpdate('center')}>
+            <div className="LegendGroup" dragenter={e => e.preventDefault()} ondragover={dragover} ondrop={dropUpdate('center')}>
               <h1>Övriga {centerPercentage}%</h1>
               <Labels key="center" parties={center} />
             </div>
-            <div className="LegendGroup" ondragover={dragover} ondrop={dropUpdate('opposition')}>
+            <div className="LegendGroup" dragenter={e => e.preventDefault()} ondragover={dragover} ondrop={dropUpdate('opposition')}>
               <h1>Opposition {oppositionPercentage}%</h1>
               <Labels key="opposition" parties={opposition} />
             </div>

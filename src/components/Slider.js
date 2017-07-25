@@ -1,4 +1,4 @@
-import React, { Component } from 'pureact'
+import React from 'pureact'
 import './Slider.css'
 
 export default ({party, oninput}) =>
