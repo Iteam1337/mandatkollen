@@ -10,7 +10,10 @@ import Switch from './Switch'
 const updateCoalitions = (value) => store.dispatch({type: 'EDIT_COALITIONS', value})
 const updatePartyAffiliation = (partyId, affiliation) => store.dispatch({type: 'UPDATE_PARTY_AFFILIATION', partyId, affiliation })
 
-const Sliders = ({parties, editCoalitions}) => 
+const groupEnter = group => store.dispatch({ type: 'GROUP_ENTER', group })
+const groupLeave = group => store.dispatch({ type: 'GROUP_LEAVE', group })
+
+const Sliders = ({parties, editCoalitions}) =>
   <div className="App-sliders">
     <section>
       {parties.filter(x => x.affiliation === 'regering').map(party => (
@@ -31,7 +34,7 @@ const Sliders = ({parties, editCoalitions}) =>
 
 class App extends Component {
   render () {
-    const {parties, coalitions} = this.props
+    const {parties, coalitions, groups} = this.props
     const regering = parties.filter(a => a.affiliation === 'regering' && a.eligable).sort((a, b) => b.seats - a.seats)
     const opposition = parties.filter(a => a.affiliation === 'opposition' && a.eligable).sort((a, b) => a.seats - b.seats)
     const center = parties.filter(a => a.eligable && a.affiliation === 'center').sort((a, b) => b.id - a.id)
@@ -41,14 +44,45 @@ class App extends Component {
     const centerPercentage = Math.round(center.reduce((t, party) => t + party.seatPercentage, 0) * 1000) / 10
     const totalPercentage = Math.round(parties.reduce((t, party) => t + party.percentage, 0))
 
+    const legendGroups = [
+      {
+        name: 'regering',
+        parties: regering,
+        title: `Regering ${regeringPercentage}%`
+      },
+      {
+        name: 'center',
+        parties: center,
+        title: `Övriga ${centerPercentage}%`
+      },
+      {
+        name: 'opposition',
+        parties: opposition,
+        title: `Opposition ${oppositionPercentage}%`
+      }
+    ]
+
     const dragover = event => {
       event.preventDefault()
       event.dataTransfer.dropEffect = "move"
     }
 
-    const dropUpdate = (arg) => event => {
+    const dropUpdate = group => event => {
       event.preventDefault()
-      updatePartyAffiliation(+event.dataTransfer.getData('text'), arg)
+      updatePartyAffiliation(+event.dataTransfer.getData('text'), group)
+      groupLeave(group)
+    }
+
+    const dragEnter = group => event => {
+      event.preventDefault()
+      console.log('dropenter', group)
+      groupEnter(group)
+    }
+
+    const dragLeave = group => event => {
+      event.preventDefault()
+      console.log('dropleave', group)
+      groupLeave(group)
     }
 
     return (
@@ -60,18 +94,12 @@ class App extends Component {
           <Seating parties={allParties} seatCount={false} />
 
           <div className="LegendContainer">
-            <div className="LegendGroup" dragenter={e => e.preventDefault()} ondragover={dragover} ondrop={dropUpdate('regering')}>
-              <h1>Regering {regeringPercentage}%</h1>
-              <Labels key="regeringen" parties={regering} />
-            </div>
-            <div className="LegendGroup" dragenter={e => e.preventDefault()} ondragover={dragover} ondrop={dropUpdate('center')}>
-              <h1>Övriga {centerPercentage}%</h1>
-              <Labels key="center" parties={center} />
-            </div>
-            <div className="LegendGroup" dragenter={e => e.preventDefault()} ondragover={dragover} ondrop={dropUpdate('opposition')}>
-              <h1>Opposition {oppositionPercentage}%</h1>
-              <Labels key="opposition" parties={opposition} />
-            </div>
+            { legendGroups.map(({name, parties, title}) =>
+              <div className={`LegendGroup${ groups[name].hover ? ' Drop' : '' }`} dragenter={e => e.preventDefault()} ondragover={dragover} ondrop={dropUpdate(name)} ondragenter={dragEnter(name)} ondragleave={dragLeave(name)}>
+                <h1>{title}</h1>
+                <Labels key={name} parties={parties} />
+              </div>
+            )}
           </div>
 
           <small>Grafik: Riksdagskollen. Av: Iteam och Lennox PR.</small>

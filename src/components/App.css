@@ -104,6 +104,11 @@
   display: flex;
 }
 
+.LegendContainer > span {
+  display: flex;
+  flex-grow: 1;
+}
+
 .LegendContainer h1 {
   font-size: 18px;
   font-weight: normal;
@@ -113,6 +118,10 @@
 
 .LegendGroup {
   flex-grow: 1;
+}
+
+.LegendGroup.Drop {
+  background: #aaf;
 }
 
 .party.selected{
