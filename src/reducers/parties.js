@@ -1,10 +1,5 @@
-import {
-  balanceRemainingVotes,
-  calculatePercentages,
-  control,
-  sort,
-  selectAndAssignSeat
-} from '../lib/parties'
+import { Parliament } from '../lib/parliament'
+import polls from '../lib/history'
 
 const rawState = [
   {id: 1, name: 'Kristdemokr.', votes: 31, affiliation: 'opposition', colour: '#366da3', abbreviation: 'KD'},
@@ -19,44 +14,27 @@ const rawState = [
   {id: 10, name: 'Övriga', affiliation: 'center', votes: 22, abbreviation: 'Ö'}
 ]
 
-const range = nr => [...Array(nr).keys()]
-const countTotal = parties => parties.reduce((total, party) => total + party.votes, 0)
-const maxVotes = countTotal(rawState)
-const percentage = calculatePercentages(rawState)
-const updateVotes = (party, votes) => ({
-  ...party,
-  votes: Math.round(votes / 100 * maxVotes),
-  changed: new Date()
-})
+let parliament = new Parliament(rawState)
 
-const balanceAndCalculateSeats = parties => {
-  const balanced = range(10)
-    .reduce((parties) => balanceRemainingVotes(parties, maxVotes), parties)
-    .map(percentage)
-    .map(control)
-
-  const seats = range(349)
-    .reduce((parties, seat) => selectAndAssignSeat(parties, seat), balanced)
-
-  return seats
-}
-
-const initialState = balanceAndCalculateSeats(rawState)
-
-export default function (state = initialState, action) {
+export default function (state = parliament.seats, action) {
   switch (action.type) {
     case 'UPDATE_PARTY_AFFILIATION': {
       const updatedParties = state
         .map(party => party.abbreviation === action.abbreviation ? {...party, affiliation: action.affiliation} : party)
-        .sort(sort)
+        .sort(parliament.sort)
       return updatedParties
     }
     case 'UPDATE_PARTY_VALUE': {
       const updatedParties = state
-        .map(party => party.abbreviation === action.abbreviation ? updateVotes(party, action.value) : party)
-        .map(percentage)
-
-      return balanceAndCalculateSeats(updatedParties)
+        .map(party => party.abbreviation === action.abbreviation ? parliament.updateVotes(party, action.value) : party)
+      console.log(updatedParties)
+      parliament = new Parliament(updatedParties)
+      return parliament.seats
+    }
+    case 'CHOOSE_BASE_VOTES': {
+      const parties = state.map(party => ({...party, votes: polls.baseVotes[action.source].find(a=>a.abbreviation === party.abbreviation).votes}))
+      console.log('parties', parties)
+      return parties
     }
     default: return state
   }

@@ -1,12 +1,6 @@
 import {createStore} from 'pureact'
-import parties from './reducers/parties'
-import coalitions from './reducers/coalitions'
+import reducers from './reducers/index'
 
-const reducer = (state, action) => ({
-  parties: parties(state.parties, action),
-  coalitions: coalitions(state.coalitions, action)
-})
-
-const store = createStore(reducer)
+const store = createStore(reducers)
 
 export default store
