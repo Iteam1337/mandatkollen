@@ -41,19 +41,19 @@ const balanceAndCalculateSeats = parties => {
   return seats
 }
 
-const initialState = balanceAndCalculateSeats(balanceRemainingVotes(rawState, maxVotes).map(percentage))
+const initialState = balanceAndCalculateSeats(rawState)
 
 export default function (state = initialState, action) {
   switch (action.type) {
     case 'UPDATE_PARTY_AFFILIATION': {
       const updatedParties = state
-        .map(party => party.id === action.partyId ? {...party, affiliation: action.affiliation} : party)
+        .map(party => party.abbreviation === action.abbreviation ? {...party, affiliation: action.affiliation} : party)
         .sort(sort)
       return updatedParties
     }
     case 'UPDATE_PARTY_VALUE': {
       const updatedParties = state
-        .map(party => party.id === action.partyId ? updateVotes(party, action.value) : party)
+        .map(party => party.abbreviation === action.abbreviation ? updateVotes(party, action.value) : party)
         .map(percentage)
 
       return balanceAndCalculateSeats(updatedParties)

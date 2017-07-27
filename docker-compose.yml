@@ -1,0 +1,6 @@
+web:
+  build: .
+  links:
+    - elastic:elasticsearch
+elastic:
+  image: elasticsearch

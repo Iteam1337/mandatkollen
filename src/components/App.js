@@ -8,7 +8,7 @@ import Footer from './Footer'
 import Switch from './Switch'
 
 const updateCoalitions = (value) => store.dispatch({type: 'EDIT_COALITIONS', value})
-const updatePartyAffiliation = (partyId, affiliation) => store.dispatch({type: 'UPDATE_PARTY_AFFILIATION', partyId, affiliation })
+const updatePartyAffiliation = (abbreviation, affiliation) => store.dispatch({type: 'UPDATE_PARTY_AFFILIATION', abbreviation, affiliation })
 
 const Sliders = ({parties, editCoalitions}) => 
   <div className="App-sliders">
@@ -46,9 +46,10 @@ class App extends Component {
       event.dataTransfer.dropEffect = "move"
     }
 
-    const dropUpdate = (arg) => event => {
+    const dropUpdate = (affiliation) => event => {
       event.preventDefault()
-      updatePartyAffiliation(+event.dataTransfer.getData('text'), arg)
+      console.log('dropUpdate', affiliation, event.dataTransfer.getData('text'))
+      updatePartyAffiliation(event.dataTransfer.getData('text'), affiliation)
     }
 
     return (

@@ -12,11 +12,13 @@ const control = party => ({
   eligable: party.percentage >= 4
 })
 
-const pickSeat = (party, nr) => ({
-  ...party,
-  numberForComparison: party.votes / (party.seats ? party.seats * 2: 1.2), 
-  seats: party.seats + 1
-})
+const pickSeat = (party, nr) => {
+  return ({
+    ...party,
+    numberForComparison: party.votes / (party.seats ? party.seats * 2: 1.4), 
+    seats: party.seats + 1
+  })
+}
 
 const calculateSeatPercentage = party => ({...party, seatPercentage: (party.seats || 0) / 349})
 
