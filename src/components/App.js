@@ -1,9 +1,5 @@
 import React, { Component } from 'pureact'
-<<<<<<< HEAD
 import { dragOver, dropUpdate, dragEnter, dragLeave } from '../lib/draganddrop'
-=======
-import { dragOver, dropUpdate, dragEnter} from '../lib/draganddrop'
->>>>>>> master
 import './App.css'
 import store from '../store'
 import Seating from './Seating'
