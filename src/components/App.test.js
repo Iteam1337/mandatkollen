@@ -6,8 +6,9 @@ const range = nr => [...Array(nr).keys()]
 import {
   balanceRemainingVotes, 
   calculatePercentages, 
-  selectAndAssignSeat
-} from './lib/parties'
+  selectAndAssignSeat,
+  balanceAndCalculateSeats
+} from '../lib/parties'
 
 const state = {
   parties: [
@@ -87,18 +88,22 @@ it('should add one more seats to the party with highest amount of votes', () => 
 
 it('should mix seats according to the percentage', () => {
   const rawState = [
-    { id: 1, name: "Kristdemokraterna", votes: 11695},
-    { id: 2, name: "Moderaterna", votes: 15200},
-    { id: 3, name: "Liberalerna", votes: 10538},
-    { id: 4, name: "Centerpartiet", votes: 11746},
-    { id: 5, name: "Socialdemokraterna", votes: 43696},
-    { id: 6, name: "Miljöpartiet", votes: 4354},
-    { id: 7, name: "Vänsterpartiet", votes: 7864},
-    { id: 8, name: "Sverigedemokraterna", votes: 11250},
-    { id: 9, name: "FI", votes: 3000},
-    { id: 10, name: "Övriga", votes: 3000}
+    { id: 1, name: "Kristdemokraterna", votes: 284806},
+    { id: 2, name: "Moderaterna", votes: 1453517},
+    { id: 3, name: "Liberalerna", votes: 337773},
+    { id: 4, name: "Centerpartiet", votes: 380937},
+    { id: 5, name: "Socialdemokraterna", votes: 1932711},
+    { id: 6, name: "Miljöpartiet", votes: 429275},
+    { id: 7, name: "Vänsterpartiet", votes: 356331},
+    { id: 8, name: "Sverigedemokraterna", votes: 801178},
+    { id: 9, name: "FI", votes: 194719},
+    { id: 10, name: "Övriga", votes: 60326}
   ]
-  const parties = state.parties.map(calculatePercentages(rawState))
 
+  const other = rawState.slice(0, -1).reduce((total, party) => total + party.votes, 0)
+  const parties = balanceRemainingVotes(rawState, 6231573).map(calculatePercentages(rawState, 6231573))
+  const seats = range(349).reduce((parties, seat) => selectAndAssignSeat(parties, seat), parties)
+
+  console.log('seats', seats)
 
 })

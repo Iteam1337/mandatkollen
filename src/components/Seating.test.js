@@ -10,5 +10,4 @@ const state = {
 
 it('renders without crashing', () => {
   const result = <Seating parties={state.parties} />
-  console.log('result', result)
 })

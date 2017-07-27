@@ -3,8 +3,8 @@ import './Labels.css'
 
 const Label = party => {
   function dragstart (event) {
-    event.dataTransfer.dropEffect = "move"
-    event.dataTransfer.setData('text/plain', party.id)
+    event.dataTransfer.setData('Text', party.abbreviation)
+    event.dataTransfer.effectAllowed = 'move';
   }
 
   return (
