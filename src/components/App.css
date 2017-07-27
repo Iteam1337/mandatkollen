@@ -118,6 +118,7 @@
 
 .LegendGroup {
   flex-grow: 1;
+  transition: background ease-in 300ms;
 }
 
 .LegendGroup.Drop {

@@ -10,9 +10,6 @@ import Switch from './Switch'
 
 const updateCoalitions = (value) => store.dispatch({type: 'EDIT_COALITIONS', value})
 
-const groupEnter = group => store.dispatch({ type: 'GROUP_ENTER', group })
-const groupLeave = group => store.dispatch({ type: 'GROUP_LEAVE', group })
-
 const Sliders = ({parties, editCoalitions}) =>
   <div className="App-sliders">
     <section ondragenter={dragEnter} ondragover={dragOver} ondrop={dropUpdate('regering')}>
