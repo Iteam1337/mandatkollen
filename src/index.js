@@ -6,6 +6,8 @@ import store from './store'
 import {polyfill} from 'mobile-drag-drop'
 import 'mobile-drag-drop/default.css'
 
+polyfill()
+
 let oldTree
 store.subscribe(() => {
   const state = store.getState()

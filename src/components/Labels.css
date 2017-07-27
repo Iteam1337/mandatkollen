@@ -40,9 +40,15 @@ fieldset ul {
     margin: 10px;
 }
 
-.labels .handle {
-    color: rgba(255,255,255,0.3);
+.labels:hover .handle {
+    color: rgba(255,255,255,0.6);
 }
+
+.labels .handle {
+    color: rgba(255,255,255,0);
+    right: 0;
+}
+
 
 .s .bar {
     background: #c13b38;

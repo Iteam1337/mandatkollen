@@ -1,4 +1,5 @@
 import React, { Component } from 'pureact'
+import { dragOver, dropUpdate, dragEnter} from '../lib/draganddrop'
 import './App.css'
 import store from '../store'
 import Seating from './Seating'
@@ -8,21 +9,20 @@ import Footer from './Footer'
 import Switch from './Switch'
 
 const updateCoalitions = (value) => store.dispatch({type: 'EDIT_COALITIONS', value})
-const updatePartyAffiliation = (abbreviation, affiliation) => store.dispatch({type: 'UPDATE_PARTY_AFFILIATION', abbreviation, affiliation })
 
 const Sliders = ({parties, editCoalitions}) => 
   <div className="App-sliders">
-    <section>
+    <section ondragenter={dragEnter} ondragover={dragOver} ondrop={dropUpdate('regering')}>
       {parties.filter(x => x.affiliation === 'regering').map(party => (
         <Mixer party={party} editCoalitions={editCoalitions}/>
       ))}
     </section>
-    <section>
+    <section ondragenter={dragEnter} ondragover={dragOver} ondrop={dropUpdate('center')}>
       {parties.filter(x =>x.affiliation === 'center').map(party => (
         <Mixer party={party} editCoalitions={editCoalitions}/>
       ))}
     </section>
-    <section>
+    <section ondragenter={dragEnter} ondragover={dragOver} ondrop={dropUpdate('opposition')}>
       {parties.filter(x => x.affiliation === 'opposition').map(party => (
         <Mixer party={party} editCoalitions={editCoalitions}/>
       ))}
@@ -41,16 +41,6 @@ class App extends Component {
     const centerPercentage = Math.round(center.reduce((t, party) => t + party.seatPercentage, 0) * 1000) / 10
     const totalPercentage = Math.round(parties.reduce((t, party) => t + party.percentage, 0))
 
-    const dragover = event => {
-      event.preventDefault()
-      event.dataTransfer.dropEffect = "move"
-    }
-
-    const dropUpdate = (affiliation) => event => {
-      event.preventDefault()
-      console.log('dropUpdate', affiliation, event.dataTransfer.getData('text'))
-      updatePartyAffiliation(event.dataTransfer.getData('text'), affiliation)
-    }
 
     return (
       <div className="App">
@@ -61,15 +51,15 @@ class App extends Component {
           <Seating parties={allParties} seatCount={false} />
 
           <div className="LegendContainer">
-            <div className="LegendGroup" dragenter={e => e.preventDefault()} ondragover={dragover} ondrop={dropUpdate('regering')}>
+            <div className="LegendGroup" ondragenter={dragEnter} ondragover={dragOver} ondrop={dropUpdate('regering')}>
               <h1>Regering {regeringPercentage}%</h1>
               <Labels key="regeringen" parties={regering} />
             </div>
-            <div className="LegendGroup" dragenter={e => e.preventDefault()} ondragover={dragover} ondrop={dropUpdate('center')}>
+            <div className="LegendGroup" ondragenter={dragEnter} ondragover={dragOver} ondrop={dropUpdate('center')}>
               <h1>Övriga {centerPercentage}%</h1>
               <Labels key="center" parties={center} />
             </div>
-            <div className="LegendGroup" dragenter={e => e.preventDefault()} ondragover={dragover} ondrop={dropUpdate('opposition')}>
+            <div className="LegendGroup" ondragenter={dragEnter} ondragover={dragOver} ondrop={dropUpdate('opposition')}>
               <h1>Opposition {oppositionPercentage}%</h1>
               <Labels key="opposition" parties={opposition} />
             </div>
