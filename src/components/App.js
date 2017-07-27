@@ -1,5 +1,9 @@
 import React, { Component } from 'pureact'
+<<<<<<< HEAD
 import { dragOver, dropUpdate, dragEnter, dragLeave } from '../lib/draganddrop'
+=======
+import { dragOver, dropUpdate, dragEnter} from '../lib/draganddrop'
+>>>>>>> master
 import './App.css'
 import store from '../store'
 import Seating from './Seating'
@@ -62,17 +66,6 @@ class App extends Component {
       }
     ]
 
-    // const dragover = event => {
-    //   event.preventDefault()
-    //   event.dataTransfer.dropEffect = "move"
-    // }
-
-    // const dropUpdate = group => event => {
-    //   event.preventDefault()
-    //   updatePartyAffiliation(+event.dataTransfer.getData('text'), group)
-    //   groupLeave(group)
-    // }
-
     return (
       <div className="App">
         <div className="App-header">
@@ -88,18 +81,6 @@ class App extends Component {
                 <Labels key={name} parties={parties} />
               </div>
             )}
-            {/* <div className="LegendGroup" ondragenter={dragEnter} ondragover={dragOver} ondrop={dropUpdate('regering')}>
-              <h1>Regering {regeringPercentage}%</h1>
-              <Labels key="regeringen" parties={regering} />
-            </div>
-            <div className="LegendGroup" ondragenter={dragEnter} ondragover={dragOver} ondrop={dropUpdate('center')}>
-              <h1>Övriga {centerPercentage}%</h1>
-              <Labels key="center" parties={center} />
-            </div>
-            <div className="LegendGroup" ondragenter={dragEnter} ondragover={dragOver} ondrop={dropUpdate('opposition')}>
-              <h1>Opposition {oppositionPercentage}%</h1>
-              <Labels key="opposition" parties={opposition} />
-            </div> */}
           </div>
 
           <small>Grafik: Riksdagskollen. Av: Iteam och Lennox PR.</small>
