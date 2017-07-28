@@ -9,5 +9,4 @@ ENV NODE_ENV production
 ENV PORT 80
 EXPOSE 80
 RUN yarn build
-RUN yarn global add serve
-CMD serve -s build
+CMD node server

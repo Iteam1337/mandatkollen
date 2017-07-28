@@ -31,7 +31,7 @@ const Sliders = ({parties, editCoalitions}) =>
 
 class App extends Component {
   render () {
-    const {parties, coalitions, groups} = this.props
+    const {parties, coalitions, groups, history} = this.props
     const regering = parties.filter(a => a.affiliation === 'regering' && a.eligable).sort((a, b) => b.seats - a.seats)
     const opposition = parties.filter(a => a.affiliation === 'opposition' && a.eligable).sort((a, b) => a.seats - b.seats)
     const center = parties.filter(a => a.eligable && a.affiliation === 'center').sort((a, b) => b.id - a.id)
@@ -81,7 +81,7 @@ class App extends Component {
           {(totalPercentage < 99.6 || totalPercentage > 100.4) ? <p className="invalid">Vänligen justera  manuellt. Totalt antal procent: {totalPercentage}%</p> : null}
 
           {
-            // Object.keys(history.baseVotes).map(source => (<button onclick={e => updateBaseVotes(source)}>{source}</button>))}
+            Object.keys(history.baseVotes).map(source => (<button onclick={e => updateBaseVotes(source)}>{source}</button>))
           }
         </div>
         <Footer />
