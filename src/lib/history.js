@@ -1,18 +1,3 @@
-const csvToJson = text =>
-  text
-    .split('/r/n')
-    .then(lines => {
-      const fieldNames = lines.splice(0,1)
-      console.log('fieldNames', fieldNames)
-      return lines.map(line => line.split(',').reduce((result, value, i) => ({[fieldNames[i]]: value.trim()}), {}))
-    })
-
-export const fetchHistory = () => 
-  fetch('http://pollofpolls.se/poll_img/data_table_tot.csv')
-    .then(result => result.text())
-    .then(csvToJson)
-    .catch(err => console.error(err))
-
 export const baseVotes = {
   'Riksdagsvalet 2014': [
     { abbreviation: 'KD', votes: 284806},
@@ -51,6 +36,8 @@ export const baseVotes = {
     { abbreviation: 'Ö', votes: 0}
   ]
 }
+
+const fetchHistory = () => fetch('/polls').then(res => res.json())
 
 export default {
   fetchHistory,

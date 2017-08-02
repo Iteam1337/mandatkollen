@@ -1,7 +1,4 @@
-import React, {render} from 'pureact'
-import App from './App'
-import { Parliament } from '../lib/parliament'
-import fetchHistory from '../lib/history'
+import { Parliament } from './parliament'
 
 const state = {
   parties: [
@@ -10,23 +7,25 @@ const state = {
   ]
 }
 
-xit('renders without crashing', () => {
-  const div = document.createElement('div');
-  render(<App {...state} />, div);
-})
-
-xit('fetches history data', () => {
-  fetchHistory()
-})
-
 it('should be correctly calculated with percentages', () => {
   const parliament = new Parliament(state.parties)
-  const result = state.parties.map(parliament.percentage)
+  const result = parliament.seats.map(parliament.percentage)
   expect(result).toHaveLength(2)
   expect(result[0]).toHaveProperty('percentage')
   expect(result[1]).toHaveProperty('percentage')
   expect(result[0].percentage).toBe(50)
   expect(result[1].percentage).toBe(50)
+})
+
+it('should be correctly calculated votes when only percentages was given', () => {
+  const onlyPercentages = [{id:1, percentage: 50}, {id:2, percentage: 50}]
+  const parliament = new Parliament(onlyPercentages)
+  const result = parliament.seats
+  expect(result).toHaveLength(2)
+  expect(result[0]).toHaveProperty('votes')
+  expect(result[1]).toHaveProperty('votes')
+  expect(result[0].votes).toBe(500000)
+  expect(result[1].votes).toBe(500000)
 })
 
 it('should be correctly initialized', () => {
@@ -45,14 +44,38 @@ it('should balance total votes according to their initial values', () => {
   const result = parliament.seats
   expect(result).toHaveLength(3)
   expect(result[0]).toHaveProperty('votes')
+  console.log('result balance', result)
   expect(result[0].votes).toBe(8000)
   expect(result[1].votes).toBe(8000)
   expect(result[2].votes).toBe(4000)
 })
 
+it('should adjust to maximum votes', () => {
+  const parliament = new Parliament(state.parties, 200000)
+  const result = parliament.seats
+  console.log('result', result)
+  const sumVotes = parliament.seats.reduce((sum, a) => sum + a.votes, 0)
+  expect(sumVotes).toBe(200000)
+  expect(Math.round(result[0].votes)).toBe(100000)
+  expect(Math.round(result[1].votes)).toBe(100000)
+})
+
+it('should adjust to maximum votes even with one added', () => {
+  const oneAdded = [...state.parties, {id: 3, votes: 5000}]
+  const parliament = new Parliament(oneAdded, 200000)
+  const result = parliament.seats
+  const sumVotes = parliament.seats.reduce((sum, a) => sum + a.votes, 0)
+  expect(sumVotes).toBe(200000)
+  expect(Math.round(result[0].votes)).toBe(80000)
+  expect(Math.round(result[1].votes)).toBe(80000)
+  expect(Math.round(result[2].votes)).toBe(40000)
+})
+
+
+
 it('should not touch changed parties', () => {
-  const oneAdded = {parties: [...state.parties, {id: 3, votes: 4, changed: new Date()}]}
-  const parliament = new Parliament(oneAdded.parties, 20)
+  const oneAdded = [...state.parties, {id: 3, votes: 4, changed: new Date()}]
+  const parliament = new Parliament(oneAdded, 20)
   const result = parliament.seats
   expect(result).toHaveLength(3)
   expect(Math.round(result[0].votes)).toBe(8)
@@ -61,8 +84,9 @@ it('should not touch changed parties', () => {
 })
 
 it('should mix seats from each party evenly when they have equally amount of votes', () => {
-  const parliament = new Parliament(state.parties, null, 349)
+  const parliament = new Parliament(state.parties)
   const result = parliament.seats
+  console.log('seats', result, state)
   expect(result).toHaveLength(2)
   expect(result[0]).toHaveProperty('seats')
   expect(result[1]).toHaveProperty('seats')
@@ -79,7 +103,7 @@ it('it should correctly implement "jämkade uddatalsmetoden" according to the ex
     {id:4, votes: 10824},
     {id:5, votes: 8137}
   ]
-  const parliament = new Parliament(parties, null, 5)
+  const parliament = new Parliament(parties, undefined, 5)
   const result = parliament.seats
   expect(result).toHaveLength(5)
   expect(result[0].seats).toBe(2)

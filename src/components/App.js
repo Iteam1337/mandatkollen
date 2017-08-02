@@ -7,9 +7,6 @@ import Mixer from './Mixer'
 import Labels from './Labels'
 import Footer from './Footer'
 
-const updateCoalitions = (value) => store.dispatch({type: 'EDIT_COALITIONS', value})
-const updateBaseVotes = (source) => store.dispatch({type: 'CHOOSE_BASE_VOTES', source})
-
 const Sliders = ({parties, editCoalitions}) =>
   <div className="App-sliders">
     <section ondragenter={dragEnter} ondragover={dragOver} ondrop={dropUpdate('regering')}>
@@ -79,10 +76,6 @@ class App extends Component {
           <small>Grafik: Riksdagskollen. Av: Iteam och Lennox PR.</small>
           <Sliders parties={parties} editCoalitions={coalitions.editCoalitions} />
           {(totalPercentage < 99.6 || totalPercentage > 100.4) ? <p className="invalid">Vänligen justera  manuellt. Totalt antal procent: {totalPercentage}%</p> : null}
-
-          {
-            Object.keys(history.baseVotes).map(source => (<button onclick={e => updateBaseVotes(source)}>{source}</button>))
-          }
         </div>
         <Footer />
       </div>
