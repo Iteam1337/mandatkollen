@@ -82,6 +82,10 @@
   flex-direction: column;
 }
 
+.App-range h3 {
+  margin: 0;
+}
+
 .App section h3 {
   display: block;
 

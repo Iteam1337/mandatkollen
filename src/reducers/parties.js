@@ -1,7 +1,7 @@
 import { Parliament } from '../lib/parliament'
 import polls from '../lib/history'
 
-const rawState = [
+const initialState = [
   {id: 1, name: 'Kristdemokr.', percentage: 3.10, affiliation: 'opposition', colour: '#366da3', abbreviation: 'KD'},
   {id: 2, name: 'Moderaterna', percentage: 21.00, affiliation: 'opposition', colour: '#88c7d9', abbreviation: 'M'},
   {id: 3, name: 'Liberalerna', percentage: 5.70, affiliation: 'opposition', colour: '#378cab', abbreviation: 'L'},
@@ -14,7 +14,7 @@ const rawState = [
   {id: 10, name: 'Övriga', affiliation: 'center', colour: '#000', percentage: 2.20, abbreviation: 'Ö'}
 ]
 
-let parliament = new Parliament(rawState)
+let parliament = new Parliament(initialState)
 
 export default function (state = parliament.seats, action) {
   switch (action.type) {
@@ -25,9 +25,9 @@ export default function (state = parliament.seats, action) {
       return updatedParties
     }
     case 'UPDATE_PARTY_PERCENTAGE': {
-      const updatedParties = state
-        .map(party => party.abbreviation === action.abbreviation ? parliament.updateVotes(party, action.percentage) : party)
+      const updatedParties = state.map(party => party.abbreviation === action.abbreviation ? parliament.updateVotes(party, action.percentage) : party)
       parliament = new Parliament(updatedParties)
+      const sum = parliament.seats.reduce((sum, a) => sum + a.percentage, 0)
       return parliament.seats
     }
     case 'CHOOSE_BASE_VOTES': {

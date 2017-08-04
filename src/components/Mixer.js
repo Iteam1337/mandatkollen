@@ -11,13 +11,13 @@ const Mixer = ({party, editCoalitions}) => {
   }
   return (
     <div className={[party.eligable ? 'valid' : 'below', 'App-range'].join(' ')}>
-      <h3 draggable="true" ondragstart={dragstart} className={party.abbreviation.toLowerCase()}>
-        {party.abbreviation}
-      </h3>
       <span>
         <input type="text" value={party.percentage} onchange={e => updatePartyPercentage(party.abbreviation, parseFloat(e.target.value.replace(',', '.') || '0'))} />
         <Slider party={party} onchange={percentage => updatePartyPercentage(party.abbreviation, percentage)} />
       </span>
+      <h3 draggable="true" ondragstart={dragstart} className={party.abbreviation.toLowerCase()}>
+        {party.abbreviation}
+      </h3>
     </div>
   )
 }

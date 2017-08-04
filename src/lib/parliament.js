@@ -48,9 +48,10 @@ const selectAndAssignSeat = (parties, nr, maxSeats) => {
 }
 
 const calculateVotes = (totalVotes) => (party) => {
+  if (party.percentage === undefined || party.percentage === null) throw new Error('Percentage is required')
   const result = ({
     ...party,
-    votes: party.votes || Math.round(totalVotes * (party.percentage / 100)),
+    votes: Math.round(totalVotes * (party.percentage / 100)),
   })
   return result
 }
@@ -63,9 +64,9 @@ const balanceRemainingVotes = (parties, maxVotes, remainingVotes = maxVotes - co
 
 const range = nr => [...Array(nr).keys()]
 
-const calculatePercentages = (parties, totalVotes, startDivider = 1.2) => (party) => ({
+const calculatePercentages = (totalVotes, startDivider = 1.2) => (party) => ({
   ...party,
-  percentage: Math.round(100 * (party.votes / totalVotes) * 10) / 10,
+  percentage: party.changed && party.percentage ? party.percentage : Math.round(100 * (party.votes / totalVotes) * 10) / 10,
   numberForComparison: Math.round((party.votes / startDivider) * 100) / 100,
   seats: 0,
 })
@@ -84,10 +85,11 @@ function Parliament (initialParties, maxVotes = countTotal(initialParties) || 10
 
     return this.seats
   }
-  this.percentage = calculatePercentages(initialParties, this.maxVotes, startDivider)
+  this.percentage = calculatePercentages(this.maxVotes, startDivider)
   this.sort = idSort
   this.updateVotes = (party, percentage) => ({
     ...party,
+    percentage: percentage,
     votes: Math.round((percentage / 100) * this.maxVotes),
     changed: new Date()
   })

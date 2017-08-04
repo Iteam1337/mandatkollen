@@ -2,6 +2,8 @@ input[type="range"]{
   -webkit-appearance: slider-vertical; /* WebKit */
   width:20px;
   height: 150px;
+  position: relative;
+  z-index: 10;
 }
 
 input[type="range"]::-webkit-slider-thumb{
@@ -14,7 +16,15 @@ input[type="range"]::-webkit-slider-thumb{
   cursor: pointer;
 }
 
+.bar {
+  z-index: 1;
+  opacity: 0.9;
+  border-radius: 3px;
+}
 
+.slider h3 {
+  margin: 0;
+}
 
 .s {
   color: #c13b38

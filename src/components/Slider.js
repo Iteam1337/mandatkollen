@@ -7,11 +7,15 @@ export default ({party, onchange}) => (
       className={party.abbreviation.toLowerCase()} 
       key={party.abbreviation} 
       type="range" 
-      oninput={e => onchange(parseInt(e.target.value, 10) / 10)} value={party.percentage * 10} 
+      oninput={e => onchange(parseInt(e.target.value, 10) )} value={party.percentage } 
       step="1" 
       min="0" 
-      max="350" />
-    <div className="bar" style={{background: party.colour, opacity: 0.3, marginLeft: '10px', marginTop: `${ -140 * (party.percentage / 35)}px`, position: 'relative', height: `${140 * (party.percentage / 35)}px`, width: "20px"}}></div>
+      max="35" />
+    <div className="bar" style={{
+      background: party.colour, 
+      marginTop: `${ -155 * (Math.min(35, party.percentage) / 35)}px`, 
+      height: `${155 * (Math.min(35, party.percentage) / 35)}px`
+    }}></div>
   </div>
 )
     
