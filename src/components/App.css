@@ -80,6 +80,7 @@
 
 .App-range {
   flex-direction: column;
+  padding: 5px;
 }
 
 .App-range h3 {
