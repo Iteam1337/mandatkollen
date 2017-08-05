@@ -11,11 +11,7 @@ export default ({party, onchange}) => (
       step="1" 
       min="0" 
       max="35" />
-    <div className="bar" style={{
-      background: party.colour, 
-      marginTop: `${ -155 * Math.round((Math.min(35, party.percentage) / 35))}px`, 
-      height: `${155 * Math.round((Math.min(35, party.percentage) / 35))}px`
-    }}></div>
+    <div className="bar"></div>
   </div>
 )
     

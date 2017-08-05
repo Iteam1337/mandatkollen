@@ -27,7 +27,6 @@ export default function (state = parliament.seats, action) {
     case 'UPDATE_PARTY_PERCENTAGE': {
       const updatedParties = state.map(party => party.abbreviation === action.abbreviation ? parliament.updateVotes(party, action.percentage) : party)
       parliament = new Parliament(updatedParties)
-      const sum = parliament.seats.reduce((sum, a) => sum + a.percentage, 0)
       return parliament.seats
     }
     case 'CHOOSE_BASE_VOTES': {

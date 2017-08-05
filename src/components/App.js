@@ -1,7 +1,6 @@
 import React, { Component } from 'pureact'
 import { dragOver, dropUpdate, dragEnter, dragLeave } from '../lib/draganddrop'
 import './App.css'
-import store from '../store'
 import Seating from './Seating'
 import Mixer from './Mixer'
 import Labels from './Labels'
