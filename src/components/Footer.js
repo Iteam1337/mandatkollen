@@ -3,11 +3,11 @@ import './Footer.css'
 
 const Footer = (props) => (
    <div className="App-footer">
-      <h2>Om Riksdagskollen</h2>
-      <p>Riksdagskollen är ett verktyg för att underlätta för medborgare, journalister och analytiker att visualisera och dra slutsatser kring de parlamentariska effekterna av olika hypotetiska valresultat. 
-      Du får gärna använda skärmdumpar från Riksdagskollen i egna poster och artiklar så länge du anger källan.</p>
-      <p>Riksdagskollen är utvecklad av Iteam och Lennox PR.
-      Vill du använda Riksdagskollen som en inbäddad funktion på din hemsida eller nyhetstjänst? Kontakta robert.svensson@lennoxpr.se</p>
+      <h2>Om Mandatkollen</h2>
+      <p>Mandatkollen är ett verktyg för att underlätta för medborgare, journalister och analytiker att visualisera och dra slutsatser kring de parlamentariska effekterna av olika hypotetiska valresultat. 
+      Du får gärna använda skärmdumpar från Mandatkollen i egna poster och artiklar så länge du anger källan.</p>
+      <p>Mandatkollen är utvecklad av Iteam och Lennox PR.
+      Vill du använda Mandatkollen som en inbäddad funktion på din hemsida eller nyhetstjänst? Kontakta robert.svensson@lennoxpr.se</p>
 
       <h3>Så funkar det:</h3>
       <p>

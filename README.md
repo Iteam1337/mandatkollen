@@ -1,11 +1,11 @@
-Riksdagskollen
+Mandatkollen
 ===
 
-Riksdagskollen är ett verktyg för att underlätta för medborgare, journalister och analytiker att visualisera och dra slutsatser kring de parlamentariska effekterna av olika hypotetiska valresultat. 
-Du får gärna använda skärmdumpar från Riksdagskollen i egna poster och artiklar så länge du anger källan.
+Mandatkollen är ett verktyg för att underlätta för medborgare, journalister och analytiker att visualisera och dra slutsatser kring de parlamentariska effekterna av olika hypotetiska valresultat. 
+Du får gärna använda skärmdumpar från Mandatkollen i egna poster och artiklar så länge du anger källan.
 
-Riksdagskollen är utvecklad av Iteam och Lennox PR.
-Vill du använda Riksdagskollen som en inbäddad funktion på din hemsida eller nyhetstjänst? Kontakta robert.svensson@lennoxpr.se
+Mandatkollen är utvecklad av Iteam och Lennox PR.
+Vill du använda Mandatkollen som en inbäddad funktion på din hemsida eller nyhetstjänst? Kontakta robert.svensson@lennoxpr.se
 
 ## Så funkar det:
 

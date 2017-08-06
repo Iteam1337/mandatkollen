@@ -119,6 +119,7 @@
   font-weight: normal;
   text-align: center;
   margin: 20px 0 0 0;
+  white-space: nowrap;
 }
 
 .LegendGroup {

@@ -4,6 +4,7 @@ import './App.css'
 import Seating from './Seating'
 import Mixer from './Mixer'
 import Labels from './Labels'
+import Polls from './Polls'
 import Footer from './Footer'
 
 const Sliders = ({parties, editCoalitions}) =>
@@ -58,7 +59,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Riksdagskollen</h2>
+          <h2>Mandatkollen</h2>
         </div>
         <div className="App-main">
           <Seating parties={allParties} seatCount={false} />
@@ -72,9 +73,10 @@ class App extends Component {
             )}
           </div>
 
-          <small>Grafik: Riksdagskollen. Av: Iteam och Lennox PR.</small>
+          <small>Grafik: Mandatkollen. Av: Iteam och Lennox PR.</small>
           <Sliders parties={parties} editCoalitions={coalitions.editCoalitions} />
           {(totalPercentage < 99.6 || totalPercentage > 100.4) ? <p className="invalid">Vänligen justera  manuellt. Totalt antal procent: {totalPercentage}%</p> : null}
+          <Polls polls={history} />
         </div>
         <Footer />
       </div>

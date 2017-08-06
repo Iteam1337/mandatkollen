@@ -2,7 +2,7 @@
   "name": "rikdsdagskollen",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://riksdagskollen.iteam.life",
+  "homepage": "https://mandatkollen.se",
   "dependencies": {
     "apicache": "^0.8.7",
     "autoprefixer": "7.1.1",
