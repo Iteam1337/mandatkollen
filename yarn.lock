@@ -5066,9 +5066,9 @@ punycode@1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.3.2.tgz#9653a036fb7c1ee42342f2325cceefea3926c48d"
 
-pureact@^0.10:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/pureact/-/pureact-0.10.0.tgz#11f439056f49e3681d58d0befce6805528499e61"
+pureact@^0.11:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/pureact/-/pureact-0.11.0.tgz#7905dc1522316d03bec03601fc3b1b0b2915858e"
   dependencies:
     snabbdom "^0.6.9"
 
@@ -6085,6 +6085,10 @@ type-is@~1.6.15:
 typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
+
+typeface-miriam-libre:
+  version "0.0.35"
+  resolved "https://registry.yarnpkg.com/typeface-miriam-libre/-/typeface-miriam-libre-0.0.35.tgz#9a017efed958a0285be8b06657f98cab57906784"
 
 uglify-es@^3.0.21:
   version "3.0.25"

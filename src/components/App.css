@@ -12,16 +12,45 @@
 }
 
 .App-header {
-  background-color: #222;
-  height: 70px;
-  padding: 10px;
+  background-color: #333333;
+  height: 80px;
+  padding: 20px;
   color: white;
   margin-bottom: 20px;
+  vertical-align: bottom;
+}
+
+.App-header img {
+  height: 40px;
+  margin: -2px 20px;
+}
+
+.App-header h2 {
+  display: inline-block;
+  font-size: 26px;
+  font-weight: 500;
 }
 
 .App-main {
-  max-width: 600px;
+  width: 600px;
+  padding: 20px;
   margin: auto;
+}
+
+.App-main small {
+  opacity:0.4;
+  font-size: 0.7em;
+}
+
+.App-settings {
+  background: #333;
+  padding: 20px;
+  color: #fff;
+}
+
+.App-settings h2 {
+  font-size: 1em;
+  font-weight: normal;
 }
 
 .App-divider {
@@ -58,15 +87,15 @@
 }
 
 .App-sliders{
-  flex-flow: row;
-  display: flex;
-  overflow-x: auto;
   margin-top: 20px;
+  background: #333;
+  text-align: center;
+  max-width: 600px;
+  margin: auto;
 }
 
 .App section {
-  border: 1px solid #e3e3e3;
-  background: #fefefe;
+  float:left;
   border-radius: 10px;
   margin: 5px;
   padding: 5px;
@@ -100,13 +129,17 @@
 
 .App section input[type=text]{
   width: 2.5em;
-  font-size: 1em;
+  border-radius: 5px;
+  padding: 5px;
+  background: #242424;
+  color: #fff;
   border: 0;
   text-align: center;
 }
 
 .LegendContainer {
   display: flex;
+  padding: 20px;
 }
 
 .LegendContainer > span {
@@ -115,11 +148,42 @@
 }
 
 .LegendContainer h1 {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: normal;
-  text-align: center;
-  margin: 20px 0 0 0;
+  text-align: left;
   white-space: nowrap;
+  margin: 0;
+  color: #333;
+}
+
+.LegendContainer h2 {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+  margin: 0;
+  white-space: nowrap;
+  color: #333;
+}
+
+.party {
+  display: block;
+  clear: both;
+  margin-top: 20px;
+}
+
+.party.below {
+  opacity: 0.4;
+}
+
+.party i {
+  line-height: 40px;
+  float: left;
+  display: block;
+}
+.party i:before {
+ content: "•";
+ font-size: 80px;
+ font-style: normal;
 }
 
 .LegendGroup {
