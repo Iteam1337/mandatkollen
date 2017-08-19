@@ -30,7 +30,6 @@ const Sliders = ({parties, editCoalitions}) =>
 
 class App extends Component {
   render () {
-
     const {parties, coalitions, groups, history} = this.props
     const regering = parties.filter(a => a.affiliation === 'regering').sort((a, b) => b.seats - a.seats)
     const opposition = parties.filter(a => a.affiliation === 'opposition').sort((a, b) => b.seats - a.seats)
@@ -83,7 +82,7 @@ class App extends Component {
                   <div className={["party", eligable ? "eligable" : "below"].join(' ')} draggable="true" ondragstart={e => e.dataTransfer.setData('Text', abbreviation)}>
                     <i className={abbreviation.toLowerCase()}/>
                     <h1>{name}</h1>
-                    <h2>{seats } mandat</h2>
+                    <h2>{seats || "0" } mandat</h2>
                   </div>
                 )}
               </div>

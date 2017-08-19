@@ -17,6 +17,12 @@ app.get('/polls', cache('12 hours'), (req, res) => {
     .then(polls => res.json(polls))
     .catch(err => res.status(500).json(err))
 })
+/*
+app.post('/save', (req, res) => {
+  .... save to elasticsearch ...
+  res.json(true)
+})
+*/
 // Always return the main index.html, so react-router render the route in the client
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
