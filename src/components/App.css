@@ -18,6 +18,7 @@
   color: white;
   margin-bottom: 20px;
   vertical-align: bottom;
+
 }
 
 .App-header img {
@@ -27,12 +28,13 @@
 
 .App-header h2 {
   display: inline-block;
-  font-size: 26px;
+  font-size: 2em;
   font-weight: 500;
 }
 
 .App-main {
-  width: 600px;
+  max-width: 600px;
+  width: 100%;
   padding: 20px;
   margin: auto;
 }
@@ -148,16 +150,18 @@
 }
 
 .LegendContainer h1 {
-  font-size: 14px;
+  font-size: 1em;
   font-weight: normal;
   text-align: left;
   white-space: nowrap;
   margin: 0;
   color: #333;
+  text-overflow: ellipsis;
+  overflow: auto;
 }
 
 .LegendContainer h2 {
-  font-size: 14px;
+  font-size: 0.8em;
   font-weight: bold;
   text-align: left;
   margin: 0;
@@ -202,4 +206,17 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.small {
+  display: none;
+}
+
+@media only screen and (max-width: 500px) {
+  .wide {
+    display: none;
+  }
+  .small {
+    display: block;
+  }
 }
