@@ -33,7 +33,7 @@
 }
 
 .App-main {
-  max-width: 600px;
+  max-width: 500px;
   width: 100%;
   padding: 20px;
   margin: auto;
@@ -107,36 +107,6 @@
   display: flex;
   flex-direction: row;
   flex: 1;
-}
-
-.App-range {
-  flex-direction: column;
-  padding: 5px;
-}
-
-.App-range h3 {
-  margin: 0;
-}
-
-.App section h3 {
-  display: block;
-
-}
-
-.App .below h3 {
-  text-decoration: line-through;
-  color: #999;
-}
-
-
-.App section input[type=text]{
-  width: 2.5em;
-  border-radius: 5px;
-  padding: 5px;
-  background: #242424;
-  color: #fff;
-  border: 0;
-  text-align: center;
 }
 
 .LegendContainer {
@@ -213,6 +183,9 @@
 }
 
 @media only screen and (max-width: 500px) {
+  .App-main {
+    max-width: 400px;
+  }
   .wide {
     display: none;
   }

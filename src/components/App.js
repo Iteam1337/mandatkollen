@@ -4,29 +4,10 @@ import { fetchHistory } from '../lib/history'
 import { store } from '../store'
 import './App.css'
 import Seating from './Seating'
-import Mixer from './Mixer'
-import Labels from './Labels'
+import Sliders from './Sliders'
 import Polls from './Polls'
 import Footer from './Footer'
 
-const Sliders = ({parties, editCoalitions}) =>
-  <div className="App-sliders">
-    <section ondragenter={dragEnter} ondragover={dragOver} ondrop={dropUpdate('regering')}>
-      {parties.filter(x => x.affiliation === 'regering').map(party => (
-        <Mixer party={party} editCoalitions={editCoalitions}/>
-      ))}
-    </section>
-    <section ondragenter={dragEnter} ondragover={dragOver} ondrop={dropUpdate('center')}>
-      {parties.filter(x =>x.affiliation === 'center').map(party => (
-        <Mixer party={party} editCoalitions={editCoalitions}/>
-      ))}
-    </section>
-    <section ondragenter={dragEnter} ondragover={dragOver} ondrop={dropUpdate('opposition')}>
-      {parties.filter(x => x.affiliation === 'opposition').map(party => (
-        <Mixer party={party} editCoalitions={editCoalitions}/>
-      ))}
-    </section>
-  </div>
 
 class App extends Component {
   sumGroups(parties) {
@@ -97,9 +78,7 @@ class App extends Component {
           <h2>Valresultat</h2>
           <Sliders parties={parties} editCoalitions={coalitions.editCoalitions} />
           {(totalPercentage < 99.6 || totalPercentage > 100.4) ? <p className="invalid">Vänligen justera  manuellt. Totalt antal procent: {totalPercentage}%</p> : null}
-          
           <Polls polls={history} />
-
         </div>
         <Footer />
       </div>

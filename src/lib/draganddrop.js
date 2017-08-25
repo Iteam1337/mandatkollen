@@ -28,9 +28,15 @@ const dragLeave = group => event => {
   groupLeave(group)
 }
 
+const dragStart = abbreviation => (event) => {
+  event.dataTransfer.setData('Text', abbreviation)
+  event.dataTransfer.effectAllowed = 'move';
+}
+
 export {
   dragOver,
   dropUpdate,
   dragEnter,
-  dragLeave
+  dragLeave,
+  dragStart
 }
