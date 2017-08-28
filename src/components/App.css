@@ -3,7 +3,12 @@
 }
 
 .App .invalid {
-  color: red;
+  background: rgba(193, 59, 56, 0.6);
+  border-radius: 5px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px;
 }
 
 .App-logo {
@@ -14,11 +19,17 @@
 .App-header {
   background-color: #333333;
   height: 80px;
-  padding: 20px;
-  color: white;
   margin-bottom: 20px;
-  vertical-align: bottom;
+  padding: 20px;
+}
 
+.App-header-inner {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 960px;
 }
 
 .App-header img {
@@ -33,10 +44,11 @@
 }
 
 .App-main {
-  max-width: 560px;
-  width: 100%;
-  padding: 20px;
+  box-sizing: border-box;
   margin: auto;
+  max-width: 560px;
+  padding: 30px;
+  width: 100%;
 }
 
 .App-main small {
@@ -168,7 +180,7 @@
 }
 
 .LegendGroup {
-  flex-grow: 1;
+  flex: 1;
   transition: background ease-in 300ms;
 }
 
@@ -191,12 +203,19 @@
 
 @media only screen and (max-width: 500px) {
   .App-main {
-    max-width: 400px;
+    max-width: 100%;
   }
+
   .wide {
     display: none;
   }
+
   .small {
     display: block;
+  }
+
+  .App-sliders {
+    align-items: center;
+    flex-direction: column;
   }
 }

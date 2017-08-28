@@ -53,6 +53,7 @@ class App extends Component {
       }
     ]
   }
+
   render() {
     const { parties, coalitions, groups, history } = this.props
     const legendGroups = this.sumGroups(parties)
@@ -64,8 +65,10 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img alt="Mandatkollen logotyp" src="/icon.png" />
-          <h2>Mandatkollen</h2>
+          <div className="App-header-inner">
+            <img alt="Mandatkollen logotyp" src="/icon.png" />
+            <h2>Mandatkollen</h2>
+          </div>
         </div>
         <div className="App-main">
           <Seating parties={allParties} seatCount={false} />

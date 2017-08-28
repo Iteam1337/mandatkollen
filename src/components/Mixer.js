@@ -24,7 +24,7 @@ const Mixer = ({ party, editCoalitions }) => {
         type="text"
         className={party.changed ? 'changed' : ''}
         value={party.percentage}
-        onChange={e =>
+        onchange={e =>
           updatePartyPercentage(
             party.abbreviation,
             parseFloat(e.target.value.replace(',', '.') || '0')
