@@ -72,6 +72,7 @@ class App extends Component {
         </div>
         <div className="App-main">
           <Seating parties={allParties} seatCount={false} />
+          <small>Grafik: Mandatkollen (Iteam & Lennox PR)</small>
 
           <div className="LegendContainer">
             {legendGroups.map(({ name, parties, title, seats, percentage }) =>
@@ -122,7 +123,7 @@ class App extends Component {
               </div>
             )}
           </div>
-          <small>Grafik: Mandatkollen (Iteam & Lennox PR)</small>
+          <small>Dra i bollarna för att testa olika koalitioner</small>
         </div>
         <div className="App-settings">
           <div className="App-settings-inner">

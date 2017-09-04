@@ -4,6 +4,9 @@ const updatePartyAffiliation = (abbreviation, affiliation) => store.dispatch({ty
 const groupEnter = group => store.dispatch({ type: 'GROUP_ENTER', group })
 const groupLeave = group => store.dispatch({ type: 'GROUP_LEAVE', group })
 
+// hack to prevent scrolling while dragging and dropping
+window.addEventListener( 'touchmove', function() {})
+
 const dragOver = event => {
   event.preventDefault()
   event.stopPropagation()
@@ -31,6 +34,7 @@ const dragLeave = group => event => {
 const dragStart = abbreviation => (event) => {
   event.dataTransfer.setData('Text', abbreviation)
   event.dataTransfer.effectAllowed = 'move';
+  event.preventDefault()
 }
 
 export {
