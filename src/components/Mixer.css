@@ -34,6 +34,5 @@
 }
 
 .App-mixer input[type=text].changed {
-  border: 1px solid #615A5A;
-  color: #ff9999;
+  border: 1px solid #5B615A;
 }

@@ -1,7 +1,7 @@
 input[type="range"] {
   appearance: none;
   background: transparent;
-  height: 150px;
+  height: 130px;
   transform: rotate(-90deg);
   width: 150px;
 }
