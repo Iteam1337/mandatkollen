@@ -1,10 +1,18 @@
 .App-mixer {
+  align-items: center;
+  display: flex;
   flex-direction: column;
+  max-width: 70px;
   padding: 5px;
 }
 
 .App-mixer h3 {
-  margin: 0;
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 19px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .App-mixer.below h3 {
@@ -12,22 +20,20 @@
   color: #999;
 }
 
-.App-mixer h3 {
-  display: block;
-}
-
 .App-mixer input[type=text]{
-  width: 2.5em;
   border-radius: 5px;
-  padding: 5px;
+  box-shadow: inset 1px 1px 4px rgba(0,0,0, 0.25);
+  max-width: 2.5em;
+  padding: 8px;
   background: #242424;
   color: #fff;
+  font-size: 16px;
+  font-weight: bold;
   border: 0;
   text-align: center;
 }
 
 .App-mixer input[type=text].changed {
   border: 1px solid #615A5A;
-  padding: 4px;
   color: #ff9999;
 }

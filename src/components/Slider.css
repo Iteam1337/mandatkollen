@@ -1,19 +1,30 @@
-input[type="range"]{
-  -webkit-appearance: slider-vertical; /* WebKit */
-  width:20px;
+input[type="range"] {
+  appearance: none;
+  background: transparent;
   height: 150px;
-  position: relative;
-  z-index: 10;
+  transform: rotate(-90deg);
+  width: 150px;
 }
 
-input[type="range"]::-webkit-slider-thumb{
-  -webkit-appearance: none;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
   background: #fff;
-  box-shadow: 0px 2px 4px rgba(0,0,0,.2);
+  box-shadow: none;
+  margin-left: 5px;
+  height: 3px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  border-radius: 100%;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
   cursor: pointer;
+  height: 25px;
+  margin-top: -11px;
+  width: 25px;
 }
 
 .bar {
@@ -26,42 +37,83 @@ input[type="range"]::-webkit-slider-thumb{
   margin: 0;
 }
 
+.slider-s::-webkit-slider-thumb {
+  background: #E04B49;
+}
+
+.slider-m::-webkit-slider-thumb {
+  background: #2F80ED;
+}
+
+.slider-sd::-webkit-slider-thumb {
+  background: #F2C94C;
+}
+
+.slider-kd::-webkit-slider-thumb {
+  background: #3163A6;
+}
+
+.slider-v::-webkit-slider-thumb {
+  background: #B12827;
+}
+
+.slider-l::-webkit-slider-thumb {
+  background: #56CCF2;
+}
+
+.slider-c::-webkit-slider-thumb {
+  background: #27AE60;
+}
+
+.slider-mp::-webkit-slider-thumb {
+  background: #219653;
+}
+
+.slider-fi::-webkit-slider-thumb {
+  background: #D96B97;
+}
+
+.slider-ö::-webkit-slider-thumb {
+  background: #4D4D4D;
+}
+
 .s {
-  color: #c13b38
+  color: #E04B49;
 }
 
 .m {
-  color: #88c7d9
+  color: #2F80ED;
 }
 
 .sd {
-  color: #e7d960
+  color: #F2C94C;
 }
 
 .kd  {
-  color: #366da3
+  color: #3163A6;
 }
 
 .v {
-  color: #992522
+  color: #B12827;
 }
 
 .l {
-  color: #378cab
+  color: #56CCF2;
 }
 
 .c {
-  color: #78ae5a
+  color: #27AE60;
 }
 
 .mp {
-  color: #acc768
+  color: #219653;
 }
 
 .fi {
-  color: #fab
+  color: #D96B97;
 }
 
 .ö {
-  color: #000
+  color: #4D4D4D;
 }
+

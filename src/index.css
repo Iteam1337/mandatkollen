@@ -3,6 +3,8 @@ body {
   padding: 0;
   font-family: "Miriam Libre", "Helvetica Neue";
   font-size: 0.8em;
+
+  -webkit-font-smoothing: antialiased;
 }
 
 h3 {
