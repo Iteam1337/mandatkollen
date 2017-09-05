@@ -147,7 +147,7 @@
   margin: 0;
   color: #333;
   text-overflow: ellipsis;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .LegendContainer h2 {
