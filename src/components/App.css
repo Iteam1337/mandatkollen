@@ -175,6 +175,7 @@
   line-height: 40px;
   float: left;
   display: block;
+  cursor: move;
 }
 .party i:before {
  content: "•";
