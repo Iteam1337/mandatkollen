@@ -44,11 +44,11 @@ const Footer = props =>
           src="https://iteam.se/content/images/iteam_white.png"
         />
       </a>
-      <a href="http://lennoxpr.se">
+      <a href="https://lennoxpr.se">
         <img
           alt="Lennox PR logo"
           className="logo"
-          src="http://lennoxpr.se/wp-content/uploads/2017/04/logo-lennox.png"
+          src="https://lennoxpr.se/wp-content/uploads/2017/04/logo-lennox.png"
         />
       </a>
     </div>
