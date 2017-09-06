@@ -20,12 +20,12 @@ Röstresultatet som visas initialt kommer från SCB valundersökning som genomf�
 
 ## Hjälp till
 
-Om du har förbättringsförslag kan du antingen lägga till en /Issue/ eller göra en /Pull request/ via Github. 
+Om du har förbättringsförslag kan du antingen lägga till en [issue](issues/) eller göra en [pull request](pulls/) via Github. 
 
 ## Avsändare
 
-!(iteam.se)[https://iteam.se/content/images/iteam_white.png]
-!(lennoxpr.se)[http://lennoxpr.se/wp-content/uploads/2017/04/logo-lennox.png]
+![iteam.se](https://iteam.se/content/images/iteam_white.png)
+![lennoxpr.se](http://lennoxpr.se/wp-content/uploads/2017/04/logo-lennox.png)
 
 ## Licens
 
