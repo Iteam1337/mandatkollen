@@ -20,7 +20,7 @@ Röstresultatet som visas initialt kommer från SCB valundersökning som genomf�
 
 ## Hjälp till
 
-Om du har förbättringsförslag kan du antingen lägga till en [issue](issues/) eller göra en [pull request](pulls/) via Github. 
+Om du har förbättringsförslag kan du antingen lägga till en [issue](../../issues/) eller göra en [pull request](../../pulls/) via Github. 
 
 ## Avsändare
 
