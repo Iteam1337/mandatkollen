@@ -24,8 +24,8 @@ Om du har förbättringsförslag kan du antingen lägga till en [issue](issues/)
 
 ## Avsändare
 
-![iteam.se](https://iteam.se/content/images/iteam_white.png)
-![lennoxpr.se](http://lennoxpr.se/wp-content/uploads/2017/04/logo-lennox.png)
+<img src="https://iteam.se/content/images/iteam_black.png" width="200"/>
+<img src="https://lennoxpr.se/wp-content/uploads/2017/04/logo-lennox.png" width="200"/>
 
 ## Licens
 
