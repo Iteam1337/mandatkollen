@@ -3,7 +3,7 @@ import polls from '../lib/history'
 
 const initialState = [
   {id: 1, name: 'Kristdemokraterna', percentage: 3.10, affiliation: 'opposition', colour: '#366da3', abbreviation: 'KD'},
-  {id: 2, name: 'Moderaterna', percentage: 21.00, affiliation: 'opposition', colour: '#88c7d9', abbreviation: 'M'},
+  {id: 2, name: 'Moderaterna', percentage: 21.00, affiliation: 'opposition', colour: '#2F80ED', abbreviation: 'M'},
   {id: 3, name: 'Liberalerna', percentage: 5.70, affiliation: 'opposition', colour: '#378cab', abbreviation: 'L'},
   {id: 4, name: 'Centerpartiet', percentage: 11.00, affiliation: 'opposition', colour: '#78ae5a', abbreviation: 'C'},
   {id: 5, name: 'Sverigedemokraterna', percentage: 13.50, affiliation: 'center', colour: '#e7d960', abbreviation: 'SD'},
