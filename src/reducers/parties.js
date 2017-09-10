@@ -30,9 +30,10 @@ export default function (state = parliament.seats, action) {
       return parliament.seats
     }
     case 'CHOOSE_BASE_VOTES': {
-      const parties = state.map(party => ({...party, votes: polls.baseVotes[action.source].find(a=>a.abbreviation === party.abbreviation).votes}))
-      console.log('parties', parties)
-      return parties
+      console.log('choose_base_vote', action)
+      const parties = state.map(party => ({...party, changed: undefined, percentage: parseFloat(action.votes.parties[party.abbreviation] || '0')}))
+      parliament = new Parliament(parties)
+      return parliament.seats
     }
     default: return state
   }

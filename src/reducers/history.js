@@ -1,6 +1,8 @@
 import history from '../lib/history.js'
 
-export default function (state = {}, action) {
+const initialState = history.fetchHistory().catch(Promise.resolve(history.baseVotes))
+
+export default function (state = initialState, action) {
   switch (action.type) {
     default: return state
   }

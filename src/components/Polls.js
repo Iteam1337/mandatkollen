@@ -1,13 +1,17 @@
 import React from 'pureact'
 import store from '../store'
 
-const chooseBaseVotes = (source) => store.dispatch({type: 'CHOOSE_BASE_VOTES', source})
-const updatePolls = (polls) => store.dispatch({type: 'UPDATE_POLLS', polls})
+const chooseBaseVotes = (votes) => store.dispatch({type: 'CHOOSE_BASE_VOTES', votes})
 
 const Polls = ({polls}) => {
-
-  return Object.keys(polls).map(source => (
-    <button onclick={e => chooseBaseVotes(source)}>{source}</button>)
+  return (
+    <div>
+      <select onchange={event => chooseBaseVotes(polls[event.target.value])}>
+        {Object.keys(polls).map((key) => (
+          <option value={key}>{polls[key].date}</option>
+        ))}
+      </select>
+    </div>
   )
 }
 

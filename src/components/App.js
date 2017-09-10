@@ -1,7 +1,5 @@
 import React, { Component } from 'pureact'
 import { dragOver, dropUpdate, dragEnter, dragLeave } from '../lib/draganddrop'
-import { fetchHistory } from '../lib/history'
-import { store } from '../store'
 import './App.css'
 import Seating from './Seating'
 import Sliders from './Sliders'
@@ -72,6 +70,7 @@ class App extends Component {
         </div>
         <div className="App-main">
           <Seating parties={allParties} seatCount={false} />
+          <small>Grafik: Mandatkollen.se</small>
           <div className="LegendContainer">
             {legendGroups.map(({ name, parties, title, seats, percentage }) =>
               <div
@@ -125,7 +124,7 @@ class App extends Component {
         </div>
         <div className="App-settings">
           <div className="App-settings-inner">
-            <h2>Valresultat</h2>
+            <h2>Valresultat %</h2>
             <Sliders
               parties={parties}
               editCoalitions={coalitions.editCoalitions}
@@ -136,8 +135,8 @@ class App extends Component {
                   {totalPercentage}%
                 </p>
               : null}
-            <Polls polls={history} />
           </div>
+          <Polls polls={history} />
         </div>
         <Footer />
       </div>
