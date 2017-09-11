@@ -8,7 +8,7 @@ export const baseVotes = [
   {"date":"2017-08-31","parties":{"M":"16.8","L":"5.2","C":"11.5","KD":"3.4","S":"30.2","V":"7","MP":"4.6","SD":"18.4","FI":"2.6"}},
   {"date":"2017-08-30","parties":{"M":"16.8","L":"5.3","C":"11.5","KD":"3.4","S":"30.1","V":"7","MP":"4.6","SD":"18.5","FI":"2.6"}}]
 
-const fetchHistory = () => fetch('/polls').then(res => res.json()).catch(err => Promise.resolve(baseVotes))
+const fetchHistory = () => fetch('/polls').then(res => res.json()).catch(Promise.resolve(baseVotes))
 
 export default {
   fetchHistory,

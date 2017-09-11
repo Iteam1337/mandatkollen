@@ -5,7 +5,7 @@ import groups from './groups'
 
 const reducer = async (state, action) => ({
   history: await history(state.history, action),
-  parties: parties(state.parties, action),
+  parties: await parties(state.parties, action),
   groups: groups(state.groups, action),
   coalitions: coalitions(state.coalitions, action)
 })

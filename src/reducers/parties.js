@@ -1,7 +1,7 @@
 import { Parliament } from '../lib/parliament'
-import polls from '../lib/history'
+import history from '../lib/history'
 
-const initialState = [
+const parties = [
   {id: 1, name: 'Kristdemokraterna', percentage: 3.10, affiliation: 'opposition', colour: '#3163A6', abbreviation: 'KD'},
   {id: 2, name: 'Moderaterna', percentage: 21.00, affiliation: 'opposition', colour: '#2F80ED', abbreviation: 'M'},
   {id: 3, name: 'Liberalerna', percentage: 5.70, affiliation: 'opposition', colour: '#56CCF2', abbreviation: 'L'},
@@ -14,9 +14,14 @@ const initialState = [
   {id: 10, name: 'Övriga', affiliation: 'center', colour: '#4D4D4D', percentage: 2.20, abbreviation: 'Ö'}
 ]
 
-let parliament = new Parliament(initialState)
+let parliament = new Parliament(parties)
+let initialState = history.fetchHistory().then(polls => {
+  parliament.updatePolls(polls[0])
+  return parliament.seats
+})
 
-export default function (state = parliament.seats, action) {
+      
+export default function (state = initialState, action) {
   switch (action.type) {
     case 'UPDATE_PARTY_AFFILIATION': {
       const updatedParties = state
