@@ -87,13 +87,16 @@ function Parliament (initialParties, maxVotes = countTotal(initialParties) || 10
   }
   this.percentage = calculatePercentages(this.maxVotes, startDivider)
   this.sort = idSort
-  this.updateVotes = (party, percentage) => ({
+  this.updateVotes = (party, percentage, changed = new Date()) => ({
     ...party,
-    percentage: percentage,
+    percentage,
     votes: Math.round((percentage / 100) * this.maxVotes),
-    changed: new Date()
+    changed
   })
   this.seats = this.calculate(initialParties)
+  this.updatePolls = (poll) => {
+    this.seats = this.seats.map(party => this.updateVotes(party, parseFloat(poll[party.abbreviation] || '0')), null)
+  }
   return this
 }
 

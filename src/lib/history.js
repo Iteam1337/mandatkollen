@@ -1,43 +1,19 @@
-export const baseVotes = {
-  'Riksdagsvalet 2014': [
-    { abbreviation: 'KD', votes: 284806},
-    { abbreviation: 'M', votes: 1453517},
-    { abbreviation: 'L', votes: 337773},
-    { abbreviation: 'C', votes: 380937},
-    { abbreviation: 'S', votes: 1932711},
-    { abbreviation: 'MP', votes: 429275},
-    { abbreviation: 'V', votes: 356331},
-    { abbreviation: 'SD', votes: 801178},
-    { abbreviation: 'FI', votes: 194719},
-    { abbreviation: 'Ö', votes: 60326}
-  ],
-  'SCB Maj 2017': [
-    { abbreviation: 'KD', votes: 32},
-    { abbreviation: 'M', votes: 181},
-    { abbreviation: 'L', votes: 50},
-    { abbreviation: 'C', votes: 113},
-    { abbreviation: 'S', votes: 311},
-    { abbreviation: 'MP', votes: 45},
-    { abbreviation: 'V', votes: 63},
-    { abbreviation: 'SD', votes: 184},
-    { abbreviation: 'FI', votes: 0},
-    { abbreviation: 'Ö', votes: 22}
-  ],
-  'Poll of polls 2017-07-19': [
-    { abbreviation: 'KD', votes: 3.3},
-    { abbreviation: 'M', votes: 14.8},
-    { abbreviation: 'L', votes: 6.5},
-    { abbreviation: 'C', votes: 12.1},
-    { abbreviation: 'S', votes: 26.4},
-    { abbreviation: 'MP', votes: 4.3},
-    { abbreviation: 'V', votes: 7.9},
-    { abbreviation: 'SD', votes: 21.3},
-    { abbreviation: 'FI', votes: 1.8},
-    { abbreviation: 'Ö', votes: 0}
-  ]
-}
+export const baseVotes = [
+  {"date":"2017-09-06","parties":{"M":"17","L":"5.1","C":"11.3","KD":"3.3","S":"30.4","V":"7","MP":"4.7","SD":"18.3","FI":"2.6"}},
+  {"date":"2017-09-05","parties":{"M":"17","L":"5.1","C":"11.4","KD":"3.3","S":"30.4","V":"7","MP":"4.7","SD":"18.3","FI":"2.6"}},
+  {"date":"2017-09-04","parties":{"M":"16.9","L":"5.2","C":"11.4","KD":"3.3","S":"30.3","V":"7","MP":"4.7","SD":"18.4","FI":"2.6"}},
+  {"date":"2017-09-03","parties":{"M":"16.9","L":"5.2","C":"11.4","KD":"3.3","S":"30.3","V":"7","MP":"4.7","SD":"18.4","FI":"2.6"}},
+  {"date":"2017-09-02","parties":{"M":"16.9","L":"5.2","C":"11.5","KD":"3.3","S":"30.2","V":"7","MP":"4.6","SD":"18.4","FI":"2.6"}},
+  {"date":"2017-09-01","parties":{"M":"16.8","L":"5.2","C":"11.5","KD":"3.3","S":"30.2","V":"7","MP":"4.6","SD":"18.4","FI":"2.6"}},
+  {"date":"2017-08-31","parties":{"M":"16.8","L":"5.2","C":"11.5","KD":"3.4","S":"30.2","V":"7","MP":"4.6","SD":"18.4","FI":"2.6"}},
+  {"date":"2017-08-30","parties":{"M":"16.8","L":"5.3","C":"11.5","KD":"3.4","S":"30.1","V":"7","MP":"4.6","SD":"18.5","FI":"2.6"}}]
 
-const fetchHistory = () => fetch('/polls').then(res => res.json())
+const getPolls = fetch('/polls')
+const fetchHistory = () => getPolls.then(res => {
+  return res.json()
+}).catch(err => {
+  return Promise.resolve(baseVotes)
+})
 
 export default {
   fetchHistory,
