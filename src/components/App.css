@@ -18,9 +18,8 @@
 
 .App-header {
   background-color: #333333;
-  height: 80px;
   margin-bottom: 20px;
-  padding: 20px;
+  padding: 30px;
 }
 
 .App-header-inner {
@@ -40,13 +39,14 @@
 .App-header h2 {
   display: inline-block;
   font-size: 2em;
-  font-weight: 500;
+  font-weight: bold;
+  margin-bottom: 0;
 }
 
 .App-main {
   box-sizing: border-box;
   margin: auto;
-  max-width: 560px;
+  max-width: 960px;
   padding: 30px;
   width: 100%;
 }
@@ -131,7 +131,7 @@
 
 .LegendContainer {
   display: flex;
-  padding: 20px;
+  margin: 15px 0;
 }
 
 .LegendContainer > span {
@@ -140,8 +140,8 @@
 }
 
 .LegendContainer h1 {
-  font-size: 1em;
-  font-weight: normal;
+  font-weight: 300;
+  font-size: 16px;
   text-align: left;
   white-space: nowrap;
   margin: 0;
@@ -151,7 +151,7 @@
 }
 
 .LegendContainer h2 {
-  font-size: 0.8em;
+  font-size: 16px;
   font-weight: bold;
   text-align: left;
   margin: 0;
@@ -161,26 +161,54 @@
   color: #333;
 }
 
+.LegendTitle {
+  margin-bottom: 15px;
+}
+
+.LegendTitle h1, .LegendTitle h2 {
+  text-align: center;
+  color: #333;
+}
+
+.LegendGroup span {
+  display: block;
+  border: 1px dashed #C1C1C1;
+  padding: 5px;
+}
+
 .party {
   display: block;
   clear: both;
-  margin-top: 20px;
+  background: #333;
+  border-radius: 3px;
+  padding: 10px;
+  cursor: move;
+  margin: 5px;
+  position: relative;
+}
+
+.party h1, .party h2 {
+  color: #fff;
+  margin-left: 40px;
 }
 
 .party.below {
-  opacity: 0.4;
+  opacity: 0.5;
 }
 
 .party i {
-  line-height: 40px;
+  line-height: 10px;
   float: left;
   display: block;
-  cursor: move;
+  padding-top: 7px;
 }
 .party i:before {
  content: "•";
- font-size: 80px;
+ font-size: 120px;
  font-style: normal;
+ position: absolute;
+ top: 24px;
+ left: 0;
 }
 
 .LegendGroup {
@@ -205,7 +233,7 @@
   display: none;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 750px) {
   .App-main {
     max-width: 100%;
   }
@@ -217,7 +245,9 @@
   .small {
     display: block;
   }
+}
 
+@media only screen and (max-width: 850px) {
   .App-sliders {
     align-items: center;
     flex-direction: column;
