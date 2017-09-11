@@ -140,7 +140,7 @@
 }
 
 .LegendContainer h1 {
-  font-weight: normal;
+  font-weight: 300;
   font-size: 16px;
   text-align: left;
   white-space: nowrap;
@@ -233,7 +233,7 @@
   display: none;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 750px) {
   .App-main {
     max-width: 100%;
   }
@@ -245,7 +245,9 @@
   .small {
     display: block;
   }
+}
 
+@media only screen and (max-width: 850px) {
   .App-sliders {
     align-items: center;
     flex-direction: column;
