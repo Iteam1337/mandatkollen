@@ -46,7 +46,7 @@
 .App-main {
   box-sizing: border-box;
   margin: auto;
-  max-width: 560px;
+  max-width: 960px;
   padding: 30px;
   width: 100%;
 }
@@ -140,8 +140,8 @@
 }
 
 .LegendContainer h1 {
-  font-size: 1em;
   font-weight: normal;
+  font-size: 16px;
   text-align: left;
   white-space: nowrap;
   margin: 0;
@@ -151,7 +151,7 @@
 }
 
 .LegendContainer h2 {
-  font-size: 0.8em;
+  font-size: 16px;
   font-weight: bold;
   text-align: left;
   margin: 0;
@@ -181,13 +181,15 @@
   clear: both;
   background: #333;
   border-radius: 3px;
-  padding: 5px;
+  padding: 10px;
   cursor: move;
   margin: 5px;
+  position: relative;
 }
 
 .party h1, .party h2 {
   color: #fff;
+  margin-left: 40px;
 }
 
 .party.below {
@@ -202,8 +204,11 @@
 }
 .party i:before {
  content: "•";
- font-size: 80px;
+ font-size: 120px;
  font-style: normal;
+ position: absolute;
+ top: 23px;
+ left: 0;
 }
 
 .LegendGroup {
