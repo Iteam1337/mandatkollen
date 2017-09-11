@@ -33,7 +33,7 @@ const Footer = props =>
       <p>
         Röstresultatet som visas initialt kommer från SCB{' '}
         <a href="http://www.scb.se/hitta-statistik/statistik-efter-amne/demokrati/partisympatier/partisympatiundersokningen-psu/pong/statistiknyhet/partisympatier-maj-2017/">
-          valundersökning som genomfördes i maj 2017.
+          partisympatiundersökningen som genomfördes i maj 2017.
         </a>
       </p>
 
