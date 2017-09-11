@@ -131,7 +131,7 @@
 
 .LegendContainer {
   display: flex;
-  padding: 20px;
+  margin: 15px 0;
 }
 
 .LegendContainer > span {
@@ -161,21 +161,44 @@
   color: #333;
 }
 
+.LegendTitle {
+  margin-bottom: 15px;
+}
+
+.LegendTitle h1, .LegendTitle h2 {
+  text-align: center;
+  color: #333;
+}
+
+.LegendGroup span {
+  display: block;
+  border: 1px dashed #C1C1C1;
+  padding: 5px;
+}
+
 .party {
   display: block;
   clear: both;
-  margin-top: 20px;
+  background: #333;
+  border-radius: 3px;
+  padding: 5px;
+  cursor: move;
+  margin: 5px;
+}
+
+.party h1, .party h2 {
+  color: #fff;
 }
 
 .party.below {
-  opacity: 0.4;
+  opacity: 0.5;
 }
 
 .party i {
-  line-height: 40px;
+  line-height: 10px;
   float: left;
   display: block;
-  cursor: move;
+  padding-top: 7px;
 }
 .party i:before {
  content: "•";

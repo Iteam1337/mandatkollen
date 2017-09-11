@@ -82,15 +82,17 @@ class App extends Component {
                 ondragenter={dragEnter(name)}
                 ondragleave={dragLeave(name)}
               >
-                <h1>
-                  {title}
-                </h1>
-                <h2 className="wide">
-                  {seats} mandat - {percentage}%
-                </h2>
-                <h2 className="small">
-                  {percentage}%
-                </h2>
+                <div className="LegendTitle">
+                  <h1>
+                    {title}
+                  </h1>
+                  <h2 className="wide">
+                    {seats} mandat - {percentage}%
+                  </h2>
+                  <h2 className="small">
+                    {percentage}%
+                  </h2>
+                </div>
                 {parties.map(
                   ({ name, seats, seatPercentage, eligable, abbreviation }) =>
                     <div
