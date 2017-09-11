@@ -1,14 +1,11 @@
 import React from 'pureact'
 import './Labels.css'
+import {dragStart} from '../lib/draganddrop'
 
 const Label = party => {
-  function dragstart (event) {
-    event.dataTransfer.setData('Text', party.abbreviation)
-    event.dataTransfer.effectAllowed = 'move';
-  }
 
   return (
-      <li draggable="true" ondragstart={dragstart} className={party.abbreviation.toLowerCase()}>
+      <li draggable="true" ondragstart={dragStart(party.abbreviation)} className={party.abbreviation.toLowerCase()}>
           <div className="bar">
             <p>
               {party.abbreviation}

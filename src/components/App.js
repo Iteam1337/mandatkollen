@@ -1,5 +1,5 @@
 import React, { Component } from 'pureact'
-import { dragOver, dropUpdate, dragEnter, dragLeave } from '../lib/draganddrop'
+import { dragOver, dropUpdate, dragEnter, dragLeave, dragStart } from '../lib/draganddrop'
 import { fetchHistory } from '../lib/history'
 import { store } from '../store'
 import './App.css'
@@ -102,8 +102,7 @@ class App extends Component {
                         eligable ? 'eligable' : 'below'
                       ].join(' ')}
                       draggable="true"
-                      ondragstart={e =>
-                        e.dataTransfer.setData('Text', abbreviation)}
+                      ondragstart={dragStart(abbreviation)}
                     >
                       <i className={abbreviation.toLowerCase()} />
                       <h1 className="wide">

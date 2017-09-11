@@ -33,8 +33,7 @@ const dragLeave = group => event => {
 
 const dragStart = abbreviation => (event) => {
   event.dataTransfer.setData('Text', abbreviation)
-  event.dataTransfer.effectAllowed = 'move';
-  event.preventDefault()
+  event.dataTransfer.effectAllowed = 'move'
 }
 
 export {
