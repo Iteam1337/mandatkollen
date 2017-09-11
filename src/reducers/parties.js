@@ -16,7 +16,7 @@ const parties = [
 
 let parliament = new Parliament(parties)
 let initialState = history.fetchHistory().then(polls => {
-  parliament.updatePolls(polls[0])
+  parliament.updatePolls(polls[0].parties)
   return parliament.seats
 })
 
