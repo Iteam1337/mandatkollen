@@ -51,6 +51,10 @@
   width: 100%;
 }
 
+.App-main > svg {
+  max-width: 100%;
+}
+
 .App-main small {
   opacity:0.4;
   font-size: 14px;
