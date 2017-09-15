@@ -6,6 +6,14 @@ input[type="range"] {
   width: 150px;
 }
 
+@media only screen and (max-width: 480px) {
+  input[type="range"] {
+    height: 90px;
+    position: relative;
+    top: -30px;
+  }
+}
+
 input[type="range"]:focus {
   outline: none;
 }

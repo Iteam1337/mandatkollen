@@ -36,3 +36,9 @@
 .App-mixer input[type=text].changed {
   border: 1px solid #5B615A;
 }
+
+@media only screen and (max-width: 480px) {
+  .App-mixer {
+    max-width: 60px;
+  }
+}

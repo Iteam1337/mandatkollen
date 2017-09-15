@@ -114,13 +114,12 @@
 .App-sliders {
   background: #333;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   margin-top: 20px;
   text-align: center;
 }
 
 .App section {
-  float:left;
   border-radius: 10px;
   margin: 5px;
   padding: 5px;
@@ -306,5 +305,13 @@
   .App-sliders {
     align-items: center;
     flex-direction: column;
+  }
+
+  .App-sliders > section {
+    padding-top: 40px;
+  }
+
+  .App-sliders > section:not(:last-child) {
+    margin-bottom: 30px;
   }
 }
