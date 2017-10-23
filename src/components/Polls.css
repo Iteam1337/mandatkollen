@@ -8,10 +8,15 @@
 
 .App-polls .poll {
   flex: 1;
-  flex-direction: column;
 }
 
-.App-polls .poll * {
-  flex: 1;
-  display: flex;
+.App-polls .poll button {
+  display: inline-table;
+  text-align: center;
+}
+
+.App-polls .poll small {
+  display: inline-table;
+  text-align: center;
+  font-size: 8px;
 }
