@@ -1,5 +1,5 @@
 import { Parliament } from '../lib/parliament'
-import history from '../lib/history'
+import polls from '../lib/polls'
 
 const parties = [
   {id: 1, name: 'Kristdemokraterna', percentage: 3.10, affiliation: 'opposition', colour: '#3163A6', abbreviation: 'KD'},
@@ -15,7 +15,7 @@ const parties = [
 ]
 
 let parliament = new Parliament(parties)
-let initialState = history.fetchHistory().then(polls => {
+let initialState = polls.fetchHistory().then(polls => {
   parliament.updatePolls(polls[0].parties)
   return parliament.seats
 })
@@ -38,6 +38,7 @@ export default function (state = initialState, action) {
       console.log('choose_base_vote', action)
       parliament = new Parliament(parliament.updatePolls(action.votes.parties))
       return parliament.seats
+      
     }
     default: return state
   }

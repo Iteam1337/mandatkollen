@@ -95,7 +95,8 @@ function Parliament (initialParties, maxVotes = countTotal(initialParties) || 10
   })
   this.seats = this.calculate(initialParties)
   this.updatePolls = (poll) => {
-    this.seats = this.seats.map(party => this.updateVotes(party, parseFloat(poll[party.abbreviation] || '0')), null)
+    this.seats = this.seats.map(party => this.updateVotes(party, parseFloat(poll[party.abbreviation] || '0'), null))
+    return this.seats
   }
   return this
 }

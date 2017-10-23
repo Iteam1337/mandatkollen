@@ -4,6 +4,7 @@ import './App.css'
 import Seating from './Seating'
 import Sliders from './Sliders'
 import Polls from './Polls'
+import History from './History'
 import Footer from './Footer'
 
 class App extends Component {
@@ -53,7 +54,7 @@ class App extends Component {
   }
 
   render() {
-    const { parties, coalitions, groups, history } = this.props
+    const { parties, coalitions, groups, history, polls } = this.props
     const legendGroups = this.sumGroups(parties)
     const allParties = legendGroups.reduce((a, b) => a.concat(b.parties), [])
     const totalPercentage = Math.round(
@@ -137,9 +138,13 @@ class App extends Component {
                 </p>
               : null}
           </div>
-          <Polls polls={history} />
+          <h2>Välj opinionsundersökning</h2>
+          <Polls polls={polls} />
+          <h2>Historik</h2>
+          <History history={history} />
+          <small>Källa: pollofpolls.se</small>
         </div>
-        <Footer />
+        <Footer history={history} />
       </div>
     )
   }

@@ -9,9 +9,10 @@ import 'mobile-drag-drop/default.css'
 polyfill()
 
 let oldTree
+
 store.subscribe(() => {
   const state = store.getState()
-  oldTree = render(<App {...state} />, document.getElementById('root'), oldTree)
+  oldTree = render(<App {...state} />, document.getElementById('mandatkollen'), oldTree)
 })
 
 store.dispatch()

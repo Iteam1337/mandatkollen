@@ -1,7 +1,7 @@
 import React from 'pureact'
 import './Footer.css'
 
-const Footer = props =>
+const Footer = ({history}) =>
   <div className="App-footer">
     <div className="App-footer-inner">
       <h2>Om Mandatkollen</h2>
@@ -31,10 +31,8 @@ const Footer = props =>
 
       <h3>Underlag</h3>
       <p>
-        Röstresultatet som visas initialt kommer från SCB{' '}
-        <a href="http://www.scb.se/hitta-statistik/statistik-efter-amne/demokrati/partisympatier/partisympatiundersokningen-psu/pong/statistiknyhet/partisympatier-maj-2017/">
-          partisympatiundersökningen som genomfördes i maj 2017.
-        </a>
+        Röstresultatet som visas initialt är ett sammanslaget värde från de senaste opinionsundersökningarna, hämtat med tillstånd från <a href="https://pollofpolls.se">pollofpolls.se</a> den {history.date}
+
       </p>
 
       <a href="https://iteam.se">
