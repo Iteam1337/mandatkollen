@@ -6,7 +6,15 @@
   width: 150px;
 }
 
-.App-settings-inner input[type="range"]:focus {
+@media only screen and (max-width: 480px) {
+  input[type="range"] {
+    height: 90px;
+    position: relative;
+    top: -30px;
+  }
+}
+
+input[type="range"]:focus {
   outline: none;
 }
 
@@ -39,6 +47,10 @@
 
 .slider h3 {
   margin: 0;
+}
+
+.slider-s::-webkit-slider-thumb {
+  background: #E04B49;
 }
 
 .slider-s::-webkit-slider-thumb {
@@ -78,6 +90,69 @@
 }
 
 .slider-ö::-webkit-slider-thumb {
+  background: #4D4D4D;
+}
+
+/* FIREFOX */
+input[type="range"]::-moz-range-track {
+  background: #fff;
+  box-shadow: none;
+  margin-left: 5px;
+  height: 3px;
+}
+
+input[type="range"]::-moz-range-thumb {
+  appearance: none;
+  border: none;
+  border-radius: 100%;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  height: 25px;
+  margin-top: -11px;
+  width: 25px;
+}
+
+.slider-s::-moz-range-thumb {
+  background: #E04B49;
+}
+
+.slider-s::-moz-range-thumb {
+  background: #E04B49;
+}
+
+.slider-m::-moz-range-thumb {
+  background: #2F80ED;
+}
+
+.slider-sd::-moz-range-thumb {
+  background: #F2C94C;
+}
+
+.slider-kd::-moz-range-thumb {
+  background: #3163A6;
+}
+
+.slider-v::-moz-range-thumb {
+  background: #B12827;
+}
+
+.slider-l::-moz-range-thumb {
+  background: #56CCF2;
+}
+
+.slider-c::-moz-range-thumb {
+  background: #27AE60;
+}
+
+.slider-mp::-moz-range-thumb {
+  background: #219653;
+}
+
+.slider-fi::-moz-range-thumb {
+  background: #D96B97;
+}
+
+.slider-ö::-moz-range-thumb {
   background: #4D4D4D;
 }
 

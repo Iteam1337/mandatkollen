@@ -44,7 +44,7 @@
   margin-top: 40px;
 }
 
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 1000px) {
   .App-footer {
     padding: 30px;
   }
