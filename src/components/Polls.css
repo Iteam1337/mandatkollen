@@ -1,3 +1,8 @@
+.App-polls {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
 .App-polls span {
   display: flex;
   flex-direction: row;
@@ -13,6 +18,11 @@
 .App-polls .poll button {
   display: inline-table;
   text-align: center;
+  border: 1px solid white;
+  background: white;
+  border-radius: 5px;
+  height: 4em;
+  min-width: 7em;
 }
 
 .App-polls .poll small {

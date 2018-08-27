@@ -255,6 +255,7 @@
   .small {
     display: block;
   }
+
 }
 
 @media only screen and (max-width: 450px) {
@@ -299,6 +300,7 @@
     top: 17px;
     right: 11px;
   }
+
 }
 
 @media only screen and (max-width: 850px) {

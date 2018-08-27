@@ -2,8 +2,9 @@
   max-width: 600px;
   text-align: center;
   margin: auto;
+  overflow-x: auto;
 }
 
 .App-history img {
-  max-width: 600px;
+  max-width: 100%;
 }
