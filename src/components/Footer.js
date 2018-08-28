@@ -39,7 +39,7 @@ const Footer = ({history}) =>
         <img
           alt="Iteam logo"
           className="logo"
-          src="https://iteam.se/content/images/iteam_white.png"
+          src="/iteam_white.png"
         />
       </a>
       <a href="https://lennoxpr.se">
