@@ -8,10 +8,14 @@
     "apicache": "^0.8.7",
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.15.3",
+    "iconv": "^2.3.0",
+    "moment": "^2.22.2",
     "node-fetch": "^1.7.1",
     "object-assign": "^4.1.1",
     "parliament-svg": "^2.0",
     "pureact": "^1.0",
+    "request": "^2.88.0",
+    "unzip-stream": "^0.3.0",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
