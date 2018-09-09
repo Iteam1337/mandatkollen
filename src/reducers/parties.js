@@ -35,6 +35,8 @@ export default function (state = initialState, action) {
     }
     case 'CHOOSE_BASE_VOTES': {
       console.log('choose_base_vote', action)
+      const totalPercentage = Object.values(action.votes.parties).reduce((a,b) => a + b)
+      if (totalPercentage <= 0) alert('Röstningen har inte börjat än. Försök igen om en stund.')
       parliament = new Parliament(parliament.updatePolls(action.votes.parties))
       return parliament.seats
       

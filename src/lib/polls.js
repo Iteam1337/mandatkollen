@@ -22,7 +22,12 @@ const fetchPolls = () => fetch('/polls').then(res => {
   return Promise.resolve(basePolls)
 })
 
+const fetchValnatt = () => fetch('/valnatt')
+  .then(res => res.json())
+  .catch(err => console.error('valnatt error', err) || Promise.resolve(basePolls))
+
 export default {
   fetchHistory,
-  fetchPolls
+  fetchPolls,
+  fetchValnatt
 }

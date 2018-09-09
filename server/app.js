@@ -4,6 +4,7 @@ const fetch = require('node-fetch')
 const csv = require('csv-parse/lib/sync')
 const cache = require('apicache').middleware
 const cheerio = require('cheerio')
+const valnatt = require('./valnatt')
 const app = express();
 
 // Serve static assets
@@ -17,6 +18,14 @@ app.get('/history', cache('12 hours'), (req, res) => {
     .then(polls => polls.map(transform).reverse())
     .then(polls => res.json(polls))
     .catch(err => res.status(500).json(err))
+})
+
+app.get('/valnatt', cache('1 minute'), (req, res) => {
+  valnatt.getParties(req.query.year || 2018).then(valnatt => {
+    const parties = valnatt.parties.reduce((parties, {percentage, abbreviation}) => Object.assign(parties, {[abbreviation]: percentage || 0}), {})
+    parties.date = parties.date
+    res.json({parties, date: valnatt.date, totalVotes: valnatt.totalVotes, countPercentage: valnatt.countPercentage})
+  })
 })
 
 app.get('/polls', cache('12 hours'), (req, res) => {
