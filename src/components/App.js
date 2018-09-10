@@ -90,7 +90,7 @@ class App extends Component {
                     {seats} mandat - {percentage}%
                   </h2>
                   <h2 className="small">
-                    {percentage}%
+                    {percentage}% ({seats})
                   </h2>
                 </div>
                 {parties.map(

@@ -5,7 +5,9 @@ const groupEnter = group => store.dispatch({ type: 'GROUP_ENTER', group })
 const groupLeave = group => store.dispatch({ type: 'GROUP_LEAVE', group })
 
 // hack to prevent scrolling while dragging and dropping
-window.addEventListener( 'touchmove', function() {})
+window.addEventListener( 'touchmove', function() {
+  e.preventDefault()
+}, { passive: false })
 
 const dragOver = event => {
   event.preventDefault()
