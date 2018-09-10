@@ -13,10 +13,12 @@ const parties = [
   {id: 9, name: 'FI', percentage: 2.40, affiliation: 'center', colour: '#D96B97', abbreviation: 'FI'},
   {id: 10, name: 'Övriga', affiliation: 'center', colour: '#4D4D4D', percentage: 2.20, abbreviation: 'Ö'}
 ]
+const timeout = (ms) => new Promise((resolve) => setTimeout(() => resolve))
 
 let parliament = new Parliament(parties)
-let initialState = polls.fetchHistory().then(polls => {
-  return new Parliament(parliament.updatePolls(polls[0].parties)).seats
+let initialState = Promise.race([polls.fetchValnatt(), timeout(3000)]).then(valnatt => {
+  if (valnatt) return new Parliament(parliament.updatePolls(valnatt.parties)).seats
+  else return polls.fetchPolls().then(polls => new Parliament(parliament.updatePolls(polls[0].parties)).seats)
 })
 
       

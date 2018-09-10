@@ -4,20 +4,23 @@ const request = require('request')
 const unzip = require('unzip-stream')
 const moment = require('moment')
 
+const getPartyFromXmlNode = (
+  {
+    PARTI: abbreviation, 
+    MANDAT: seats, 
+    PROCENT: percentage, 
+    RÖSTER: votes
+  }) => ({
+    abbreviation, 
+    seats: parseInt(seats, 10), 
+    percentage: parseFloat(percentage.replace(',', '.')), 
+    votes: parseInt(votes, 10)
+  })
+
 function getPartiesFromXml(xmlString) {
   const json = JSON.parse(xml.toJson(xmlString))
-  const parties = json.VAL.NATION.GILTIGA.map( (
-    {
-      PARTI: abbreviation, 
-      MANDAT: seats, 
-      PROCENT: percentage, 
-      RÖSTER: votes
-    }) => ({
-      abbreviation, 
-      seats: parseInt(seats, 10), 
-      percentage: parseFloat(percentage.replace(',', '.')), 
-      votes: parseInt(votes, 10)
-    }))
+  const other = Object.assign(getPartyFromXmlNode(json.VAL.NATION['ÖVRIGA_GILTIGA']), {abbreviation: 'Ö'})
+  const parties = [...json.VAL.NATION.GILTIGA.map(getPartyFromXmlNode), other]
 
   const totalPercentage = parties.reduce((a,b) => a + b.percentage, 0)
   const totalVotes = parties.reduce((a,b) => a + b.votes, 0)
