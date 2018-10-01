@@ -33,7 +33,7 @@ app.get('/polls', cache('12 hours'), (req, res) => {
         }).get()]
       }).get()
   })
-  .then(table => table.map(([institute, M, L, C, KD, S, V, MP, SD, FI, Ö, dates]) => ({institute, dates, parties: {M, L, C, KD, S, V, MP, SD, FI, Ö}})))
+  .then(table => table.map(([institute, M, L, C, KD, S, V, MP, SD, FI, Ö, date]) => ({institute, date, parties: {M, L, C, KD, S, V, MP, SD, FI, Ö}})))
   .then(institutes => res.json(institutes))
   .catch(err => res.status(500).json(err))
 })
