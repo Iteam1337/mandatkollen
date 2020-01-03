@@ -33,7 +33,7 @@ class App extends Component {
       {
         name: 'center',
         parties: center,
-        title: `Övriga`,
+        title: `Stödpartier`,
         seats: center.reduce((t, party) => t + party.seats, 0),
         percentage:
           Math.round(

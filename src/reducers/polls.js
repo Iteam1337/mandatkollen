@@ -14,11 +14,10 @@ const finalResult = {
 }
 
 let initialState = Promise.all([polls.fetchPolls(), polls.fetchValnatt()]).then(([polls, valnatt]) => {
-  return [{institute: 'Val2018', dates: moment('2018-09-09').locale('sv').calendar(), parties: finalResult}, {institute: 'Valnatt', dates: moment(valnatt.date).locale('sv').calendar(), parties: valnatt.parties}, ...polls]
+  return [ ...polls, {institute: 'Val2018', dates: moment('2018-09-09').locale('sv').calendar(), parties: finalResult} /*, {institute: 'Valnatt', dates: moment(valnatt.date).locale('sv').calendar(), parties: valnatt.parties}*/]
 })
 
 export default function (state = initialState, action) {
-  console.log(action, state)
   switch (action.type) {
     default: return state
   }

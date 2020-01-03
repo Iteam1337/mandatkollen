@@ -230,7 +230,6 @@ xit('should mix seats according to a real example', () => {
     { id: 10, name: "Ö", votes: 60326, realSeats: 0 }
   ]
   const parliament = new Parliament(parties, undefined, 349, 1.4)
-  console.log(parliament.seats.map(s => [s.seats, '===', s.realSeats]))
   parliament.seats.forEach(function(s) {
     expect(s.seats).toBe(s.realSeats)
   });
