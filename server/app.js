@@ -4,19 +4,34 @@ const fetch = require('node-fetch')
 const csv = require('csv-parse/lib/sync')
 const cache = require('apicache').middleware
 const cheerio = require('cheerio')
+const valnatt = require('./valnatt')
 const app = express();
 
 // Serve static assets
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
+console.log(csv(`Datum,M,L,C,KD,S,V,MP,SD,FI
+2014-09-15,23.3,5.8,6.1,4.6,30.8,6,7.5,11.9,3
+`, {columns: true, delimiter: ',', 'skip_lines_with_error': true}))
+
 app.get('/history', cache('12 hours'), (req, res) => {
   const transform = ({Datum, M, L, C, KD, S, V, MP, SD, FI}) => ({date: Datum, parties:{M,L,C,KD,S,V,MP,SD,FI}})
   fetch('http://pollofpolls.se/poll_img/data_table_tot.csv', {headers: {'User-Agent': 'mandatkollen/1.0 (+https://mandatkollen.se)'}})
     .then(res => res.text())
-    .then(text => csv(text, {columns: true, delimiter: ','}))
-    .then(polls => polls.map(transform).reverse())
+    .then(text => csv(text, {columns: true, rowDelimiter: '\n', delimiter: ',', 'skip_lines_with_error': true}))
+    .then(polls => {
+      return polls.map(transform).reverse()
+    })
     .then(polls => res.json(polls))
     .catch(err => res.status(500).json(err))
+})
+
+app.get('/valnatt', cache('15 minutes'), (req, res) => {
+  valnatt.getParties(req.query.year || 2018).then(valnatt => {
+    const parties = valnatt.parties.reduce((parties, {percentage, abbreviation}) => Object.assign(parties, {[abbreviation]: percentage || 0}), {})
+    parties.date = parties.date
+    res.json({parties, date: valnatt.date, totalVotes: valnatt.totalVotes, countPercentage: valnatt.countPercentage})
+  })
 })
 
 app.get('/polls', cache('12 hours'), (req, res) => {

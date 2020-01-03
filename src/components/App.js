@@ -33,7 +33,7 @@ class App extends Component {
       {
         name: 'center',
         parties: center,
-        title: `Övriga`,
+        title: `Stödpartier`,
         seats: center.reduce((t, party) => t + party.seats, 0),
         percentage:
           Math.round(
@@ -90,7 +90,7 @@ class App extends Component {
                     {seats} mandat - {percentage}%
                   </h2>
                   <h2 className="small">
-                    {percentage}%
+                    {percentage}% ({seats})
                   </h2>
                 </div>
                 {parties.map(

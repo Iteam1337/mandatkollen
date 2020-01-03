@@ -28,6 +28,17 @@ it('should be correctly calculated votes when only percentages was given', () =>
   expect(result[1].votes).toBe(500000)
 })
 
+it('should be keep seats unchanged when provided', () => {
+  const bothPercentageAndSeats = [{id:1, percentage: 50, seats: 174}, {id:2, percentage: 50, seats: 175}]
+  const parliament = new Parliament(bothPercentageAndSeats)
+  const result = parliament.seats
+  expect(result).toHaveLength(2)
+  expect(result[0]).toHaveProperty('seats')
+  expect(result[1]).toHaveProperty('seats')
+  expect(result[0].seats).toBe(174)
+  expect(result[1].seats).toBe(175)
+})
+
 it('should be correctly initialized', () => {
   const parliament = new Parliament(state.parties)
   const result = parliament.seats
@@ -219,7 +230,6 @@ xit('should mix seats according to a real example', () => {
     { id: 10, name: "Ö", votes: 60326, realSeats: 0 }
   ]
   const parliament = new Parliament(parties, undefined, 349, 1.4)
-  console.log(parliament.seats.map(s => [s.seats, '===', s.realSeats]))
   parliament.seats.forEach(function(s) {
     expect(s.seats).toBe(s.realSeats)
   });
