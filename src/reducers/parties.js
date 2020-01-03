@@ -25,13 +25,12 @@ export default function (state = initialState, action) {
       return updatedParties
     }
     case 'UPDATE_PARTY_PERCENTAGE': {
-      const seatsRemoved = state.map(party => delete party.seats)
+      const seatsRemoved = state.map(party => (delete party.seats) && party)
       const updatedParties = seatsRemoved.map(party => party.abbreviation === action.abbreviation ? parliament.updateVotes(party, action.percentage) : party)
       parliament = new Parliament(updatedParties)
       return parliament.seats
     }
     case 'CHOOSE_BASE_VOTES': {
-      console.log('choose_base_vote', action)
       parliament = new Parliament(parliament.updatePolls(action.votes.parties))
       return parliament.seats
       
