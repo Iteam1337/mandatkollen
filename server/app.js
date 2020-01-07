@@ -10,10 +10,6 @@ const app = express();
 // Serve static assets
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
-console.log(csv(`Datum,M,L,C,KD,S,V,MP,SD,FI
-2014-09-15,23.3,5.8,6.1,4.6,30.8,6,7.5,11.9,3
-`, {columns: true, delimiter: ',', 'skip_lines_with_error': true}))
-
 app.get('/history', cache('12 hours'), (req, res) => {
   const transform = ({Datum, M, L, C, KD, S, V, MP, SD, FI}) => ({date: Datum, parties:{M,L,C,KD,S,V,MP,SD,FI}})
   fetch('http://pollofpolls.se/poll_img/data_table_tot.csv', {headers: {'User-Agent': 'mandatkollen/1.0 (+https://mandatkollen.se)'}})

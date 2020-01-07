@@ -26,12 +26,13 @@ function getPartiesFromXml(xmlString) {
   const totalVotes = parties.reduce((a,b) => a + b.votes, 0)
   const date = json.VAL.NATION.TID_RAPPORT ? moment(json.VAL.NATION.TID_RAPPORT, 'YYYYMMDDhhmmss') : moment()
   const countPercentage = json.VAL.NATION.KLARA_VALDISTRIKT / json.VAL.NATION.ALLA_VALDISTRIKT
-  console.log('parsed valnatt:', date)
+  console.log('parsed valnatt:', date.toISOString(), new Date().toISOString())
   return {parties, totalPercentage, totalVotes, countPercentage, date}
 }
 
 function getParties(year = 2018) {
   return new Promise((resolve, reject) => {
+    console.log('Requesting data from val.se:', new Date().toISOString())
     request(`https://data.val.se/val/val${year}/valnatt/valnatt.zip`, {headers: {'User-Agent': 'mandatkollen/1.0 (+https://mandatkollen.se)'}})
     .pipe(unzip.Parse())
     .on('error', err => reject(err))
