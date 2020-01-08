@@ -1,7 +1,7 @@
 import polls from '../lib/polls'
 
 let initialState = polls.fetchHistory().then(history => {
-  return Object.assign(history, {date: history[0].date})
+  return history[0] ? Object.assign(history, {date: history[0].date}) : history
 })
 
 export default function (state = initialState, action) {
