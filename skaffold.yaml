@@ -1,0 +1,11 @@
+apiVersion: skaffold/v2alpha4
+kind: Config
+metadata:
+  name: mandatkollen
+build:
+  artifacts:
+  - image: iteam1337/mandatkollen
+deploy:
+  kubectl:
+    manifests:
+    - k8s/deployment.yml
