@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mandatkollen
+  namespace: mandatkollen
 spec:
   ports:
   - port: 80
@@ -27,23 +28,3 @@ spec:
         image: iteam1337/mandatkollen
         ports:
         - containerPort: 80
----
-apiVersion: networking.k8s.io/v1beta1
-kind: Ingress
-metadata:
-  name: mandatkollen-ingress
-  annotations:
-    kubernetes.io/ingress.class: "nginx"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
-spec:
-  tls:
-  - hosts:
-    - mandatkollen.se
-    secretName: mandatkollen-prod-tls
-  rules:
-  - host: mandatkollen.se
-    http:
-      paths:
-      - backend:
-          serviceName: mandatkollen
-          servicePort: 80
