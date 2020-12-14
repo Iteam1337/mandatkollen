@@ -140,8 +140,6 @@ class App extends Component {
           </div>
           <h2>Välj opinionsundersökning</h2>
           <Polls polls={polls} />
-          <h2>Historik</h2>
-          <History history={history} />
           <small>Källa: pollofpolls.se</small>
         </div>
         <Footer history={history} />

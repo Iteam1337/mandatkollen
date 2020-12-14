@@ -45,7 +45,7 @@ const Footer = ({history}) =>
         <img
           alt="Lennox PR logo"
           className="logo"
-          src="https://lennoxpr.se/wp-content/uploads/2017/04/logo-lennox.png"
+          src="/lennoxpr.png"
         />
       </a>
     </div>
