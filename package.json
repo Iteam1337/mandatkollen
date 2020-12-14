@@ -10,7 +10,7 @@
     "express": "^4.15.3",
     "iconv": "^2.3.0",
     "moment": "^2.22.2",
-    "node-fetch": "^1.7.3",
+    "node-fetch": "^2.6.1",
     "object-assign": "^4.1.1",
     "parliament-svg": "^2.0",
     "pureact": "^1.2.0",
