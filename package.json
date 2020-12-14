@@ -55,6 +55,7 @@
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.0.0",
     "postcss-loader": "2.0.6",
+    "preload-webpack-plugin": "^2.3.0",
     "promise": "7.1.1",
     "react-dev-utils": "^3.0.2",
     "react-error-overlay": "^1.0.9",
@@ -66,7 +67,6 @@
     "url-loader": "0.5.9",
     "webpack": "2.6.1",
     "webpack-dev-server": "3.1.11",
-    "webpack-font-preload-plugin": "^1.0.1",
     "webpack-manifest-plugin": "1.1.0"
   },
   "scripts": {
