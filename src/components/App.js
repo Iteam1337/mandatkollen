@@ -9,35 +9,25 @@ import Footer from './Footer'
 
 class App extends Component {
   sumGroups(parties) {
-    const regering = parties
-      .filter(a => a.affiliation === 'regering')
+    const coalition = parties
+      .filter(a => a.affiliation === 'coalition')
       .sort((a, b) => b.seats - a.seats)
     const opposition = parties
       .filter(a => a.affiliation === 'opposition')
       .sort((a, b) => b.seats - a.seats)
-    const center = parties
-      .filter(a => a.affiliation === 'center')
+    const abstaining = parties
+      .filter(a => a.affiliation === 'abstaining')
       .sort((a, b) => b.seats - a.seats)
 
     return [
       {
-        name: 'regering',
-        parties: regering,
-        title: `Regering`,
-        seats: regering.reduce((t, party) => t + party.seats, 0),
+        name: 'coalition',
+        parties: coalition,
+        title: `Koalition`,
+        seats: coalition.reduce((t, party) => t + party.seats, 0),
         percentage:
           Math.round(
-            regering.reduce((t, party) => t + party.seatPercentage, 0) * 1000
-          ) / 10
-      },
-      {
-        name: 'center',
-        parties: center,
-        title: `Stödpartier`,
-        seats: center.reduce((t, party) => t + party.seats, 0),
-        percentage:
-          Math.round(
-            center.reduce((t, party) => t + party.seatPercentage, 0) * 1000
+            coalition.reduce((t, party) => t + party.seatPercentage, 0) * 1000
           ) / 10
       },
       {
@@ -49,6 +39,16 @@ class App extends Component {
             opposition.reduce((t, party) => t + party.seatPercentage, 0) * 1000
           ) / 10,
         seats: opposition.reduce((t, party) => t + party.seats, 0)
+      },
+      {
+        name: 'abstaining',
+        parties: abstaining,
+        title: `Avstående`,
+        seats: abstaining.reduce((t, party) => t + party.seats, 0),
+        percentage:
+          Math.round(
+            abstaining.reduce((t, party) => t + party.seatPercentage, 0) * 1000
+          ) / 10
       }
     ]
   }
