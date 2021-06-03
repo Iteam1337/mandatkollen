@@ -8,7 +8,7 @@
     "apicache": "^0.8.7",
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.15.3",
-    "iconv": "^2.3.0",
+    "iconv-lite": "^0.4.23",
     "moment": "^2.22.2",
     "node-fetch": "^2.6.1",
     "object-assign": "^4.1.1",
