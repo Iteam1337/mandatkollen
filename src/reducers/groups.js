@@ -1,6 +1,6 @@
 const initialState = {
-  regering: { hover: false, count: 0 },
-  center: { hover: false, count: 0 },
+  coalition: { hover: false, count: 0 },
+  abstaining: { hover: false, count: 0 },
   opposition: { hover: false, count: 0 },
 }
 
