@@ -1,32 +1,31 @@
 .App-polls {
-  max-width: 100%;
-  overflow-x: auto;
+  display: grid;
+  grid-template-columns: 20px 1fr minmax(auto, 960px) 1fr 20px;
+  justify-content: center;
+  margin-bottom: 16px;
 }
 
 .App-polls span {
-  display: flex;
-  flex-direction: row;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 600px;
-}
-
-.App-polls .poll {
-  flex: 1;
+  display: grid;
+  gap: 20px;
+  grid-column: 3/4;
+  grid-template-columns: repeat(auto-fit, minmax(100px, max-content));
+  justify-content: center;
 }
 
 .App-polls .poll button {
-  display: inline-table;
-  text-align: center;
-  border: 1px solid white;
-  background: white;
+  background: #fff;
   border-radius: 5px;
+  border: 1px solid #fff;
+  display: block;
   height: 4em;
-  min-width: 7em;
+  padding: 0;
+  text-align: center;
+  width: 100%;
 }
 
 .App-polls .poll small {
-  display: inline-table;
   text-align: center;
   font-size: 8px;
 }
+
