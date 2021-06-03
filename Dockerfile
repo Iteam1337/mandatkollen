@@ -1,5 +1,5 @@
 FROM node:alpine
-RUN apk add --no-cache make gcc g++ python git
+RUN apk add --no-cache make gcc g++ python3 git
 COPY package.json /app/
 WORKDIR /app
 ARG NPM_TOKEN
