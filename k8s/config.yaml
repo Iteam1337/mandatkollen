@@ -3,6 +3,7 @@ clusters:
   - cluster:
       certificate-authority-data: $KUBE_CLUSTER_CERTIFICATE
       server: $KUBE_CLUSTER_SERVER
+      insecure-skip-tls-verify: true
     name: $KUBE_CLUSTER_NAME
 contexts:
   - context:
