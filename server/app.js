@@ -30,7 +30,7 @@ app.get('/valnatt', cache('15 minutes'), (req, res) => {
   })
 })
 
-app.get('/polls', (req, res) => {
+app.get('/polls', cache('12 hours'), (req, res) => {
   fetch(`http://pollofpolls.se`, {
     headers: {
       // chrome headers
