@@ -34,7 +34,7 @@ app.get('/polls', cache('12 hours'), (req, res) => {
   fetch(`http://pollofpolls.se`, {
     headers: {
       // chrome headers
-      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
+      'User-Agent': 'Mandatkollen.se'
     }
   })
   .then(res => res.text())
