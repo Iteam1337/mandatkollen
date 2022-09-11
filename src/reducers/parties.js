@@ -3,7 +3,7 @@ import { Parliament } from '../lib/parliament'
 const parties = [
   {id: 1, name: 'Kristdemokraterna', percentage: 6.32, seats: 22, affiliation: 'abstaining', colour: '#3163A6', abbreviation: 'KD'},
   {id: 2, name: 'Moderaterna', percentage: 19.84, seats: 70, affiliation: 'abstaining', colour: '#2F80ED', abbreviation: 'M'},
-  {id: 3, name: 'Liberalerna', percentage: 5.49, seats: 20, affiliation: 'coalition', colour: '#56CCF2', abbreviation: 'L'},
+  {id: 3, name: 'Liberalerna', percentage: 5.49, seats: 20, affiliation: 'abstaining', colour: '#56CCF2', abbreviation: 'L'},
   {id: 4, name: 'Centerpartiet', percentage: 8.61, seats: 31, affiliation: 'coalition', colour: '#27AE60', abbreviation: 'C'},
   {id: 5, name: 'Sverigedemokraterna', percentage: 17.53, seats: 62, affiliation: 'abstaining', colour: '#F2C94C', abbreviation: 'SD'},
   {id: 6, name: 'Socialdemokraterna', percentage: 28.26, seats: 100, affiliation: 'coalition', colour: '#E04B49', abbreviation: 'S'},
