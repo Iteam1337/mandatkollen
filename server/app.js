@@ -22,7 +22,7 @@ app.get('/history', cache('12 hours'), (req, res) => {
     .catch(err => res.status(500).json(err))
 })
 
-app.get('/valnatt', cache('15 minutes'), (req, res) => {
+app.get('/valnatt', cache('5 minutes'), (req, res) => {
   valnatt.getParties(req.query.year).then(valnatt => {
     const parties = valnatt.parties.reduce((parties, {percentage, abbreviation}) => Object.assign(parties, {[abbreviation]: percentage || 0}), {})
     parties.date = parties.date

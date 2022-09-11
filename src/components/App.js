@@ -23,7 +23,7 @@ class App extends Component {
       {
         name: 'coalition',
         parties: coalition,
-        title: `Koalition`,
+        title: `Vänster`,
         seats: coalition.reduce((t, party) => t + party.seats, 0),
         percentage:
           Math.round(
@@ -33,7 +33,7 @@ class App extends Component {
       {
         name: 'opposition',
         parties: opposition,
-        title: `Opposition`,
+        title: `Övriga`,
         percentage:
           Math.round(
             opposition.reduce((t, party) => t + party.seatPercentage, 0) * 1000
@@ -43,7 +43,7 @@ class App extends Component {
       {
         name: 'abstaining',
         parties: abstaining,
-        title: `Avstående`,
+        title: `Höger`,
         seats: abstaining.reduce((t, party) => t + party.seats, 0),
         percentage:
           Math.round(

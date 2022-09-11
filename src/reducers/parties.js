@@ -1,15 +1,15 @@
 import { Parliament } from '../lib/parliament'
 
 const parties = [
-  {id: 1, name: 'Kristdemokraterna', percentage: 6.32, seats: 22, affiliation: 'opposition', colour: '#3163A6', abbreviation: 'KD'},
-  {id: 2, name: 'Moderaterna', percentage: 19.84, seats: 70, affiliation: 'opposition', colour: '#2F80ED', abbreviation: 'M'},
+  {id: 1, name: 'Kristdemokraterna', percentage: 6.32, seats: 22, affiliation: 'abstaining', colour: '#3163A6', abbreviation: 'KD'},
+  {id: 2, name: 'Moderaterna', percentage: 19.84, seats: 70, affiliation: 'abstaining', colour: '#2F80ED', abbreviation: 'M'},
   {id: 3, name: 'Liberalerna', percentage: 5.49, seats: 20, affiliation: 'coalition', colour: '#56CCF2', abbreviation: 'L'},
   {id: 4, name: 'Centerpartiet', percentage: 8.61, seats: 31, affiliation: 'coalition', colour: '#27AE60', abbreviation: 'C'},
-  {id: 5, name: 'Sverigedemokraterna', percentage: 17.53, seats: 62, affiliation: 'opposition', colour: '#F2C94C', abbreviation: 'SD'},
+  {id: 5, name: 'Sverigedemokraterna', percentage: 17.53, seats: 62, affiliation: 'abstaining', colour: '#F2C94C', abbreviation: 'SD'},
   {id: 6, name: 'Socialdemokraterna', percentage: 28.26, seats: 100, affiliation: 'coalition', colour: '#E04B49', abbreviation: 'S'},
   {id: 7, name: 'Miljöpartiet', percentage: 4.41, seats: 16, affiliation: 'coalition', colour: '#219653', abbreviation: 'MP'},
-  {id: 8, name: 'Vänsterpartiet', percentage: 8, seats: 28, affiliation: 'abstaining', colour: '#B12827', abbreviation: 'V'},
-  {id: 10, name: 'Övriga', affiliation: 'abstaining', colour: '#4D4D4D', percentage: 1.07, seats: 0, abbreviation: 'Ö'}
+  {id: 8, name: 'Vänsterpartiet', percentage: 8, seats: 28, affiliation: 'opposition', colour: '#B12827', abbreviation: 'V'},
+  {id: 10, name: 'Övriga', affiliation: 'opposition', colour: '#4D4D4D', percentage: 1.07, seats: 0, abbreviation: 'Ö'}
 ]
 
 let parliament = new Parliament(parties)
