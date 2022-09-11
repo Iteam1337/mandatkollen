@@ -14,7 +14,7 @@ const finalResult = {
 }
 
 let initialState = Promise.all([polls.fetchPolls(), polls.fetchValnatt()]).then(([polls, valnatt]) => {
-  return [{ ...valnatt, institute: 'Valnatt 2022', dates: '2022-09-11' },
+  return [{ ...valnatt, institute: 'Valnatt 2022', dates: moment(valnatt.date).format('YYYY-MM-DD HH:mm') },
     ...polls,
     { institute: 'Val2018', dates: moment('2018-09-09').locale('sv').calendar(), parties: finalResult }
   /*, {institute: 'Valnatt', dates: moment(valnatt.date).locale('sv').calendar(), parties: valnatt.parties}*/]
