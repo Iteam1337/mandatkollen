@@ -1,4 +1,5 @@
 import { Parliament } from '../lib/parliament'
+import polls from '../lib/polls'
 
 const parties = [
   {id: 1, name: 'Kristdemokraterna', percentage: 6.32, seats: 22, affiliation: 'abstaining', colour: '#3163A6', abbreviation: 'KD'},
