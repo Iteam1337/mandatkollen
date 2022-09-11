@@ -4,46 +4,54 @@ const request = require('request')
 const unzip = require('unzip-stream')
 const moment = require('moment')
 
-const getPartyFromXmlNode = (
+const getPartyJson = (
   {
-    PARTI: abbreviation, 
-    MANDAT: seats, 
-    PROCENT: percentage, 
-    RÖSTER: votes
+    andelRoster: percentage,
+    antalRoster: votes,
+    fargkod: color,
+    partibeteckning: name,
+    partiforkortning: abbreviation
   }) => ({
-    abbreviation, 
-    seats: parseInt(seats, 10), 
-    percentage: parseFloat(percentage.replace(',', '.')), 
-    votes: parseInt(votes, 10)
+    name,
+    abbreviation,
+    percentage, 
+    votes,
+    color
   })
 
-function getPartiesFromXml(xmlString) {
-  const json = JSON.parse(xml.toJson(xmlString))
-  const other = Object.assign(getPartyFromXmlNode(json.VAL.NATION['ÖVRIGA_GILTIGA']), {abbreviation: 'Ö'})
-  const parties = [...json.VAL.NATION.GILTIGA.map(getPartyFromXmlNode), other]
+function getPartiesFromJson(jsonString) {
+  const json = JSON.parse(jsonString)
+  const relevantvotes = json.valomrade.rostfordelning.rosterPaverkaMandat
+  const other = {
+    ...relevantvotes.rosterOvrigaPartier,
+    partibeteckning: 'Övriga',
+    partiforkortning: 'Ö'
+  }
+  const parties = [...relevantvotes.partiRoster, other].map(getPartyJson)
 
   const totalPercentage = parties.reduce((a,b) => a + b.percentage, 0)
   const totalVotes = parties.reduce((a,b) => a + b.votes, 0)
-  const date = json.VAL.NATION.TID_RAPPORT ? moment(json.VAL.NATION.TID_RAPPORT, 'YYYYMMDDhhmmss') : moment()
-  const countPercentage = json.VAL.NATION.KLARA_VALDISTRIKT / json.VAL.NATION.ALLA_VALDISTRIKT
-  console.log('parsed valnatt:', date.toISOString(), new Date().toISOString())
-  return {parties, totalPercentage, totalVotes, countPercentage, date}
+  const date = json.senasteUppdatngstid ? moment(json.senasteUppdateringstid) : moment()
+  return {parties, totalPercentage, totalVotes, date}
 }
 
-function getParties(year = 2018) {
+const readFileStream = (file) => require('fs').createReadStream(file)
+
+function getParties(date = '20220911') {
   return new Promise((resolve, reject) => {
     console.log('Requesting data from val.se:', new Date().toISOString())
-    request(`https://data.val.se/val/val${year}/valnatt/valnatt.zip`, {headers: {'User-Agent': 'mandatkollen/1.0 (+https://mandatkollen.se)'}})
+    request(`https://resultat.val.se/resultatfiler/p/rd/Val_${date}_preliminar_00_RD.zip`, {headers: {'User-Agent': 'mandatkollen/1.0 (+https://mandatkollen.se)'}})
+    // readFileStream('data/prelresultat.zip')
     .pipe(unzip.Parse())
     .on('error', err => reject(err))
     .on('entry', entry => {
-      if (entry.path.endsWith('00R.xml')) {
+      if (entry.path.endsWith('mandatfordelning_00_RD.json')) {
         // this is the droid/file you are looking for
         let buffer = ''
-        entry.pipe(iconv.decodeStream('ISO-8859-1'))
+        entry //.pipe(iconv.decodeStream('ISO-8859-1'))
         .on('data', fragment => buffer += fragment)
         .on('finish', () => {
-          const parties = getPartiesFromXml(buffer)
+          const parties = getPartiesFromJson(buffer)
           resolve(parties)
         })
       } else {
