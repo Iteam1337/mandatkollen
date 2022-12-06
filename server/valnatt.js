@@ -31,7 +31,7 @@ function getPartiesFromJson(jsonString) {
 
   const totalPercentage = parties.reduce((a,b) => a + b.percentage, 0)
   const totalVotes = parties.reduce((a,b) => a + b.votes, 0)
-  const date = json.senasteUppdatngstid ? moment(json.senasteUppdateringstid) : moment()
+  const date = json.senasteUppdateringstid ? moment(json.senasteUppdateringstid) : moment()
   return {parties, totalPercentage, totalVotes, date}
 }
 

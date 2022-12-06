@@ -4,24 +4,16 @@ metadata:
   name: mandatkollen-ingress
   namespace: mandatkollen
   annotations:
-    kubernetes.io/ingress.class: "public"
+    kubernetes.io/ingress.class: "nginx"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
     nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
     nginx.ingress.kubernetes.io/http2-push-preload: "true"
 spec:
   tls:
   - hosts:
-    - mandatkollen.iteamdev.io
     - mandatkollen.se
     secretName: mandatkollen-prod-tls
   rules:
-  - host: mandatkollen.iteamdev.io
-    http:
-      paths:
-      - backend:
-          serviceName: mandatkollen
-          servicePort: 80
-
   - host: mandatkollen.se
     http:
       paths:

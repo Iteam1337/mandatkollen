@@ -16,7 +16,7 @@ Har du förslag på hur vi kan förbättra den här tjänsten? Kontakta christia
 
 ## Underlag
 
-Röstresultatet som visas initialt kommer från SCB valundersökning som genomfördes i maj 2017.
+Röstresultatet som visas initialt är valresultatet efter 2022 års val. Källa: val.se 
 
 ## Hjälp till
 

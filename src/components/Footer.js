@@ -31,7 +31,7 @@ const Footer = ({history}) =>
 
       <h3>Underlag</h3>
       <p>
-        Röstresultatet som visas initialt är de senaste sammanräknade siffrorna från val.se (Valnatt). Övriga opinionsundersökningar hämtas med tillstånd från <a href="https://pollofpolls.se">pollofpolls.se</a> den {history.date}
+        Röstresultatet som visas initialt är det fastställda valresultatet från år 2022 års val. Källa: val.se - Övriga opinionsundersökningar hämtas med tillstånd från <a href="https://pollofpolls.se">pollofpolls.se</a> den {history.date}
       </p>
 
       <a href="https://iteam.se">

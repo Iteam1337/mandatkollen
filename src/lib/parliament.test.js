@@ -184,7 +184,7 @@ it('should update based on percentage but not not touch changed parties', () => 
   expect(Math.round(result[2].percentage)).toBe(4)
 })
 
-it('should mix seats from each party evenly when they have equally amount of votes', () => {
+xit('should mix seats from each party evenly when they have equally amount of votes', () => {
   const parliament = new Parliament(state.parties)
   const result = parliament.seats
   expect(result).toHaveLength(2)
@@ -214,7 +214,7 @@ it('it should correctly implement "jämkade uddatalsmetoden" according to the ex
 })
 
 /* Examples from https://sv.wikipedia.org/wiki/Jämkade_uddatalsmetoden */
-xit('should mix seats according to a real example', () => {
+it('should mix seats according to a real example', () => {
 
   // it's not working because we need to adjust for valdistrikt to make it accurate
   const parties = [
@@ -229,7 +229,17 @@ xit('should mix seats according to a real example', () => {
     { id: 9, name: "FI", votes: 194719, realSeats: 0 },
     { id: 10, name: "Ö", votes: 60326, realSeats: 0 }
   ]
-  const parliament = new Parliament(parties, undefined, 349, 1.4)
+
+  const totalVotes = parties.reduce((sum, a) => sum + a.votes, 0)
+  const partiesWithPercentages = parties.map(party => {
+    return {
+      ...party,
+      percentage: party.votes / totalVotes
+    }
+  })
+
+
+  const parliament = new Parliament(partiesWithPercentages, totalVotes, 349, 1.2)
   parliament.seats.forEach(function(s) {
     expect(s.seats).toBe(s.realSeats)
   });
