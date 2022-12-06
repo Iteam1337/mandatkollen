@@ -1,22 +1,22 @@
 import polls from '../lib/polls'
 import moment from 'moment'
 const finalResult = {
-  KD: 6.32, 
-  M: 19.84, 
-  L: 5.49, 
-  C: 8.61, 
-  SD: 17.53, 
-  S: 28.26, 
-  MP: 4.41, 
-  V: 8, 
+  KD: 5.34, 
+  M: 19.10, 
+  L: 4.61, 
+  C: 6.71, 
+  SD: 20.54, 
+  S: 30.33, 
+  MP: 5.08, 
+  V: 6.75, 
   FI: 0.46, 
-  Ö: 1.07
+  Ö: 1.54
 }
 
 let initialState = Promise.all([polls.fetchPolls(), polls.fetchValnatt()]).then(([polls, valnatt]) => {
   return [{ ...valnatt, institute: 'Valnatt 2022', dates: moment(valnatt.date).format('YYYY-MM-DD HH:mm') },
     ...polls,
-    { institute: 'Val2018', dates: moment('2018-09-09').locale('sv').calendar(), parties: finalResult }
+    { institute: 'Val2022', dates: moment('2022-09-11').locale('sv').calendar(), parties: finalResult }
   /*, {institute: 'Valnatt', dates: moment(valnatt.date).locale('sv').calendar(), parties: valnatt.parties}*/]
 })
 
