@@ -23,7 +23,7 @@ class App extends Component {
       .filter((a) => a.affiliation === 'opposition')
       .sort((a, b) => b.seats - a.seats)
     const stod = parties
-      .filter((a) => a.affiliation === 'stöd')
+      .filter((a) => a.affiliation === 'stod')
       .sort((a, b) => b.seats - a.seats)
 
     return [

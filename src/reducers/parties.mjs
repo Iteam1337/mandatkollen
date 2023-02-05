@@ -43,7 +43,7 @@ const parties = [
     name: 'Sverigedemokraterna',
     percentage: 20.54,
     seats: 73,
-    affiliation: 'stöd',
+    affiliation: 'stod',
     colour: '#F2C94C',
     abbreviation: 'SD',
   },
