@@ -5,7 +5,7 @@ metadata:
   namespace: mandatkollen
 spec:
   ports:
-  - port: 80
+    - port: 80
   type: LoadBalancer
   selector:
     app: mandatkollen
@@ -25,7 +25,7 @@ spec:
         app: mandatkollen
     spec:
       containers:
-      - name: mandatkollen
-        image: iteam1337/mandatkollen
-        ports:
-        - containerPort: 80
+        - name: mandatkollen
+          image: iteam1337/mandatkollen
+          ports:
+            - containerPort: 80

@@ -1,7 +1,7 @@
-import React from 'pureact'
-import './Footer.css'
+import React from "pureact"
+import "./Footer.css"
 
-const Footer = ({history}) =>
+const Footer = ({ history }) => (
   <div className="App-footer">
     <div className="App-footer-inner">
       <h2>Om Mandatkollen</h2>
@@ -31,24 +31,20 @@ const Footer = ({history}) =>
 
       <h3>Underlag</h3>
       <p>
-        Röstresultatet som visas initialt är det fastställda valresultatet från år 2022 års val. Källa: val.se - Övriga opinionsundersökningar hämtas med tillstånd från <a href="https://pollofpolls.se">pollofpolls.se</a> den {history.date}
+        Röstresultatet som visas initialt är det fastställda valresultatet från
+        år 2022 års val. Källa: val.se - Övriga opinionsundersökningar hämtas
+        med tillstånd från <a href="https://pollofpolls.se">pollofpolls.se</a>{" "}
+        den {history.date}
       </p>
 
       <a href="https://iteam.se">
-        <img
-          alt="Iteam logo"
-          className="logo"
-          src="/iteam_white.png"
-        />
+        <img alt="Iteam logo" className="logo" src="/iteam_white.png" />
       </a>
       <a href="https://lennoxpr.se">
-        <img
-          alt="Lennox PR logo"
-          className="logo"
-          src="/lennoxpr.png"
-        />
+        <img alt="Lennox PR logo" className="logo" src="/lennoxpr.png" />
       </a>
     </div>
   </div>
+)
 
 export default Footer

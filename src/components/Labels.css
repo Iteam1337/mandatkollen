@@ -1,10 +1,10 @@
 .legend {
-    display: block;
-    margin-top:10px;
+  display: block;
+  margin-top: 10px;
 }
 
 fieldset {
-  padding:5px;
+  padding: 5px;
   display: inline-table;
   border: 1px solid #8e8e8e;
   border-radius: 5px;
@@ -15,77 +15,76 @@ fieldset ul {
 }
 
 .labels {
-    list-style-type: none;
-    padding-left: 0;
-    margin: 0;
-    white-space: nowrap;
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+  white-space: nowrap;
 }
 .labels li {
-    border: 1px transparent;
-    padding: 2px;
-    display: inline-table;
-    flex-flow: column;
+  border: 1px transparent;
+  padding: 2px;
+  display: inline-table;
+  flex-flow: column;
 }
 
 .labels .bar {
-    color: #fff;
-    height: 23px;
-    text-transform: uppercase;
-    width: 100%
+  color: #fff;
+  height: 23px;
+  text-transform: uppercase;
+  width: 100%;
 }
 
 .labels .value {
-    color: #8e8e8e;
-    text-align: center;
-    margin: 10px;
+  color: #8e8e8e;
+  text-align: center;
+  margin: 10px;
 }
 
 .labels:hover .handle {
-    color: rgba(255,255,255,0.6);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .labels .handle {
-    color: rgba(255,255,255,0);
-    right: 0;
+  color: rgba(255, 255, 255, 0);
+  right: 0;
 }
 
-
 .s .bar {
-    background: #c13b38;
+  background: #c13b38;
 }
 
 .m .bar {
-    background: #88c7d9
+  background: #88c7d9;
 }
 
 .sd .bar {
-    background: #e7d960
+  background: #e7d960;
 }
 
 .kd .bar {
-    background: #366da3
+  background: #366da3;
 }
 
 .v .bar {
-    background: #992522
+  background: #992522;
 }
 
 .l .bar {
-    background: #378cab
+  background: #378cab;
 }
 
 .c .bar {
-    background: #78ae5a
+  background: #78ae5a;
 }
 
 .mp .bar {
-    background: #acc768
+  background: #acc768;
 }
 
 .fi .bar {
-    background: #fab
+  background: #fab;
 }
 
 .ö .bar {
-    background: #000
+  background: #000;
 }

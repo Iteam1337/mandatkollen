@@ -35,7 +35,7 @@ input[type="range"]:focus {
   width: 25px;
 }
 
-.App-settings input[type="range"].polls{
+.App-settings input[type="range"].polls {
   width: 100%;
 }
 
@@ -50,35 +50,35 @@ input[type="range"]:focus {
 }
 
 .slider-s::-webkit-slider-thumb {
-  background: #E04B49;
+  background: #e04b49;
 }
 
 .slider-s::-webkit-slider-thumb {
-  background: #E04B49;
+  background: #e04b49;
 }
 
 .slider-m::-webkit-slider-thumb {
-  background: #2F80ED;
+  background: #2f80ed;
 }
 
 .slider-sd::-webkit-slider-thumb {
-  background: #F2C94C;
+  background: #f2c94c;
 }
 
 .slider-kd::-webkit-slider-thumb {
-  background: #3163A6;
+  background: #3163a6;
 }
 
 .slider-v::-webkit-slider-thumb {
-  background: #B12827;
+  background: #b12827;
 }
 
 .slider-l::-webkit-slider-thumb {
-  background: #56CCF2;
+  background: #56ccf2;
 }
 
 .slider-c::-webkit-slider-thumb {
-  background: #27AE60;
+  background: #27ae60;
 }
 
 .slider-mp::-webkit-slider-thumb {
@@ -86,11 +86,11 @@ input[type="range"]:focus {
 }
 
 .slider-fi::-webkit-slider-thumb {
-  background: #D96B97;
+  background: #d96b97;
 }
 
 .slider-ö::-webkit-slider-thumb {
-  background: #4D4D4D;
+  background: #4d4d4d;
 }
 
 /* FIREFOX */
@@ -113,35 +113,35 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .slider-s::-moz-range-thumb {
-  background: #E04B49;
+  background: #e04b49;
 }
 
 .slider-s::-moz-range-thumb {
-  background: #E04B49;
+  background: #e04b49;
 }
 
 .slider-m::-moz-range-thumb {
-  background: #2F80ED;
+  background: #2f80ed;
 }
 
 .slider-sd::-moz-range-thumb {
-  background: #F2C94C;
+  background: #f2c94c;
 }
 
 .slider-kd::-moz-range-thumb {
-  background: #3163A6;
+  background: #3163a6;
 }
 
 .slider-v::-moz-range-thumb {
-  background: #B12827;
+  background: #b12827;
 }
 
 .slider-l::-moz-range-thumb {
-  background: #56CCF2;
+  background: #56ccf2;
 }
 
 .slider-c::-moz-range-thumb {
-  background: #27AE60;
+  background: #27ae60;
 }
 
 .slider-mp::-moz-range-thumb {
@@ -149,40 +149,40 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .slider-fi::-moz-range-thumb {
-  background: #D96B97;
+  background: #d96b97;
 }
 
 .slider-ö::-moz-range-thumb {
-  background: #4D4D4D;
+  background: #4d4d4d;
 }
 
 .s {
-  color: #E04B49;
+  color: #e04b49;
 }
 .m {
-  color: #2F80ED;
+  color: #2f80ed;
 }
 .sd {
-  color: #F2C94C;
+  color: #f2c94c;
 }
-.kd  {
-  color: #3163A6;
+.kd {
+  color: #3163a6;
 }
 .v {
-  color: #B12827;
+  color: #b12827;
 }
 .l {
-  color: #56CCF2;
+  color: #56ccf2;
 }
 .c {
-  color: #27AE60;
+  color: #27ae60;
 }
 .mp {
   color: #219653;
 }
 .fi {
-  color: #D96B97;
+  color: #d96b97;
 }
 .ö {
-  color: #4D4D4D;
+  color: #4d4d4d;
 }

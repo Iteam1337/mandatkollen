@@ -6,4 +6,3 @@ elastic:
   image: elasticsearch
   ports:
     - 9200:9200
-    
