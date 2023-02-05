@@ -1,4 +1,6 @@
-import React from "pureact"
+/** @jsx pureact.createElement */
+import pureact from 'pureact'
+
 import "./Footer.css"
 
 const Footer = ({ history }) => (
@@ -38,10 +40,10 @@ const Footer = ({ history }) => (
       </p>
 
       <a href="https://iteam.se">
-        <img alt="Iteam logo" className="logo" src="/iteam_white.png" />
+        <img alt="Iteam logo" className="logo" src="/images/iteam_white.png" />
       </a>
       <a href="https://lennoxpr.se">
-        <img alt="Lennox PR logo" className="logo" src="/lennoxpr.png" />
+        <img alt="Lennox PR logo" className="logo" src="/images/lennoxpr.png" />
       </a>
     </div>
   </div>

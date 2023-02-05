@@ -1,11 +1,13 @@
-import React, { render } from "pureact"
-import "./index.css"
-import "typeface-miriam-libre"
-import App from "./components/App"
-import store from "./store"
-import { polyfill } from "mobile-drag-drop"
-import "mobile-drag-drop/default.css"
-import polls from "./lib/polls"
+/** @jsx pureact.createElement */
+
+import pureact, { render } from 'pureact'
+import './index.css'
+import 'typeface-miriam-libre'
+import App from './components/App'
+import store from './store.mjs'
+import { polyfill } from 'mobile-drag-drop'
+// import 'npm_package/mobile-drag-drop/default.css'
+import polls from './lib/polls.mjs'
 
 polyfill()
 
@@ -15,7 +17,7 @@ store.subscribe(() => {
   const state = store.getState()
   oldTree = render(
     <App {...state} />,
-    document.getElementById("mandatkollen"),
+    document.getElementById('mandatkollen'),
     oldTree
   )
 })

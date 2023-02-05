@@ -217,7 +217,7 @@
 }
 
 .party:after {
-  content: url(/drag-icon.svg);
+  content: url(/images/drag-icon.svg);
   position: absolute;
   right: 15px;
   top: 24px;

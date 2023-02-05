@@ -1,4 +1,4 @@
-import polls from "../lib/polls"
+import polls from '../lib/polls.mjs'
 
 let initialState = polls.fetchHistory().then((history) => {
   return history[0]
@@ -8,8 +8,8 @@ let initialState = polls.fetchHistory().then((history) => {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case "CHOOSE_BASE_VOTES": {
-      console.log("choose_base_vote", action)
+    case 'CHOOSE_BASE_VOTES': {
+      console.log('choose_base_vote', action)
       return Object.assign(state, { date: action.votes.date })
     }
     default:

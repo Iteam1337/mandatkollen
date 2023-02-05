@@ -1,4 +1,6 @@
-import React from "pureact"
+/** @jsx pureact.createElement */
+import pureact from 'pureact'
+
 import "./Switch.css"
 
 const Switch = ({ checked, onchange }) => (

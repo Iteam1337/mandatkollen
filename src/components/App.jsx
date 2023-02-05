@@ -1,33 +1,34 @@
-import React, { Component } from "pureact"
+/** @jsx pureact.createElement */
+import pureact from 'pureact'
+import { Component } from 'pureact'
 import {
   dragOver,
   dropUpdate,
   dragEnter,
   dragLeave,
   dragStart,
-} from "../lib/draganddrop"
-import "./App.css"
-import Seating from "./Seating"
-import Sliders from "./Sliders"
-import Polls from "./Polls"
-import History from "./History"
-import Footer from "./Footer"
+} from '../lib/draganddrop'
+import './App.css'
+import Seating from './Seating'
+import Sliders from './Sliders'
+import Polls from './Polls'
+import Footer from './Footer'
 
 class App extends Component {
   sumGroups(parties) {
     const regering = parties
-      .filter((a) => a.affiliation === "regering")
+      .filter((a) => a.affiliation === 'regering')
       .sort((a, b) => b.seats - a.seats)
     const opposition = parties
-      .filter((a) => a.affiliation === "opposition")
+      .filter((a) => a.affiliation === 'opposition')
       .sort((a, b) => b.seats - a.seats)
     const stod = parties
-      .filter((a) => a.affiliation === "stöd")
+      .filter((a) => a.affiliation === 'stöd')
       .sort((a, b) => b.seats - a.seats)
 
     return [
       {
-        name: "regering",
+        name: 'regering',
         parties: regering,
         title: `Regering`,
         seats: regering.reduce((t, party) => t + party.seats, 0),
@@ -37,7 +38,7 @@ class App extends Component {
           ) / 10,
       },
       {
-        name: "opposition",
+        name: 'opposition',
         parties: opposition,
         title: `Övriga`,
         percentage:
@@ -47,7 +48,7 @@ class App extends Component {
         seats: opposition.reduce((t, party) => t + party.seats, 0),
       },
       {
-        name: "stod",
+        name: 'stod',
         parties: stod,
         title: `Stödpartier`,
         seats: stod.reduce((t, party) => t + party.seats, 0),
@@ -71,7 +72,7 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <div className="App-header-inner">
-            <img alt="Mandatkollen logotyp" src="/icon.png" />
+            <img alt="Mandatkollen logotyp" src="/images/icon.png" />
             <h2>Mandatkollen</h2>
           </div>
         </div>
@@ -81,7 +82,7 @@ class App extends Component {
           <div className="LegendContainer">
             {legendGroups.map(({ name, parties, title, seats, percentage }) => (
               <div
-                className={`LegendGroup${groups[name].hover ? " Drop" : ""}`}
+                className={`LegendGroup${groups[name]?.hover ? ' Drop' : ''}`}
                 dragenter={(e) => e.preventDefault()}
                 ondragover={dragOver}
                 ondrop={dropUpdate(name)}
@@ -102,17 +103,17 @@ class App extends Component {
                     <div
                       key={abbreviation}
                       className={[
-                        "party",
-                        eligable ? "eligable" : "below",
-                      ].join(" ")}
+                        'party',
+                        eligable ? 'eligable' : 'below',
+                      ].join(' ')}
                       draggable="true"
                       ondragstart={dragStart(abbreviation)}
                     >
                       <i className={abbreviation.toLowerCase()} />
                       <h1 className="wide">{name}</h1>
                       <h1 className="small">{abbreviation}</h1>
-                      <h2 className="small">{seats || "0"}</h2>
-                      <h2 className="wide">{seats || "0"} mandat</h2>
+                      <h2 className="small">{seats || '0'}</h2>
+                      <h2 className="wide">{seats || '0'} mandat</h2>
                     </div>
                   )
                 )}
@@ -133,7 +134,7 @@ class App extends Component {
             />
             {totalPercentage < 99.6 || totalPercentage > 100.4 ? (
               <p className="invalid">
-                Vänligen justera manuellt. Totalt antal procent:{" "}
+                Vänligen justera manuellt. Totalt antal procent:{' '}
                 {totalPercentage}%
               </p>
             ) : null}

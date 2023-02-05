@@ -1,12 +1,13 @@
 const initialState = {
-  coalition: { hover: false, count: 0 },
-  abstaining: { hover: false, count: 0 },
+  regering: { hover: false, count: 0 },
   opposition: { hover: false, count: 0 },
+  stod: { hover: false, count: 0 },
 }
 
 export default function (state = initialState, action) {
+  console.log('action', action)
   switch (action.type) {
-    case "GROUP_ENTER": {
+    case 'GROUP_ENTER': {
       const count = state[action.group].count + 1
       const newState = {
         ...state,
@@ -14,7 +15,7 @@ export default function (state = initialState, action) {
       }
       return newState
     }
-    case "GROUP_LEAVE": {
+    case 'GROUP_LEAVE': {
       const count = state[action.group].count - 1
       return {
         ...state,

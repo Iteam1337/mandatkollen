@@ -1,9 +1,11 @@
-import React from "pureact"
-import store from "../store"
-import "./History.css"
+/** @jsx pureact.createElement */
+import pureact from 'pureact'
+
+import store from '../store.mjs'
+import './History.css'
 
 const chooseBaseVotes = (votes) =>
-  store.dispatch({ type: "CHOOSE_BASE_VOTES", votes })
+  store.dispatch({ type: 'CHOOSE_BASE_VOTES', votes })
 
 const History = ({ history }) => {
   return (

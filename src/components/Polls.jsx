@@ -1,9 +1,12 @@
-import React from "pureact"
-import store from "../store"
-import "./Polls.css"
+/** @jsx pureact.createElement */
+import pureact from 'pureact'
+
+import React from 'pureact'
+import store from '../store.mjs'
+import './Polls.css'
 
 const chooseBaseVotes = (votes) =>
-  store.dispatch({ type: "CHOOSE_BASE_VOTES", votes })
+  store.dispatch({ type: 'CHOOSE_BASE_VOTES', votes })
 
 const Polls = ({ polls }) => {
   return (

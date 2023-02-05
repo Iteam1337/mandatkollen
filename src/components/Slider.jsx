@@ -1,4 +1,6 @@
-import React from "pureact"
+/** @jsx pureact.createElement */
+import pureact from 'pureact'
+
 import "./Slider.css"
 
 export default ({ party, onchange }) => (

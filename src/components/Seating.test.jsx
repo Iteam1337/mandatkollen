@@ -1,5 +1,5 @@
-import React, { render } from "pureact"
-import Seating from "./Seating"
+/** @jsx pureact.createElement */
+import Seating from './Seating'
 
 const state = {
   parties: [
@@ -8,6 +8,6 @@ const state = {
   ],
 }
 
-it("renders without crashing", () => {
+it('renders without crashing', () => {
   const result = <Seating parties={state.parties} />
 })

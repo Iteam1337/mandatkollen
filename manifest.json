@@ -3,8 +3,8 @@
   "name": "Mandatkollen",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "192x192",
+      "src": "images/favicon.png",
+      "sizes": "64x64",
       "type": "image/png"
     }
   ],
