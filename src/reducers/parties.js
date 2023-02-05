@@ -6,7 +6,7 @@ const parties = [
   {id: 2, name: 'Moderaterna', percentage: 19.10, seats: 68, affiliation: 'regering', colour: '#2F80ED', abbreviation: 'M'},
   {id: 3, name: 'Liberalerna', percentage: 4.61, seats: 16, affiliation: 'regering', colour: '#56CCF2', abbreviation: 'L'},
   {id: 4, name: 'Centerpartiet', percentage: 6.71, seats: 24, affiliation: 'opposition', colour: '#27AE60', abbreviation: 'C'},
-  {id: 5, name: 'Sverigedemokraterna', percentage: 20.54, seats: 73, affiliation: 'abstaining', colour: '#F2C94C', abbreviation: 'SD'},
+  {id: 5, name: 'Sverigedemokraterna', percentage: 20.54, seats: 73, affiliation: 'stöd', colour: '#F2C94C', abbreviation: 'SD'},
   {id: 6, name: 'Socialdemokraterna', percentage: 30.33, seats: 107, affiliation: 'opposition', colour: '#E04B49', abbreviation: 'S'},
   {id: 7, name: 'Miljöpartiet', percentage: 5.08, seats: 18, affiliation: 'opposition', colour: '#219653', abbreviation: 'MP'},
   {id: 8, name: 'Vänsterpartiet', percentage: 6.75, seats: 24, affiliation: 'opposition', colour: '#B12827', abbreviation: 'V'},

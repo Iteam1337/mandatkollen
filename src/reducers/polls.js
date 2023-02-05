@@ -13,11 +13,12 @@ const finalResult = {
   Ö: 1.54
 }
 
-let initialState = Promise.all([polls.fetchPolls(), polls.fetchValnatt()]).then(([polls, valnatt]) => {
-  return [{ ...valnatt, institute: 'Valnatt 2022', dates: moment(valnatt.date).format('YYYY-MM-DD HH:mm') },
+let initialState = Promise.all([polls.fetchPolls()/*, polls.fetchValnatt()*/]).then(([polls, valnatt]) => {
+  return [
+    /*{ ...valnatt, institute: 'Valnatt 2022', dates: moment(valnatt.date).format('YYYY-MM-DD HH:mm') },*/
     ...polls,
-    { institute: 'Val2022', dates: moment('2022-09-11').locale('sv').calendar(), parties: finalResult }
-  /*, {institute: 'Valnatt', dates: moment(valnatt.date).locale('sv').calendar(), parties: valnatt.parties}*/]
+    { institute: 'Val 2022', dates: moment('2022-09-11').locale('sv').calendar(), parties: finalResult }
+  ]
 })
 
 export default function (state = initialState, action) {

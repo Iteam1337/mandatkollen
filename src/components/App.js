@@ -9,25 +9,25 @@ import Footer from './Footer'
 
 class App extends Component {
   sumGroups(parties) {
-    const coalition = parties
-      .filter(a => a.affiliation === 'coalition')
+    const regering = parties
+      .filter(a => a.affiliation === 'regering')
       .sort((a, b) => b.seats - a.seats)
     const opposition = parties
       .filter(a => a.affiliation === 'opposition')
       .sort((a, b) => b.seats - a.seats)
-    const abstaining = parties
-      .filter(a => a.affiliation === 'abstaining')
+    const stod = parties
+      .filter(a => a.affiliation === 'stöd')
       .sort((a, b) => b.seats - a.seats)
 
     return [
       {
-        name: 'coalition',
-        parties: coalition,
-        title: `Vänster`,
-        seats: coalition.reduce((t, party) => t + party.seats, 0),
+        name: 'regering',
+        parties: regering,
+        title: `Regering`,
+        seats: regering.reduce((t, party) => t + party.seats, 0),
         percentage:
           Math.round(
-            coalition.reduce((t, party) => t + party.seatPercentage, 0) * 1000
+            regering.reduce((t, party) => t + party.seatPercentage, 0) * 1000
           ) / 10
       },
       {
@@ -41,13 +41,13 @@ class App extends Component {
         seats: opposition.reduce((t, party) => t + party.seats, 0)
       },
       {
-        name: 'abstaining',
-        parties: abstaining,
-        title: `Höger`,
-        seats: abstaining.reduce((t, party) => t + party.seats, 0),
+        name: 'stod',
+        parties: stod,
+        title: `Stödpartier`,
+        seats: stod.reduce((t, party) => t + party.seats, 0),
         percentage:
           Math.round(
-            abstaining.reduce((t, party) => t + party.seatPercentage, 0) * 1000
+            stod.reduce((t, party) => t + party.seatPercentage, 0) * 1000
           ) / 10
       }
     ]
