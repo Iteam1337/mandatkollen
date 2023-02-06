@@ -40,6 +40,4 @@ jobs:
 
       - name: build-and-deploy
         run: |
-          docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
-          skaffold run
-          docker logout
+          skaffold run --default-repo registry.iteam.services
