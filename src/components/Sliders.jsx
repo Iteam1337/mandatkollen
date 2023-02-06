@@ -9,10 +9,10 @@ const Sliders = ({ parties, editCoalitions }) => (
     <section
       ondragenter={dragEnter}
       ondragover={dragOver}
-      ondrop={dropUpdate('coalition')}
+      ondrop={dropUpdate('regering')}
     >
       {parties
-        .filter((x) => x.affiliation === 'coalition')
+        .filter((x) => x.affiliation === 'regering')
         .map((party) => (
           <Mixer party={party} editCoalitions={editCoalitions} />
         ))}
@@ -31,10 +31,10 @@ const Sliders = ({ parties, editCoalitions }) => (
     <section
       ondragenter={dragEnter}
       ondragover={dragOver}
-      ondrop={dropUpdate('abstaining')}
+      ondrop={dropUpdate('stod')}
     >
       {parties
-        .filter((x) => x.affiliation === 'abstaining')
+        .filter((x) => x.affiliation === 'stod')
         .map((party) => (
           <Mixer party={party} editCoalitions={editCoalitions} />
         ))}
