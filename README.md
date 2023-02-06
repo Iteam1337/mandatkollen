@@ -21,6 +21,17 @@ Röstresultatet som visas initialt är valresultatet efter 2022 års val. Källa
 
 Om du har förbättringsförslag kan du antingen lägga till en [issue](../../issues/) eller göra en [pull request](../../pulls/) via Github.
 
+## Utvecklingsmiljö
+
+För att få igång utecklingsmiljön lokalt behöver du bara köra följande kommandon
+
+    npm install
+    npm run dev
+
+Vi använder oss av Vite som bygger och slår ihop alla js och css filer till ett paket. I produktion körs applikationen i Docker i Kubernetes och den miljön konfigureras enklast genom att köra följande:
+
+    skaffold run
+
 ## Avsändare
 
 <img src="https://iteam.se/content/images/iteam_black.png" width="200"/>
