@@ -23,7 +23,8 @@
     "dev": "vite serve",
     "start": "node server",
     "build": "vite build",
-    "test": "npx jest scripts/test.js --env=jsdom"
+    "test": "npx jest scripts/test.js --env=jsdom",
+    "release": "npm version minor && skaffold build --default-repo=registry.iteam.services && skaffold render > kustomize/latest.yaml && git add kustomize && git commit --amend --no-edit && git push"
   },
   "jest": {
     "collectCoverageFrom": [
