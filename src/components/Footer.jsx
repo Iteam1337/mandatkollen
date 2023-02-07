@@ -3,7 +3,7 @@ import pureact from 'pureact'
 
 import "./Footer.css"
 
-const Footer = ({ history }) => (
+const Footer = () => (
   <div className="App-footer">
     <div className="App-footer-inner">
       <h2>Om Mandatkollen</h2>
@@ -35,8 +35,7 @@ const Footer = ({ history }) => (
       <p>
         Röstresultatet som visas initialt är det fastställda valresultatet från
         år 2022 års val. Källa: val.se - Övriga opinionsundersökningar hämtas
-        med tillstånd från <a href="https://pollofpolls.se">pollofpolls.se</a>{" "}
-        den {history.date}
+        med tillstånd från <a href="https://pollofpolls.se">pollofpolls.se</a>.
       </p>
 
       <a href="https://iteam.se">

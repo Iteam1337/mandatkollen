@@ -61,7 +61,7 @@ class App extends Component {
   }
 
   render() {
-    const { parties, coalitions, groups, history, polls } = this.props
+    const { parties, coalitions, groups, polls } = this.props
     const legendGroups = this.sumGroups(parties)
     const allParties = legendGroups.reduce((a, b) => a.concat(b.parties), [])
     const totalPercentage = Math.round(
@@ -143,7 +143,7 @@ class App extends Component {
           <Polls polls={polls} />
           <small>Källa: pollofpolls.se</small>
         </div>
-        <Footer history={history} />
+        <Footer/>
       </div>
     )
   }
