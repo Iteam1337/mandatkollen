@@ -28,16 +28,12 @@ jobs:
           chmod +x ./kubectl
           sudo mv ./kubectl /usr/local/bin/kubectl
 
-      - name: create kubeconfig
-        run: |
-          mkdir ${HOME}/.kube
-          cp k8s/config.yaml ${HOME}/.kube/config
-          cd ${HOME}/.kube
-          sed -i 's;$KUBE_CLUSTER_SERVER;${{ secrets.KUBE_CLUSTER_SERVER }};g' config
-          sed -i 's;$KUBE_CLUSTER_CERTIFICATE;${{ secrets.KUBE_CLUSTER_CERTIFICATE }};g' config
-          sed -i 's;$KUBE_CERTIFICATE_DATA;${{ secrets.KUBE_CERTIFICATE_DATA }};g' config
-          sed -i 's;$KUBE_KEY_DATA;${{ secrets.KUBE_KEY_DATA }};g' config
-
       - name: build-and-deploy
         run: |
-          skaffold run --default-repo registry.iteam.services
+          npm version minor
+          skaffold build --default-repo registry.iteam.services
+          skaffold render --default-repo registry.iteam.services > kustomize/latest.yaml
+          git add kustomize/latest.yaml
+          git commit --amend --no-edit
+          git push
+
