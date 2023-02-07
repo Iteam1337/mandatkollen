@@ -6,7 +6,9 @@ Du får gärna använda skärmdumpar från Mandatkollen i egna poster och artikl
 Mandatkollen är utvecklad av Iteam och Lennox PR.
 Vill du använda Mandatkollen som en inbäddad funktion på din hemsida eller nyhetstjänst? Kontakta robert.svensson@lennoxpr.se
 
-## Så funkar det:
+[![Build & Deploy to Dev](https://github.com/Iteam1337/mandatkollen/actions/workflows/publish.yml/badge.svg)](https://github.com/Iteam1337/mandatkollen/actions/workflows/publish.yml)
+
+## Så funkar det
 
 I visualiseringen fördelas mandaten över Riksdagens 349 platser utifrån ett hypotetiskt valresultat som du bestämmer. Om du flyttar ett reglage för ett parti så anpassas alla de andra partiernas andelar proportionerligt.
 Om ett parti hamnar under riksdagsspärren på 4 procent så tilldelas de inga mandat.
