@@ -18,6 +18,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v2
+       
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: install dependencies
         run: |
@@ -30,6 +31,8 @@ jobs:
 
       - name: build-and-deploy
         run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
           npm version minor
           skaffold build --default-repo registry.iteam.services
           skaffold render --default-repo registry.iteam.services > kustomize/latest.yaml
