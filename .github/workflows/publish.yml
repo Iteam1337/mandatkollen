@@ -18,20 +18,19 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v2
-       
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: install dependencies
-        run: |
-          curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
-          chmod +x skaffold
-          sudo mv skaffold /usr/local/bin
-          curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-          chmod +x ./kubectl
-          sudo mv ./kubectl /usr/local/bin/kubectl
-
-      - name: build-and-deploy
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          npm run release
+      - name: Build Docker images
+        uses: hiberbee/github-action-skaffold@1.20.0
+        with:
+          command: build
+          repository: registry.iteam.services
+      - name: Build Docker images
+        uses: hiberbee/github-action-skaffold@1.20.0
+        with:
+          command: render --output=kustomize/latest.yaml
+          repository: registry.iteam.services
+      - name: Push to git
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Release to Flux
+          file_pattern: kustomize/latest.yaml
 
