@@ -20,13 +20,14 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v3
 
-      - name: Cache layers
-        uses: actions/cache@v3
+      - name: Cache skaffold image builds & config
+        uses: actions/cache@v2
         with:
-          path: "${{ github.workspace }}/.skaffold/cache"
-          key: skaffold-${{ hashFiles('**/cache') }}
+          path: ~/.skaffold/
+          key: fixed-${{ github.sha }}
           restore-keys: |
-            skaffold-
+            fixed-${{ github.sha }}
+            fixed-
       
       - name: Run Skaffold pipeline as command
         uses: hiberbee/github-action-skaffold@latest
