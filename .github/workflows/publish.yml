@@ -37,11 +37,17 @@ jobs:
 
       - name: build-and-deploy
         run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git status
+          git diff
+          npm version patch
           npm run release
 
       - name: Push to git
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Release to Flux
+          amend: true
+          commit_message: "chore: release ${{ github.ref_name }}"
           file_pattern: kustomize/latest.yaml
 
