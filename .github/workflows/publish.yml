@@ -28,6 +28,10 @@ jobs:
           restore-keys: |
             skaffold-
       
+      - name: build-and-deploy
+        run: |
+          npm version patch 
+
       - name: Run Skaffold pipeline as command
         uses: hiberbee/github-action-skaffold@latest
         id: build
@@ -37,11 +41,6 @@ jobs:
 
       - name: build-and-deploy
         run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          git status
-          git diff
-          npm version patch
           npm run release
 
       - name: Push to git
