@@ -38,8 +38,8 @@ jobs:
       - name: Run Skaffold with output to yaml
         uses: hiberbee/github-action-skaffold@latest
         with:
-          command: render
-          file-output: kustomize/latest.yaml
+          command: render -o kustomize/latest.yaml
+          cache: false
           repository: registry.iteam.services
 
       - name: Push to git
