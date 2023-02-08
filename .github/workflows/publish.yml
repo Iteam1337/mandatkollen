@@ -43,6 +43,8 @@ jobs:
 
       - name: build-and-deploy
         run: |
+          git diff
+          git status
           npm run release
 
       - name: Push to git
