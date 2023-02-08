@@ -32,10 +32,22 @@ spec:
         app: mandatkollen
     spec:
       containers:
-      - image: registry.iteam.services/iteam1337_mandatkollen:v0.6.0@sha256:2ea033158243d71e2c1843c1a3e9a71f3e547df33ad55c4ab7455ef4868cbb1b
+      - image: registry.iteam.services/iteam1337_mandatkollen:974d878-dirty@sha256:82c28d45c5c0b0f7ee76775f525ddc7aca5064872a77e25b4b6fdddd8a27cdd3
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
         name: mandatkollen
         ports:
         - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
