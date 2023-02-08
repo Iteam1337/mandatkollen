@@ -17,17 +17,31 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: actions/checkout@v2
-      - name: Build Docker images
-        uses: hiberbee/github-action-skaffold@1.20.0
+      - name: Checkout sources
+        uses: actions/checkout@v3
+
+      - name: Cache layers
+        uses: actions/cache@v3
+        with:
+          path: "${{ github.workspace }}/.skaffold/cache"
+          key: skaffold-${{ hashFiles('**/cache') }}
+          restore-keys: |
+            skaffold-
+      
+      - name: Run Skaffold pipeline as command
+        uses: hiberbee/github-action-skaffold@latest
+        id: build
         with:
           command: build
           repository: registry.iteam.services
-      - name: Build Docker images
-        uses: hiberbee/github-action-skaffold@1.20.0
+
+      - name: Run Skaffold with output to yaml
+        uses: hiberbee/github-action-skaffold@latest
         with:
-          command: render --output=kustomize/latest.yaml
+          command: render
+          file-output: kustomize/latest.yaml
           repository: registry.iteam.services
+
       - name: Push to git
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
