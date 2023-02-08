@@ -33,12 +33,13 @@ jobs:
         id: build
         with:
           command: build
+          cache-file: .skaffold/cache
           repository: registry.iteam.services
 
       - name: build-and-deploy
         run: |
           npm run release
-          
+
       - name: Push to git
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
