@@ -7,8 +7,6 @@ build:
     - image: iteam1337/mandatkollen
       platforms:
         - linux/amd64
-  tagPolicy:
-    sha256: {}
   local:
     tryImportMissing: true
 
