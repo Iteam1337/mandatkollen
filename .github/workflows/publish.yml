@@ -28,18 +28,20 @@ jobs:
           restore-keys: |
             fixed-${{ github.sha }}
             fixed-
+
+      - name: Update minor version
+        run: |
+          npm version minor
       
       - name: Run Skaffold pipeline as command
         uses: hiberbee/github-action-skaffold@latest
         id: build
         with:
           command: build
-          cache-file: .skaffold/cache
           repository: registry.iteam.services
 
       - name: build-and-deploy
         run: |
-          npm version patch
           npm run release
 
       - name: Push to git
