@@ -35,8 +35,6 @@ jobs:
       
       - name: Add skaffold
         uses: hiberbee/github-action-skaffold@latest
-        with:
-          version: v1.21.0
 
       - name: build-and-deploy
         run: |
