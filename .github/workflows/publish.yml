@@ -39,8 +39,8 @@ jobs:
 
       - name: build-and-deploy
         run: |
-          git add .
-          git stash
+          git status
+          git diff
           npm run release
 
       - name: Push to git
