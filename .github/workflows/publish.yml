@@ -47,9 +47,9 @@ jobs:
 
           npm version minor
           skaffold render --default-repo=registry.iteam.services --digest-source=tag -o kustomize/latest.yaml
-
-      - name: Push to git
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Release to Flux
-          file_pattern: kustomize/latest.yaml
+      
+      - name: Push new manifest to FluxCD
+        run: |  
+          git add kustomize/latest.yaml
+          git commit --amend --no-edit
+          git push
