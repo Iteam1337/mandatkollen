@@ -36,11 +36,17 @@ jobs:
 
           npm version minor
       
-      - name: Add skaffold
+      - name: Build with Skaffold
         uses: hiberbee/github-action-skaffold@latest
         with:
           command: build
-          output: kustomize/latest.yaml
+          repository: registry.iteam.services
+          digest-source: tag
+
+      - name: Render output
+        uses: hiberbee/github-action-skaffold@latest
+        with:
+          command: render --output kustomize/latest.yaml
           repository: registry.iteam.services
           digest-source: tag
       
