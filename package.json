@@ -24,7 +24,7 @@
     "start": "node server",
     "build": "vite build",
     "test": "npx jest scripts/test.js --env=jsdom",
-    "release": "skaffold render --default-repo=registry.iteam.services --ignoreChanges=true > kustomize/latest.yaml"
+    "release": "skaffold render --default-repo=registry.iteam.services > kustomize/latest.yaml"
   },
   "jest": {
     "collectCoverageFrom": [
