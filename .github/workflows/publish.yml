@@ -41,6 +41,7 @@ jobs:
         with:
           command: build
           repository: registry.iteam.services
+          digest-source: tag
           
       - name: build-and-deploy
         run: |
