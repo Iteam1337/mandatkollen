@@ -45,7 +45,8 @@ jobs:
       - name: build-and-deploy
         run: |
 
-          npm run release
+          npm version minor
+          skaffold render --default-repo=registry.iteam.services --digest-source=tag -o kustomize/latest.yaml
 
       - name: Push to git
         uses: stefanzweifel/git-auto-commit-action@v4
