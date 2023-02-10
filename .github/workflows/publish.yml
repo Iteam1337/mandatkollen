@@ -29,21 +29,11 @@ jobs:
             fixed-${{ github.sha }}
             fixed-
 
-      - name: Update minor version
+      - name: build-and-deploy
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-          npm version minor
-      
-      - name: Run Skaffold pipeline as command
-        uses: hiberbee/github-action-skaffold@latest
-        id: build
-        with:
-          command: build
-          repository: registry.iteam.services
 
-      - name: build-and-deploy
-        run: |
           npm run release
 
       - name: Push to git
