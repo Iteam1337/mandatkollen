@@ -32,7 +32,7 @@ spec:
         app: mandatkollen
     spec:
       containers:
-      - image: registry.iteam.services/iteam1337_mandatkollen:v0.21.0@sha256:2fc4c48fa09cf44989e445eebcc6c3035f789d47e09bd1c311bc8038b22e19ac
+      - image: registry.iteam.services/iteam1337_mandatkollen:v0.22.0@sha256:5cb9490bd45a57112f9f584dd57b437184e59c8b21e2826b36844fca9990d344
         livenessProbe:
           httpGet:
             path: /
