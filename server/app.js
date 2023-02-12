@@ -1,16 +1,26 @@
 import express from 'express'
-import path from 'path'
 import fetch from 'node-fetch'
-import { parse } from 'csv-parse/sync'
 import apicache from 'apicache'
 import cheerio from 'cheerio'
 import { getParties } from './valnatt.js'
+import staticGzip from 'express-static-gzip'
 
 const app = express()
 const cache = apicache.middleware
 
 // Serve static assets
-app.use(express.static('dist'))
+app.use(
+  staticGzip('dist', {
+    enableBrotli: true,
+    orderPreference: ['br', 'gz'],
+    serveStatic: {
+      maxAge: '30d',
+      setHeaders: (res, path) => {
+        res.setHeader('Cache-Control', 'public, max-age=31536000')
+      },
+    },
+  })
+)
 app.use('/images', express.static('images'))
 
 app.get('/valnatt', cache('24 hours'), (req, res) => {
