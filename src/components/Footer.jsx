@@ -28,7 +28,7 @@ const Footer = () => (
         proportionerligt. Om ett parti hamnar under riksdagsspärren på 4 procent
         så tilldelas de inga mandat. Fördelningen av mandat är justerade enligt
         2018 års regler för mandatfördelning. Har du förslag på hur vi kan
-        förbättra den här tjänsten? Kontakta christian.landgren@iteam.se.
+        förbättra den här tjänsten? Kontakta <a href="https://twitter.com/landgren">@landgren</a> på Twitter.
       </p>
 
       <h3>Underlag</h3>
@@ -38,11 +38,16 @@ const Footer = () => (
         med tillstånd från <a href="https://pollofpolls.se">pollofpolls.se</a>.
       </p>
 
+      <h3>Underlag</h3>
+      <p>
+        Vi som ligger bakom Mandatkollen är Christian Landgren, Robert Svensson
+      </p>
+
       <a href="https://iteam.se">
-        <img alt="Iteam logo" className="logo" src="/images/iteam_white.png" />
+        <img alt="Iteam logo" className="logo iteam" src="/images/iteam_white.png" />
       </a>
       <a href="https://lennoxpr.se">
-        <img alt="Lennox PR logo" className="logo" src="/images/lennoxpr.png" />
+        <img alt="Lennox PR logo" className="logo lennoxpr" src="/images/lennoxpr.png" />
       </a>
     </div>
   </div>

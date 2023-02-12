@@ -21,11 +21,19 @@
 
 .App-footer .logo {
   margin: 20px;
-  width: 20vw;
-  max-width: 100px;
   margin-bottom: 0;
   display: inline-table;
   vertical-align: middle;
+}
+
+.App-footer .logo.iteam {
+  width: 193px;
+  height: 37px;
+}
+
+.App-footer .logo.lennoxpr {
+  width: 71px;
+  height: 118px;
 }
 
 .App-footer a {
