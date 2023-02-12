@@ -36,9 +36,9 @@ Vi använder oss av Vite som bygger och slår ihop alla js och css filer till et
 
 ## Avsändare
 
-<img src="https://iteam.se/content/images/iteam_black.png" width="200"/>
-<img src="https://lennoxpr.se/wp-content/uploads/2017/04/logo-lennox.png" width="200"/>
+Iteam
+Lennox PR
 
 ## Licens
 
-MIT Copyright (c) 2017 Iteam Solutions AB
+MIT Copyright (c) 2023 Iteam Solutions AB
