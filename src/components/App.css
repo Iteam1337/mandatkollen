@@ -264,6 +264,11 @@ body {
 @media only screen and (max-width: 900px) {
   .App-main {
     max-width: 100%;
+    padding:0 20px;
+  }
+
+  .App-settings {
+    padding: 0;
   }
 
   .App-header {
@@ -279,13 +284,9 @@ body {
   }
 
   .App-sliders {
-    flex-direction: column;
-    margin-left: 0;
-    margin-right: 0;
-    max-width: 100%;
-    overflow-x: auto;
-    position: inherit;
+    padding: 0;
   }
+
 }
 
 @media only screen and (max-width: 450px) {
@@ -311,15 +312,6 @@ body {
     margin-left: 32px;
   }
 
-  .App-sliders {
-    flex-direction: column;
-    margin-left: 0;
-    margin-right: 0;
-    max-width: 100%;
-    overflow-x: auto;
-    position: inherit;
-  }
-  
 }
 
 @media only screen and (max-width: 350px) {
@@ -354,17 +346,13 @@ body {
     overflow-x: auto;
     position: sticky;
   }
-
+ 
   .App-main small {
     display: none;
   }
     
   .App-sliders > section {
-    padding-top: 40px;
-  }
-
-  .App-sliders > section:not(:last-child) {
-    margin-bottom: 30px;
+    padding-top: 20px;
   }
 
 }
