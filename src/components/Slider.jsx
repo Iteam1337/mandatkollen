@@ -8,9 +8,9 @@ export default ({ party, onchange }) => (
     className={`slider-${party.abbreviation.toLowerCase()}`}
     key={party.abbreviation}
     type="range"
-    oninput={(e) => onchange(parseInt(e.target.value, 10))}
+    oninput={(e) => onchange(parseFloat(e.target.value))}
     value={party.percentage}
-    step="1"
+    step="0.1"
     min="0"
     max="35"
   />

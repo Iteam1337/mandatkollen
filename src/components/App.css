@@ -266,6 +266,10 @@ body {
     max-width: 100%;
   }
 
+  .App-header {
+    padding: 20px 0;
+  }
+
   .wide {
     display: none;
   }
