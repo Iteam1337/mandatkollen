@@ -37,16 +37,7 @@ class App extends Component {
             regering.reduce((t, party) => t + party.seatPercentage, 0) * 1000
           ) / 10,
       },
-      {
-        name: 'opposition',
-        parties: opposition,
-        title: `Övriga`,
-        percentage:
-          Math.round(
-            opposition.reduce((t, party) => t + party.seatPercentage, 0) * 1000
-          ) / 10,
-        seats: opposition.reduce((t, party) => t + party.seats, 0),
-      },
+      
       {
         name: 'stod',
         parties: stod,
@@ -56,6 +47,16 @@ class App extends Component {
           Math.round(
             stod.reduce((t, party) => t + party.seatPercentage, 0) * 1000
           ) / 10,
+      },
+      {
+        name: 'opposition',
+        parties: opposition,
+        title: `Opposition`,
+        percentage:
+          Math.round(
+            opposition.reduce((t, party) => t + party.seatPercentage, 0) * 1000
+          ) / 10,
+        seats: opposition.reduce((t, party) => t + party.seats, 0),
       },
     ]
   }
@@ -79,7 +80,7 @@ class App extends Component {
         <div className="App-main">
           <Seating parties={allParties} seatCount={false} />
           <small>Grafik: Mandatkollen.se</small>
-          <div className="LegendContainer">
+          <div className="LegendContainer" id="summary">
             {legendGroups.map(({ name, parties, title, seats, percentage }) => (
               <div
                 className={`LegendGroup${groups[name]?.hover ? ' Drop' : ''}`}
@@ -121,27 +122,25 @@ class App extends Component {
             ))}
           </div>
           <small>
-            Dra och släpp partierna för olika scenarier. Justera även
-            valresultat nedan.
+            Dra och släpp partierna för olika scenarier. Välj opinionsundersökning nedan eller justera själv.
           </small>
         </div>
         <div className="App-settings">
-          <div className="App-settings-inner">
-            <h2>Valresultat %</h2>
-            <Sliders
-              parties={parties}
-              editCoalitions={coalitions.editCoalitions}
-            />
-            {totalPercentage < 99.6 || totalPercentage > 100.4 ? (
-              <p className="invalid">
-                Vänligen justera manuellt. Totalt antal procent:{' '}
-                {totalPercentage}%
-              </p>
-            ) : null}
-          </div>
-          <h2>Välj opinionsundersökning</h2>
+          <h2>Välj opinionsundersökning:</h2>
           <Polls polls={polls} />
-          <small>Källa: pollofpolls.se</small>
+          <br />
+          <h2>Eller experimentera själv %</h2>
+          <Sliders
+            parties={parties}
+            editCoalitions={coalitions.editCoalitions}
+          />
+          {totalPercentage < 99.6 || totalPercentage > 100.4 ? (
+            <p className="invalid">
+              Vänligen justera manuellt. Totalt antal procent:{' '}
+              {totalPercentage}%
+            </p>
+          ) : null}
+          
         </div>
         <Footer/>
       </div>

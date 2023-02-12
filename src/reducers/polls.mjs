@@ -1,5 +1,4 @@
 import polls from '../lib/polls.mjs'
-import moment from 'moment'
 const finalResult = {
   KD: 5.34,
   M: 19.1,
@@ -21,7 +20,7 @@ let initialState = Promise.all([
     ...polls,
     {
       institute: 'Val 2022',
-      dates: moment('2022-09-11').locale('sv').calendar(),
+      dates: '2022-09-11',
       parties: finalResult,
     },
   ]

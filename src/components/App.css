@@ -1,3 +1,9 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .App {
   text-align: center;
 }
@@ -18,14 +24,14 @@
 
 .App-header {
   background-color: #333333;
+  color: #fff;
   margin-bottom: 20px;
   padding: 30px;
 }
 
-.App-header-inner {
+.App-sliders {
   align-items: center;
   color: #fff;
-  display: flex;
   margin-left: auto;
   margin-right: auto;
   max-width: 960px;
@@ -33,6 +39,7 @@
 
 .App-header img {
   height: 40px;
+  width: 52px;
   margin: -2px 20px;
 }
 
@@ -64,18 +71,14 @@
   background: #333;
   color: #fff;
   padding-top: 40px;
+  flex: 1;
+  flex-flow: column;
 }
 
 .App-settings h2 {
   font-size: 24px;
   font-weight: bold;
   line-height: 28px;
-}
-
-.App-settings-inner {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 960px;
 }
 
 .App-divider {
@@ -113,9 +116,12 @@
 
 .App-sliders {
   background: #333;
+  flex: 1;
   display: flex;
+  bottom: 0;
+  position: -webkit-sticky;
+  position: sticky;
   justify-content: space-between;
-  margin-top: 20px;
   text-align: center;
 }
 
@@ -261,6 +267,15 @@
   .small {
     display: block;
   }
+
+  .App-sliders {
+    flex-direction: column;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
+    overflow-x: auto;
+    position: inherit;
+  }
 }
 
 @media only screen and (max-width: 450px) {
@@ -285,6 +300,16 @@
   .party h2 {
     margin-left: 32px;
   }
+
+  .App-sliders {
+    flex-direction: column;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
+    overflow-x: auto;
+    position: inherit;
+  }
+  
 }
 
 @media only screen and (max-width: 350px) {
@@ -307,14 +332,23 @@
     top: 17px;
     right: 11px;
   }
+  
 }
 
 @media only screen and (max-width: 850px) {
   .App-sliders {
-    align-items: center;
-    flex-direction: column;
+    flex-direction: row;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
+    overflow-x: auto;
+    position: sticky;
   }
 
+  .App-main small {
+    display: none;
+  }
+    
   .App-sliders > section {
     padding-top: 40px;
   }
@@ -322,4 +356,5 @@
   .App-sliders > section:not(:last-child) {
     margin-bottom: 30px;
   }
+
 }

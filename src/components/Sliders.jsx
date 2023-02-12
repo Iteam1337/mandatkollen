@@ -5,7 +5,7 @@ import Mixer from './Mixer.jsx'
 import { dragOver, dropUpdate, dragEnter } from '../lib/draganddrop'
 
 const Sliders = ({ parties, editCoalitions }) => (
-  <div className="App-sliders">
+  <div className="App-sliders" id="sliders">
     <section
       ondragenter={dragEnter}
       ondragover={dragOver}
@@ -13,6 +13,17 @@ const Sliders = ({ parties, editCoalitions }) => (
     >
       {parties
         .filter((x) => x.affiliation === 'regering')
+        .map((party) => (
+          <Mixer party={party} editCoalitions={editCoalitions} />
+        ))}
+    </section>
+     <section
+      ondragenter={dragEnter}
+      ondragover={dragOver}
+      ondrop={dropUpdate('stod')}
+    >
+      {parties
+        .filter((x) => x.affiliation === 'stod')
         .map((party) => (
           <Mixer party={party} editCoalitions={editCoalitions} />
         ))}
@@ -28,17 +39,7 @@ const Sliders = ({ parties, editCoalitions }) => (
           <Mixer party={party} editCoalitions={editCoalitions} />
         ))}
     </section>
-    <section
-      ondragenter={dragEnter}
-      ondragover={dragOver}
-      ondrop={dropUpdate('stod')}
-    >
-      {parties
-        .filter((x) => x.affiliation === 'stod')
-        .map((party) => (
-          <Mixer party={party} editCoalitions={editCoalitions} />
-        ))}
-    </section>
+   
   </div>
 )
 

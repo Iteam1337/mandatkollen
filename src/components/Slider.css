@@ -1,4 +1,4 @@
-.App-settings-inner input[type="range"] {
+.App-settings input[type="range"] {
   appearance: none;
   background: transparent;
   height: 130px;
@@ -18,14 +18,14 @@ input[type="range"]:focus {
   outline: none;
 }
 
-.App-settings-inner input[type="range"]::-webkit-slider-runnable-track {
+.App-settings input[type="range"]::-webkit-slider-runnable-track {
   background: #fff;
   box-shadow: none;
   margin-left: 5px;
   height: 3px;
 }
 
-.App-settings-inner input[type="range"]::-webkit-slider-thumb {
+.App-settings input[type="range"]::-webkit-slider-thumb {
   appearance: none;
   border-radius: 100%;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);

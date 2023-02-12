@@ -5,8 +5,13 @@ import React from 'pureact'
 import store from '../store.mjs'
 import './Polls.css'
 
-const chooseBaseVotes = (votes) =>
+const chooseBaseVotes = (votes) => {
   store.dispatch({ type: 'CHOOSE_BASE_VOTES', votes })
+  window?.scrollTo({
+    top: document.getElementById('summary').offsetTop - 10,
+    behavior: 'smooth'
+  })
+}
 
 const Polls = ({ polls }) => {
   return (
