@@ -23,6 +23,7 @@ metadata:
   name: mandatkollen
   namespace: mandatkollen
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: mandatkollen
@@ -32,7 +33,7 @@ spec:
         app: mandatkollen
     spec:
       containers:
-      - image: registry.iteam.services/iteam1337_mandatkollen:v0.30.0@sha256:a093b24af8ff8569be287b8ed6c55ac97d53a5969e6a84c1d02562fe0c0909f1
+      - image: registry.iteam.services/iteam1337_mandatkollen:v0.31.0@sha256:484c3def41210d7e66eb7ee97ecb9626dcb7a86f1813dedb948ff25d1f585b21
         livenessProbe:
           httpGet:
             path: /
