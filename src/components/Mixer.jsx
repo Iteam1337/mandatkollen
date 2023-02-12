@@ -25,10 +25,12 @@ const Mixer = ({ party, editCoalitions }) => {
       </h3>
       <input
         type="text"
-        aria-label="percentage"
-        aria-valuemin="0"
-        aria-valuemax="100"
-        aria-valuenow={party.percentage}
+        attrs={{
+          'aria-label': percentage,
+          'aria-valuemin': 0,
+          'aria-valuemax': 100,
+          'aria-valuenow': party.percentage,
+        }}
         className={party.changed ? 'changed' : ''}
         value={party.percentage}
         onchange={(e) =>
