@@ -37,7 +37,7 @@ class App extends Component {
             regering.reduce((t, party) => t + party.seatPercentage, 0) * 1000
           ) / 10,
       },
-      
+
       {
         name: 'stod',
         parties: stod,
@@ -122,7 +122,8 @@ class App extends Component {
             ))}
           </div>
           <small>
-            Dra och släpp partierna för olika scenarier. Välj opinionsundersökning nedan eller justera själv.
+            Dra och släpp partierna för olika scenarier. Välj
+            opinionsundersökning nedan eller justera själv.
           </small>
         </div>
         <div className="App-settings">
@@ -136,13 +137,12 @@ class App extends Component {
           />
           {totalPercentage < 99.6 || totalPercentage > 100.4 ? (
             <p className="invalid">
-              Vänligen justera manuellt. Totalt antal procent:{' '}
-              {totalPercentage}%
+              Vänligen justera manuellt. Totalt antal procent: {totalPercentage}
+              %
             </p>
           ) : null}
-          
         </div>
-        <Footer/>
+        <Footer />
       </div>
     )
   }

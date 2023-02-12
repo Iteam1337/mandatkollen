@@ -1,7 +1,7 @@
 /** @jsx pureact.createElement */
 import pureact from 'pureact'
 
-import "./Footer.css"
+import './Footer.css'
 
 const Footer = () => (
   <div className="App-footer">

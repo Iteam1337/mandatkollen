@@ -63,7 +63,7 @@ const selectAndAssignSeat = (parties, nr, maxSeats) => {
 
 const calculateVotes = (totalVotes) => (party) => {
   if (party.percentage === undefined || party.percentage === null)
-    throw new Error("Percentage is required")
+    throw new Error('Percentage is required')
   const result = {
     ...party,
     votes: Math.round(totalVotes * (party.percentage / 100)),
@@ -133,7 +133,7 @@ function Parliament(
   this.seats = this.calculate(initialParties)
   this.updatePolls = (poll) => {
     this.seats = this.seats.map((party) =>
-      this.updateVotes(party, parseFloat(poll[party.abbreviation] || "0"), null)
+      this.updateVotes(party, parseFloat(poll[party.abbreviation] || '0'), null)
     )
     return this.seats
   }

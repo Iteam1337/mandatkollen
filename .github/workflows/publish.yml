@@ -35,7 +35,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
 
           npm version minor
-      
+
       - name: Build with Skaffold
         uses: hiberbee/github-action-skaffold@latest
         with:
@@ -47,12 +47,12 @@ jobs:
         uses: hiberbee/github-action-skaffold@latest
         with:
           command: render --output kustomize/latest.yaml
-          cache-file: ""
+          cache-file: ''
           repository: registry.iteam.services
           digest-source: tag
-      
+
       - name: Push new manifest to FluxCD
-        run: |  
+        run: |
           git add kustomize/latest.yaml
           git commit --amend --no-edit
           git push

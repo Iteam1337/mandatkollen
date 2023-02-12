@@ -1,7 +1,7 @@
 /** @jsx pureact.createElement */
 import pureact from 'pureact'
 
-import "./Slider.css"
+import './Slider.css'
 
 export default ({ party, onchange }) => (
   <input
@@ -9,9 +9,9 @@ export default ({ party, onchange }) => (
     key={party.abbreviation}
     attrs={{
       'aria-label': party.abbreviation,
-      'aria-valuemin': "0",
-      'aria-valuemax': "35",
-      'aria-valuenow': party.percentage
+      'aria-valuemin': '0',
+      'aria-valuemax': '35',
+      'aria-valuenow': party.percentage,
     }}
     type="range"
     oninput={(e) => onchange(parseFloat(e.target.value))}

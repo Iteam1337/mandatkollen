@@ -33,7 +33,7 @@ För att få igång utecklingsmiljön lokalt behöver du bara köra följande ko
 Vi använder oss av Vite som bygger och slår ihop alla js och css filer till ett paket. I produktion körs applikationen i Docker i Kubernetes och den miljön konfigureras enklast genom att köra följande:
 
     skaffold run
-    
+
 Applikationen byggs med hjälp av Github Actions som sammanställer en deployment som automatiskt hämtas av det Kuberneteskluster som kör applikationen via FluxCD.
 
 ## Avsändare

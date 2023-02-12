@@ -12,7 +12,7 @@ metadata:
   namespace: mandatkollen
 spec:
   ports:
-  - port: 80
+    - port: 80
   selector:
     app: mandatkollen
   type: ClusterIP
@@ -32,22 +32,22 @@ spec:
         app: mandatkollen
     spec:
       containers:
-      - image: registry.iteam.services/iteam1337_mandatkollen:v0.27.0@sha256:3991eb400913294fa695956a21caba91c48cf93678057ac5c70f9fc7d9185de3
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 5
-        name: mandatkollen
-        ports:
-        - containerPort: 80
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 5
+        - image: registry.iteam.services/iteam1337_mandatkollen:v0.27.0@sha256:3991eb400913294fa695956a21caba91c48cf93678057ac5c70f9fc7d9185de3
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          name: mandatkollen
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -60,17 +60,17 @@ metadata:
   namespace: mandatkollen
 spec:
   rules:
-  - host: mandatkollen.se
-    http:
-      paths:
-      - backend:
-          service:
-            name: mandatkollen
-            port:
-              number: 80
-        path: /
-        pathType: Prefix
+    - host: mandatkollen.se
+      http:
+        paths:
+          - backend:
+              service:
+                name: mandatkollen
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
   tls:
-  - hosts:
-    - mandatkollen.se
-    secretName: mandatkollen-prod-tls
+    - hosts:
+        - mandatkollen.se
+      secretName: mandatkollen-prod-tls

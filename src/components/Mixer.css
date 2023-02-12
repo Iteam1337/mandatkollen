@@ -20,7 +20,7 @@
   color: #999;
 }
 
-.App-mixer input[type="text"] {
+.App-mixer input[type='text'] {
   border-radius: 5px;
   box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.25);
   max-width: 2.5em;
@@ -32,12 +32,12 @@
   border: 0;
   text-align: center;
 }
-.App-mixer input[type="text"]::after {
-  content: "%";
+.App-mixer input[type='text']::after {
+  content: '%';
   padding: 0;
 }
 
-.App-mixer input[type="text"].changed {
+.App-mixer input[type='text'].changed {
   border: 1px solid #5b615a;
 }
 

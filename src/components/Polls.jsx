@@ -9,7 +9,7 @@ const chooseBaseVotes = (votes) => {
   store.dispatch({ type: 'CHOOSE_BASE_VOTES', votes })
   window?.scrollTo({
     top: document.getElementById('summary').offsetTop - 10,
-    behavior: 'smooth'
+    behavior: 'smooth',
   })
 }
 

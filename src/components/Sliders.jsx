@@ -17,7 +17,7 @@ const Sliders = ({ parties, editCoalitions }) => (
           <Mixer party={party} editCoalitions={editCoalitions} />
         ))}
     </section>
-     <section
+    <section
       ondragenter={dragEnter}
       ondragover={dragOver}
       ondrop={dropUpdate('stod')}
@@ -39,7 +39,6 @@ const Sliders = ({ parties, editCoalitions }) => (
           <Mixer party={party} editCoalitions={editCoalitions} />
         ))}
     </section>
-   
   </div>
 )
 

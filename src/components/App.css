@@ -220,7 +220,7 @@ body {
   display: block;
 }
 .party i:before {
-  content: "•";
+  content: '•';
   font-size: 120px;
   font-style: normal;
   position: absolute;
@@ -264,7 +264,7 @@ body {
 @media only screen and (max-width: 900px) {
   .App-main {
     max-width: 100%;
-    padding:0 20px;
+    padding: 0 20px;
   }
 
   .App-settings {
@@ -286,7 +286,6 @@ body {
   .App-sliders {
     padding: 0;
   }
-
 }
 
 @media only screen and (max-width: 450px) {
@@ -311,7 +310,6 @@ body {
   .party h2 {
     margin-left: 32px;
   }
-
 }
 
 @media only screen and (max-width: 350px) {
@@ -334,7 +332,6 @@ body {
     top: 17px;
     right: 11px;
   }
-  
 }
 
 @media only screen and (max-width: 850px) {
@@ -346,13 +343,12 @@ body {
     overflow-x: auto;
     position: sticky;
   }
- 
+
   .App-main small {
     display: none;
   }
-    
+
   .App-sliders > section {
     padding-top: 40px;
   }
-
 }

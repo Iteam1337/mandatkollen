@@ -16,9 +16,9 @@ build:
 
 manifests:
   rawYaml:
-  - k8s/namespace.yaml
-  - k8s/deployment.yaml
-  - k8s/ingress.yaml
+    - k8s/namespace.yaml
+    - k8s/deployment.yaml
+    - k8s/ingress.yaml
 deploy:
   kubectl:
     flags:
