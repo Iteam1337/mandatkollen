@@ -9,6 +9,7 @@ export default ({ party, onchange }) => (
     key={party.abbreviation}
     attrs={{
       'aria-label': `Procent för ${party.abbreviation}`,
+      'aria-orientation': 'vertical',
       'aria-valuemin': '0',
       'aria-valuemax': '35',
       'aria-valuenow': party.percentage,
