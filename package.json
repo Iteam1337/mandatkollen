@@ -71,5 +71,8 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "devDependencies": {
+    "vite-plugin-singlefile": "^0.13.3"
   }
 }
