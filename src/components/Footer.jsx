@@ -40,7 +40,7 @@ const Footer = () => (
 
       <h3>Underlag</h3>
       <p>
-        Vi som ligger bakom Mandatkollen är Christian Landgren, Robert Svensson
+        Vi som har tagit fram Mandatkollen är:
       </p>
 
       <a href="https://iteam.se">

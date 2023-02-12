@@ -1,4 +1,4 @@
-import { viteSingleFile } from 'vite-plugin-singlefile'
+import viteCompression from 'vite-plugin-compression'
 
 export default {
   // config options
@@ -8,7 +8,7 @@ export default {
       react: 'pureact/createElement',
     },
   },
-  plugins: [viteSingleFile()],
+  plugins: [viteCompression()],
   esbuild: {
     jsxFactory: 'pureact.createElement',
     jsxFragment: 'Fragment',
