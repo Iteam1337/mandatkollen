@@ -33,6 +33,8 @@ input[type="range"]:focus {
   height: 40px;
   margin-top: -19px;
   width: 40px;
+  border: 5px;
+  border-color: transparent;
 }
 
 .App-settings input[type="range"].polls {

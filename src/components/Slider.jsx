@@ -7,6 +7,10 @@ export default ({ party, onchange }) => (
   <input
     className={`slider-${party.abbreviation.toLowerCase()}`}
     key={party.abbreviation}
+    aria-label={party.abbreviation}
+    aria-valuemin="0"
+    aria-valuemax="35"
+    aria-valuenow={party.percentage}
     type="range"
     oninput={(e) => onchange(parseFloat(e.target.value))}
     value={party.percentage}
