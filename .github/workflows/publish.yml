@@ -40,6 +40,7 @@ jobs:
         uses: hiberbee/github-action-skaffold@latest
         with:
           command: build
+          cache-file: ~/.skaffold/cache
           repository: registry.iteam.services
           digest-source: tag
 
@@ -47,7 +48,7 @@ jobs:
         uses: hiberbee/github-action-skaffold@latest
         with:
           command: render --output kustomize/latest.yaml
-          cache-file: ''
+          cache-file: ~/.skaffold/cache
           repository: registry.iteam.services
           digest-source: tag
 
