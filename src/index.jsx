@@ -20,7 +20,11 @@ store.subscribe(() => {
     document.getElementById('mandatkollen'),
     oldTree
   )
+
 })
+
+store.dispatch({ type: 'LOAD_POLLS' })
+
 /*
 
 This is for next election to activate to get live polls

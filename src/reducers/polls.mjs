@@ -12,22 +12,25 @@ const finalResult = {
   Ö: 1.54,
 }
 
-let initialState = Promise.all([
-  polls.fetchPolls() /*, polls.fetchValnatt()*/,
-]).then(([polls, valnatt]) => {
-  return [
-    /*{ ...valnatt, institute: 'Valnatt 2022', dates: moment(valnatt.date).format('YYYY-MM-DD HH:mm') },*/
-    ...polls,
-    {
-      institute: 'Val 2022',
-      dates: '2022-09-11',
-      parties: finalResult,
-    },
-  ]
-})
+let initialState = [
+  {
+    institute: 'Val 2022',
+    dates: '2022-09-11',
+    parties: finalResult,
+  },
+]
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case 'LOAD_POLLS':
+      return polls
+        .fetchPolls() /*, polls.fetchValnatt()*/
+        .then((polls) => [
+          /*{ ...valnatt, institute: 'Valnatt 2022', dates: moment(valnatt.date).format('YYYY-MM-DD HH:mm') },*/
+          ...polls,
+          ...initialState,
+        ])
+
     default:
       return state
   }
