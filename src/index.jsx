@@ -2,7 +2,7 @@
 
 import pureact, { render } from 'pureact'
 import './index.css'
-import 'typeface-miriam-libre'
+import '@fontsource/miriam-libre/700.css'
 import App from './components/App'
 import store from './store.mjs'
 import { polyfill } from 'mobile-drag-drop'

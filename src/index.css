@@ -4,6 +4,8 @@ body {
   font-family: 'Miriam Libre', 'Helvetica Neue';
   font-size: 0.8em;
   -webkit-font-smoothing: antialiased;
+  font-display: block;
+  text-rendering: geometricPrecision;
 }
 
 h3 {
