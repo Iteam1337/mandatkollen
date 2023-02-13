@@ -11,10 +11,6 @@ metadata:
   name: mandatkollen
   namespace: mandatkollen
 spec:
-  ipFamilies:
-  - IPv4
-  - IPv6
-  ipFamilyPolicy: PreferDualStack
   ports:
   - port: 80
   selector:
@@ -37,7 +33,7 @@ spec:
         app: mandatkollen
     spec:
       containers:
-      - image: registry.iteam.services/iteam1337_mandatkollen:v0.41.0@sha256:619a589a9a563e5ca5f95927f8dd83cdcf0d923cb2856717c173d45f48d855fe
+      - image: registry.iteam.services/iteam1337_mandatkollen:v0.42.0@sha256:02bd581bcb2b91f55b1f76418c15906fb7d4a60339b988062b41bf84a7dd6952
         livenessProbe:
           httpGet:
             path: /
@@ -61,13 +57,6 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     external-dns.alpha.kubernetes.io/hostname: mandatkollen.se.
     kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      add_header X-Frame-Options "sameorigin";
-      add_header X-Content-Type-Options nosniff;
-      add_header Referrer-Policy 'same-origin';
-      add_header Permissions-Policy "";
-      add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
-      add_header Content-Security-Policy: default-src 'self' matomo.iteam.services
   name: mandatkollen-ingress
   namespace: mandatkollen
 spec:
