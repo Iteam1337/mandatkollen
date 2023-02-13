@@ -23,7 +23,7 @@ jobs:
       - name: Cache skaffold image builds & config
         uses: actions/cache@v2
         with:
-          path: ~/.skaffold/
+          path: .skaffold
           key: fixed-${{ github.sha }}
           restore-keys: |
             fixed-${{ github.sha }}
@@ -40,7 +40,6 @@ jobs:
         uses: hiberbee/github-action-skaffold@latest
         with:
           command: build
-          cache-file: ~/.skaffold/cache
           repository: registry.iteam.services
           digest-source: tag
 
@@ -48,7 +47,6 @@ jobs:
         uses: hiberbee/github-action-skaffold@latest
         with:
           command: render --output kustomize/latest.yaml
-          cache-file: ~/.skaffold/cache
           repository: registry.iteam.services
           digest-source: tag
 
