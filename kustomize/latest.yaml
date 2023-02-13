@@ -11,6 +11,9 @@ metadata:
   name: mandatkollen
   namespace: mandatkollen
 spec:
+  ipFamilies:
+  - IPv4
+  - IPv6
   ipFamilyPolicy: PreferDualStack
   ports:
   - port: 80
@@ -34,7 +37,7 @@ spec:
         app: mandatkollen
     spec:
       containers:
-      - image: registry.iteam.services/iteam1337_mandatkollen:v0.40.0@sha256:401c3a11200e22e1afe6e6cb1b987482a34c49cc8db41536c28c753f448dbd81
+      - image: registry.iteam.services/iteam1337_mandatkollen:v0.41.0@sha256:619a589a9a563e5ca5f95927f8dd83cdcf0d923cb2856717c173d45f48d855fe
         livenessProbe:
           httpGet:
             path: /
