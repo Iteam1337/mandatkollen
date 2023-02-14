@@ -24,6 +24,9 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.skaffold/
+          key: skaffold
+          restore-keys: |
+            skaffold
 
       - name: Update Minor Verision
         run: |
@@ -37,6 +40,7 @@ jobs:
         with:
           command: build
           repository: registry.iteam.services
+          digest-source: tag
 
       - name: Render output
         uses: hiberbee/github-action-skaffold@latest
@@ -44,6 +48,7 @@ jobs:
           command: render --output kustomize/latest.yaml
           cache-file: ''
           repository: registry.iteam.services
+          digest-source: tag
 
       - name: Push new manifest to FluxCD
         run: |
