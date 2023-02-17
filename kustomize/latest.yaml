@@ -33,7 +33,7 @@ spec:
         app: mandatkollen
     spec:
       containers:
-      - image: registry.iteam.services/iteam1337_mandatkollen:v0.45.0@sha256:8dcf53e95d58c9747df894a533fad90416f4e9bbf9206553e7b7a0b2fc9d38af
+      - image: registry.iteam.services/iteam1337_mandatkollen:v0.46.0@sha256:db598e5615b868e86860d5cfae46a408aae01766ff7320d7f9743b0499247cf7
         livenessProbe:
           httpGet:
             path: /
@@ -57,6 +57,14 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     external-dns.alpha.kubernetes.io/hostname: mandatkollen.se.
     kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      add_header X-Frame-Options "sameorigin";
+      add_header X-Content-Type-Options nosniff;
+      add_header Referrer-Policy 'same-origin';
+      add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+    nginx.ingress.kubernetes.io/http2-push-preload: "true"
+    nginx.ingress.kubernetes.io/proxy-pass-headers: Location
   name: mandatkollen-ingress
   namespace: mandatkollen
 spec:
