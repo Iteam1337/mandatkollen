@@ -33,7 +33,7 @@ spec:
         app: mandatkollen
     spec:
       containers:
-      - image: registry.iteam.services/iteam1337_mandatkollen:v0.49.0@sha256:2f3c931c1aa15b0bf7fe86692d7a27fd29854dd0010852173771917b57cd7303
+      - image: registry.iteam.services/iteam1337_mandatkollen:v0.50.0@sha256:7a4c2dbd177c4dabfc96a9a151d03a90afef8e27df103929d3f71c832714d0ec
         livenessProbe:
           httpGet:
             path: /
@@ -59,8 +59,6 @@ metadata:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/configuration-snippet: |
       more_set_headers "Content-Security-Policy: default-src 'self'";
-      more_set_headers "server: hide";
-      more_set_headers "Content-Type: text/html; charset=UTF-8";
       more_set_headers "X-Content-Type-Options: nosniff";
       more_set_headers "X-Frame-Options: DENY";
       more_set_headers "X-Xss-Protection: 0";
