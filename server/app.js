@@ -22,6 +22,7 @@ app.use(
   })
 )
 app.use('/images', staticGzip('images'))
+app.use('/.well-known/', staticGzip('/.well-known/'))
 
 app.get('/valnatt', cache('24 hours'), (req, res) => {
   getParties(req.query.year).then((valnatt) => {

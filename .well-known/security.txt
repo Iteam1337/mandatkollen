@@ -1,0 +1,6 @@
+Contact: mailto:christian.landgren@iteam.se
+Expires: 2030-01-20T00:01:00.000Z
+Encryption: https://github.com/irony.keys
+Acknowledgments: https://iteam.se
+Preferred-Languages: en, sv
+Policy: https://iteam.se/privacy
