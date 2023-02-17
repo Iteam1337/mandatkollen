@@ -9,10 +9,14 @@ metadata:
     nginx.ingress.kubernetes.io/http2-push-preload: 'true'
     nginx.ingress.kubernetes.io/proxy-pass-headers: 'Location'
     nginx.ingress.kubernetes.io/configuration-snippet: |   
-      add_header X-Frame-Options "sameorigin";
-      add_header X-Content-Type-Options nosniff;
-      add_header Referrer-Policy 'same-origin';
-      add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+      more_set_headers "server: hide";
+      more_set_headers "Content-Type: text/html; charset=UTF-8";
+      more_set_headers "X-Content-Type-Options: nosniff";
+      more_set_headers "X-Frame-Options: DENY";
+      more_set_headers "X-Xss-Protection: 0";
+      more_set_headers "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload";
+      more_set_headers "Content-Security-Policy: default-src 'self' http://mandatkollen.se";
+      more_set_headers "Cross-Origin-Resource-Policy: same-site";
     cert-manager.io/cluster-issuer: 'letsencrypt-prod'
     external-dns.alpha.kubernetes.io/hostname: mandatkollen.se.
     
