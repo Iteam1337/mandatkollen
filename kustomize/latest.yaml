@@ -33,7 +33,7 @@ spec:
         app: mandatkollen
     spec:
       containers:
-      - image: registry.iteam.services/iteam1337_mandatkollen:v0.47.0@sha256:86fe203aff1e1901bb3dc4a3d5d4bd1535a5ce4a0ca46f7122fb00c9938def6e
+      - image: registry.iteam.services/iteam1337_mandatkollen:v0.48.0@sha256:1fb30edfdd6c0c4581b845a89f80dd676ea0f0cb3d9be9a15d9ef6a3f57dc088
         livenessProbe:
           httpGet:
             path: /
@@ -64,7 +64,6 @@ metadata:
       more_set_headers "X-Frame-Options: DENY";
       more_set_headers "X-Xss-Protection: 0";
       more_set_headers "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload";
-      more_set_headers "Content-Security-Policy: default-src 'self' http://mandatkollen.se";
       more_set_headers "Cross-Origin-Resource-Policy: same-site";
     nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
     nginx.ingress.kubernetes.io/http2-push-preload: "true"
