@@ -33,7 +33,7 @@ spec:
         app: mandatkollen
     spec:
       containers:
-      - image: registry.iteam.services/iteam1337_mandatkollen:v0.46.0@sha256:db598e5615b868e86860d5cfae46a408aae01766ff7320d7f9743b0499247cf7
+      - image: registry.iteam.services/iteam1337_mandatkollen:v0.47.0@sha256:86fe203aff1e1901bb3dc4a3d5d4bd1535a5ce4a0ca46f7122fb00c9938def6e
         livenessProbe:
           httpGet:
             path: /
@@ -58,10 +58,14 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: mandatkollen.se.
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/configuration-snippet: |
-      add_header X-Frame-Options "sameorigin";
-      add_header X-Content-Type-Options nosniff;
-      add_header Referrer-Policy 'same-origin';
-      add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+      more_set_headers "server: hide";
+      more_set_headers "Content-Type: text/html; charset=UTF-8";
+      more_set_headers "X-Content-Type-Options: nosniff";
+      more_set_headers "X-Frame-Options: DENY";
+      more_set_headers "X-Xss-Protection: 0";
+      more_set_headers "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload";
+      more_set_headers "Content-Security-Policy: default-src 'self' http://mandatkollen.se";
+      more_set_headers "Cross-Origin-Resource-Policy: same-site";
     nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
     nginx.ingress.kubernetes.io/http2-push-preload: "true"
     nginx.ingress.kubernetes.io/proxy-pass-headers: Location
