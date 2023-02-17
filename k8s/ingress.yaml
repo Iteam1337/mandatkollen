@@ -5,7 +5,14 @@ metadata:
   namespace: mandatkollen
   annotations:
     kubernetes.io/ingress.class: 'nginx'
-    
+    nginx.ingress.kubernetes.io/from-to-www-redirect: 'true'
+    nginx.ingress.kubernetes.io/http2-push-preload: 'true'
+    nginx.ingress.kubernetes.io/proxy-pass-headers: 'Location'
+    nginx.ingress.kubernetes.io/configuration-snippet: |   
+      add_header X-Frame-Options "sameorigin";
+      add_header X-Content-Type-Options nosniff;
+      add_header Referrer-Policy 'same-origin';
+      add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
     cert-manager.io/cluster-issuer: 'letsencrypt-prod'
     external-dns.alpha.kubernetes.io/hostname: mandatkollen.se.
     
