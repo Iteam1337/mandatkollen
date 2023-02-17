@@ -15,7 +15,6 @@ metadata:
       more_set_headers "X-Frame-Options: DENY";
       more_set_headers "X-Xss-Protection: 0";
       more_set_headers "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload";
-      more_set_headers "Content-Security-Policy: default-src 'self' http://mandatkollen.se";
       more_set_headers "Cross-Origin-Resource-Policy: same-site";
     cert-manager.io/cluster-issuer: 'letsencrypt-prod'
     external-dns.alpha.kubernetes.io/hostname: mandatkollen.se.
