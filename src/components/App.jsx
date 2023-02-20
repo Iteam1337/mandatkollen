@@ -72,17 +72,17 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <div className="App-header-inner">
+          <header className="App-header-inner">
             <img alt="Mandatkollen logotyp" src="/images/icon.png" />
-            <h2>Mandatkollen</h2>
-          </div>
+            <h1>Mandatkollen</h1>
+          </header>
         </div>
-        <div className="App-main">
+        <main className="App-main">
           <Seating parties={allParties} seatCount={false} />
           <small>Grafik: Mandatkollen.se</small>
           <div className="LegendContainer" id="summary">
             {legendGroups.map(({ name, parties, title, seats, percentage }) => (
-              <div
+              <section
                 className={`LegendGroup${groups[name]?.hover ? ' Drop' : ''}`}
                 dragenter={(e) => e.preventDefault()}
                 ondragover={dragOver}
@@ -112,20 +112,20 @@ class App extends Component {
                     >
                       <i className={abbreviation.toLowerCase()} />
                       <h1 className="wide">{name}</h1>
-                      <h1 className="small">{abbreviation}</h1>
-                      <h2 className="small">{seats || '0'}</h2>
+                      <h1 className="small" ariaLabel={name}>{abbreviation}</h1>
+                      <h2 className="small" ariaLabel={(seats || '0') + ' mandat'}>{seats || '0'}</h2>
                       <h2 className="wide">{seats || '0'} mandat</h2>
                     </div>
                   )
                 )}
-              </div>
+              </section>
             ))}
           </div>
           <small>
             Dra och släpp partierna för olika scenarier. Välj
             opinionsundersökning nedan eller justera själv.
           </small>
-        </div>
+        </main>
         <div className="App-settings">
           <h2>Välj opinionsundersökning:</h2>
           <Polls polls={polls} />

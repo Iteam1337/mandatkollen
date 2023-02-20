@@ -44,7 +44,7 @@ body {
   margin: -2px 20px;
 }
 
-.App-header h2 {
+.App-header h1 {
   display: inline-block;
   font-size: 2em;
   font-weight: bold;
@@ -125,19 +125,6 @@ body {
   position: sticky;
   justify-content: space-between;
   text-align: center;
-}
-
-.App section {
-  border-radius: 10px;
-  margin: 5px;
-  padding: 5px;
-  border-bottom: 1px dashed #666;
-}
-
-.App section > span {
-  display: flex;
-  flex-direction: row;
-  flex: 1;
 }
 
 .LegendContainer {

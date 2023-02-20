@@ -1,3 +1,16 @@
+.App-settings section {
+  border-radius: 10px;
+  margin: 5px;
+  padding: 5px;
+  border-bottom: 1px dashed #666;
+}
+
+.App-settings section > span {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
 .App-settings input[type='range'] {
   appearance: none;
   background: transparent;
