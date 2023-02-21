@@ -11,6 +11,7 @@ import { polyfill } from 'mobile-drag-drop'
 import polls from './lib/polls.mjs'
 
 polyfill()
+init() // init matomo
 
 let oldTree
 
@@ -27,7 +28,6 @@ store.subscribe(() => {
 setTimeout(() => store.dispatch({ type: 'LOAD_POLLS' }), 100)
 store.dispatch()
 
-init()
 
 /*
 
