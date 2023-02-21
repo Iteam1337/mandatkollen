@@ -1,6 +1,12 @@
 export function trackAction(action) {
   const _paq = (window._paq = window._paq || [])
-  _paq.push(['trackEvent', 'Action', action.type, JSON.stringify(action)])
+  _paq.push([
+    'trackEvent',
+    'Action',
+    action.type,
+    action.value,
+    JSON.stringify(action),
+  ])
 }
 
 export function init() {
