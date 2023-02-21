@@ -5,6 +5,7 @@ import './index.css'
 import '@fontsource/miriam-libre/700.css'
 import App from './components/App'
 import store from './store.mjs'
+import { init } from './lib/matomo.mjs'
 import { polyfill } from 'mobile-drag-drop'
 // import 'npm_package/mobile-drag-drop/default.css'
 import polls from './lib/polls.mjs'
@@ -25,6 +26,8 @@ store.subscribe(() => {
 
 store.dispatch({ type: 'LOAD_POLLS' })
 
+init()
+
 /*
 
 This is for next election to activate to get live polls
@@ -37,3 +40,4 @@ setInterval(update, 60000)
 update()
 */
 store.dispatch()
+
