@@ -4,6 +4,13 @@ body {
   min-height: 100vh;
 }
 
+.github-corner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+}
+
 .github-corner:hover .octo-arm {
   animation: octocat-wave 560ms ease-in-out;
 }

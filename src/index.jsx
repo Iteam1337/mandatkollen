@@ -24,7 +24,8 @@ store.subscribe(() => {
 
 })
 
-store.dispatch({ type: 'LOAD_POLLS' })
+setTimeout(() => store.dispatch({ type: 'LOAD_POLLS' }), 100)
+store.dispatch()
 
 init()
 
@@ -39,5 +40,4 @@ const update = () => polls.fetchValnatt().then(valnatt => {
 setInterval(update, 60000)
 update()
 */
-store.dispatch()
 
