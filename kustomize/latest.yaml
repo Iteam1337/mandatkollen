@@ -33,7 +33,7 @@ spec:
         app: mandatkollen
     spec:
       containers:
-      - image: registry.iteam.services/iteam1337_mandatkollen:v0.58.0@sha256:67055e4a218e359a87001ca7140878fff656cfd9c8ba1a329a05cedb5d7ab4f6
+      - image: registry.iteam.services/iteam1337_mandatkollen:v0.59.0@sha256:2622ab5138d0d2b28a7fdc6e2c6a6d4d41c6c19da1d3f6f2fc533a7df00503d6
         livenessProbe:
           httpGet:
             path: /
@@ -58,7 +58,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: mandatkollen.se.
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/configuration-snippet: |
-      more_set_headers "Content-Security-Policy: default-src self script-src https://mandatkollen.se https://matomo.iteam.services font-src https://mandatkollen.se image-src https://mandatkollen.se manifest-src data: frame-src none frame-ancestors none object-src none; ";
+      more_set_headers "Content-Security-Policy: default-src self script-src https://mandatkollen.se https://matomo.iteam.services style-src https://mandatkollen.se font-src https://mandatkollen.se image-src https://mandatkollen.se manifest-src data: frame-src none frame-ancestors none object-src none; ";
       more_set_headers "X-Content-Type-Options: nosniff";
       more_set_headers "X-Frame-Options: DENY";
       more_set_headers "X-Xss-Protection: 0";
