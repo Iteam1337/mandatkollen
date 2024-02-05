@@ -5,7 +5,7 @@ import './Footer.css'
 
 const Footer = () => (
   <div className="App-footer">
-    <div className="App-footer-inner">
+    <footer className="App-footer-inner">
       <h2>Om Mandatkollen</h2>
       <p>
         Mandatkollen är ett verktyg för att underlätta för medborgare,
@@ -49,7 +49,7 @@ const Footer = () => (
       <a href="https://lennoxpr.se">
         <img alt="Lennox PR logo" className="logo lennoxpr" src="/images/lennoxpr.png" />
       </a>
-    </div>
+    </footer>
   </div>
 )
 
