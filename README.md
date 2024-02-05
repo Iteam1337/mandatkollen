@@ -43,4 +43,4 @@ Lennox PR
 
 ## Licens
 
-MIT Copyright (c) 2023 Iteam Solutions AB
+MIT Copyright (c) 2024 Iteam Solutions AB
