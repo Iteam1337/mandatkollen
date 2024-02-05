@@ -5,11 +5,13 @@ import './index.css'
 import '@fontsource/miriam-libre/700.css'
 import App from './components/App'
 import store from './store.mjs'
+import { init } from './lib/matomo.mjs'
 import { polyfill } from 'mobile-drag-drop'
 // import 'npm_package/mobile-drag-drop/default.css'
 import polls from './lib/polls.mjs'
 
 polyfill()
+init() // init matomo
 
 let oldTree
 
@@ -23,7 +25,9 @@ store.subscribe(() => {
 
 })
 
-store.dispatch({ type: 'LOAD_POLLS' })
+setTimeout(() => store.dispatch({ type: 'LOAD_POLLS' }), 100)
+store.dispatch()
+
 
 /*
 
@@ -36,4 +40,4 @@ const update = () => polls.fetchValnatt().then(valnatt => {
 setInterval(update, 60000)
 update()
 */
-store.dispatch()
+

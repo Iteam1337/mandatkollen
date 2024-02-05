@@ -12,7 +12,7 @@ metadata:
   namespace: mandatkollen
 spec:
   ports:
-  - port: 80
+    - port: 80
   selector:
     app: mandatkollen
   type: ClusterIP
@@ -33,22 +33,22 @@ spec:
         app: mandatkollen
     spec:
       containers:
-      - image: registry.iteam.services/iteam1337_mandatkollen:v0.55.0@sha256:74678751755f4556d7e78573e56cd3bfb3579c0693f04752bf6fb1b4c1190c1d
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 5
-        name: mandatkollen
-        ports:
-        - containerPort: 80
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 5
+        - image: registry.iteam.services/iteam1337_mandatkollen:v0.67.2@sha256:664b1589eb0b3dd591fc5e238598149a9d8e794b1ea0da1040b6f31e5fb467b7
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          name: mandatkollen
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -58,11 +58,13 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: mandatkollen.se.
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/configuration-snippet: |
+      more_set_headers "Content-Security-Policy: default-src 'self'; script-src https://mandatkollen.se https://matomo.iteam.services; style-src https://mandatkollen.se; font-src https://mandatkollen.se; img-src https://mandatkollen.se; connect-src https://mandatkollen.se https://matomo.iteam.services; manifest-src data:; frame-src 'none'; frame-ancestors 'none'; object-src 'none'; ";
       more_set_headers "X-Content-Type-Options: nosniff";
       more_set_headers "X-Frame-Options: DENY";
       more_set_headers "X-Xss-Protection: 0";
-      more_set_headers "Strict-Transport-Security: max-age=31536000; includeSubDomains;";
+      more_set_headers "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload";
       more_set_headers "Cross-Origin-Resource-Policy: same-site";
+      more_set_headers "Referrer-Policy strict-origin";
     nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
     nginx.ingress.kubernetes.io/http2-push-preload: "true"
     nginx.ingress.kubernetes.io/proxy-pass-headers: Location
@@ -70,17 +72,17 @@ metadata:
   namespace: mandatkollen
 spec:
   rules:
-  - host: mandatkollen.se
-    http:
-      paths:
-      - backend:
-          service:
-            name: mandatkollen
-            port:
-              number: 80
-        path: /
-        pathType: Prefix
+    - host: mandatkollen.se
+      http:
+        paths:
+          - backend:
+              service:
+                name: mandatkollen
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
   tls:
-  - hosts:
-    - mandatkollen.se
-    secretName: mandatkollen-prod-tls
+    - hosts:
+        - mandatkollen.se
+      secretName: mandatkollen-prod-tls
