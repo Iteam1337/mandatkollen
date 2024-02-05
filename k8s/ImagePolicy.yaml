@@ -1,0 +1,12 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: mandatkollen
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: mandatkollen
+  policy:
+    semver:
+      range: 'x.x.x'

@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: mandatkollen
-          image: ghcr.io/iteam1337/mandatkollen:1.1.6 # {"$imagepolicy": "flux-system:data-pipeline"}
+          image: ghcr.io/iteam1337/mandatkollen:1.1.6 # {"$imagepolicy": "flux-system:mandatkollen"}
           ports:
             - containerPort: 80
           readinessProbe:
