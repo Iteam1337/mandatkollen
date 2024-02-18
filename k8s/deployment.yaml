@@ -5,11 +5,16 @@ metadata:
   namespace: mandatkollen
   annotations:
     external-dns.alpha.kubernetes.io/hostname: mandatkollen.se.
-    cloudprovider.harvesterhci.io/ipam: pool
 spec:
+  ipFamilyPolicy: PreferDualStack
+  ipFamilies:
+    - IPv4
+    - IPv6
   ports:
     - port: 80
-  type: LoadBalancer
+  type: ClusterIP
+  externalIPs:
+    - 94.142.251.116
   selector:
     app: mandatkollen
 ---
