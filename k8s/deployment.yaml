@@ -6,10 +6,6 @@ metadata:
   annotations:
     external-dns.alpha.kubernetes.io/hostname: mandatkollen.se.
 spec:
-  ipFamilyPolicy: PreferDualStack
-  ipFamilies:
-    - IPv4
-    - IPv6
   ports:
     - port: 80
   type: ClusterIP
