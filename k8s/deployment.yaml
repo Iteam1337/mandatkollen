@@ -9,8 +9,6 @@ spec:
   ports:
     - port: 80
   type: ClusterIP
-  externalIPs:
-    - 94.142.251.116
   selector:
     app: mandatkollen
 ---
