@@ -3,8 +3,7 @@ kind: Service
 metadata:
   name: mandatkollen
   namespace: mandatkollen
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: mandatkollen.se.
+
 spec:
   ports:
     - port: 80
