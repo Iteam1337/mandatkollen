@@ -1,7 +1,6 @@
 import { Parliament } from '../lib/parliament.mjs'
-import polls from '../lib/polls.mjs'
 
-const SEATS = import.meta.env.VITE_PARLIAMENT_SEATS || 349
+const SEATS = parseFloat(import.meta.env.VITE_PARLIAMENT_SEATS || 349)
 const parties = [
   {
     id: 1,

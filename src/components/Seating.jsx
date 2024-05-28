@@ -8,7 +8,9 @@ const obj = (parties) =>
     {}
   )
 
-const Seating = ({ parties, seatCount = true }) =>
-  parliamentSVG(obj(parties), seatCount)
+const Seating = ({ parties, seatCount = true }) => {
+  console.log('seating', parties, seatCount)
+  return parliamentSVG(obj(parties), seatCount)
+}
 
 export default Seating

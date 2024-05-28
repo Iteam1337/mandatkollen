@@ -194,6 +194,26 @@ it('should update based on percentage but not not touch changed parties', () => 
   expect(Math.round(result[2].percentage)).toBe(4)
 })
 
+it('should be able to have a different amount of seats', () => {
+  const parliament = new Parliament(state.parties, 100)
+  const result = parliament.seats
+  expect(result).toHaveLength(2)
+  expect(result[0]).toHaveProperty('seats')
+  expect(result[1]).toHaveProperty('seats')
+  expect(result[0].seats).toBe(50)
+  expect(result[1].seats).toBe(50)
+})
+
+it('should be able to have a EU parliament amount of seats', () => {
+  const parliament = new Parliament(state.parties, 21)
+  const result = parliament.seats
+  expect(result).toHaveLength(2)
+  expect(result[0]).toHaveProperty('seats')
+  expect(result[1]).toHaveProperty('seats')
+  expect(result[0].seats).toBe(11)
+  expect(result[1].seats).toBe(10)
+})
+
 it.skip('should mix seats from each party evenly when they have equally amount of votes', () => {
   const parliament = new Parliament(state.parties)
   const result = parliament.seats
