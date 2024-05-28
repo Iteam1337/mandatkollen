@@ -24,7 +24,7 @@ const Footer = () => (
       </h3>
       <p>
         I visualiseringen fördelas mandaten över de 21 platser som fördelats
-        till Svergie av EU-parlamentet utifrån ett hypotetiskt valresultat som
+        till Sverige av EU-parlamentet utifrån ett hypotetiskt valresultat som
         du bestämmer. Om du flyttar ett reglage för ett parti så anpassas alla
         de andra partiernas andelar proportionerligt. Om ett parti hamnar under
         spärren på 4 procent så tilldelas de inga mandat. Fördelningen av mandat
