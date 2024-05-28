@@ -103,8 +103,8 @@ const calculatePercentages =
 
 function Parliament(
   initialParties,
-  maxVotes = countTotal(initialParties) || 1000000,
   maxSeats = 349,
+  maxVotes = countTotal(initialParties) || 1000000,
   startDivider = 1.2
 ) {
   this.maxVotes = maxVotes

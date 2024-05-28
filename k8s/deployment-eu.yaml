@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mandatkollen-eu
+  namespace: mandatkollen
+spec:
+  ports:
+    - port: 80
+  type: ClusterIP
+  selector:
+    app: mandatkollen-eu
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mandatkollen-eu
+  namespace: mandatkollen
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mandatkollen-eu
+  template:
+    metadata:
+      labels:
+        app: mandatkollen-eu
+    spec:
+      containers:
+        - name: mandatkollen-eu
+          image: ghcr.io/iteam1337/mandatkollen:0.67.4 # {"$imagepolicy": "flux-system:mandatkollen"}
+          env:
+            - name: PARLIAMENT_SEATS
+              value: '21'
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5

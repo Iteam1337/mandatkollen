@@ -1,6 +1,7 @@
 import { Parliament } from '../lib/parliament.mjs'
 import polls from '../lib/polls.mjs'
 
+const SEATS = import.meta.env.VITE_PARLIAMENT_SEATS || 349
 const parties = [
   {
     id: 1,
@@ -85,7 +86,7 @@ const parties = [
   },
 ]
 
-let parliament = new Parliament(parties)
+let parliament = new Parliament(parties, SEATS)
 let initialState = parliament.seats
 
 export default function (state = initialState, action) {
@@ -107,11 +108,14 @@ export default function (state = initialState, action) {
           ? parliament.updateVotes(party, action.percentage)
           : party
       )
-      parliament = new Parliament(updatedParties)
+      parliament = new Parliament(updatedParties, SEATS)
       return parliament.seats
     }
     case 'CHOOSE_BASE_VOTES': {
-      parliament = new Parliament(parliament.updatePolls(action.votes.parties))
+      parliament = new Parliament(
+        parliament.updatePolls(action.votes.parties),
+        SEATS
+      )
       return parliament.seats
     }
     default:

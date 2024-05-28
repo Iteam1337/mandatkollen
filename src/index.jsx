@@ -22,12 +22,10 @@ store.subscribe(() => {
     document.getElementById('mandatkollen'),
     oldTree
   )
-
 })
 
 setTimeout(() => store.dispatch({ type: 'LOAD_POLLS' }), 100)
 store.dispatch()
-
 
 /*
 
@@ -40,4 +38,3 @@ const update = () => polls.fetchValnatt().then(valnatt => {
 setInterval(update, 60000)
 update()
 */
-
