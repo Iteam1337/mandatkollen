@@ -79,7 +79,7 @@ class App extends Component {
         </div>
         <main className="App-main">
           <Seating parties={allParties} seatCount={false} />
-          <small>Grafik: Mandatkollen.se</small>
+          <small>Grafik: Mandatkollen</small>
           <div className="LegendContainer" id="summary">
             {legendGroups.map(({ name, parties, title, seats, percentage }) => (
               <section
@@ -112,8 +112,15 @@ class App extends Component {
                     >
                       <i className={abbreviation.toLowerCase()} />
                       <h1 className="wide">{name}</h1>
-                      <h1 className="small" ariaLabel={name}>{abbreviation}</h1>
-                      <h2 className="small" ariaLabel={(seats || '0') + ' mandat'}>{seats || '0'}</h2>
+                      <h1 className="small" ariaLabel={name}>
+                        {abbreviation}
+                      </h1>
+                      <h2
+                        className="small"
+                        ariaLabel={(seats || '0') + ' mandat'}
+                      >
+                        {seats || '0'}
+                      </h2>
                       <h2 className="wide">{seats || '0'} mandat</h2>
                     </div>
                   )
