@@ -176,6 +176,7 @@ body {
   display: flex;
   margin: 15px 0;
   overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .LegendContainer > span {
