@@ -1,5 +1,5 @@
 import { Parliament } from '../lib/parliament.mjs'
-const EU = import.meta.env.VITE_EU
+const EU = import.meta.env.VITE_EU === 'true'
 const SEATS = EU ? 21 : 349
 const parties = [
   {

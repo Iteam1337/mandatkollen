@@ -9,9 +9,9 @@ const initialState = EU
       left: { title: 'The Left', hover: false, count: 0 },
     }
   : {
-      government: { title: 'Regering', hover: false, count: 0 },
+      regering: { title: 'Regering', hover: false, count: 0 },
+      stod: { title: 'Stödpartier', hover: false, count: 0 },
       opposition: { title: 'Opposition', hover: false, count: 0 },
-      support: { title: 'Stödpartier', hover: false, count: 0 },
     }
 
 export default function (state = initialState, action) {
