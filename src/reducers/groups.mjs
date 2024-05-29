@@ -1,12 +1,12 @@
 const EU = import.meta.env.VITE_EU === 'true'
 const initialState = EU
   ? {
-      epp: { title: 'EPP', hover: false, count: 0 },
-      social: { title: 'S&D', hover: false, count: 0 },
-      renew: { title: 'Renew', hover: false, count: 0 },
-      greens: { title: 'Greens/EFA', hover: false, count: 0 },
-      ecr: { title: 'ECR', hover: false, count: 0 },
       left: { title: 'The Left', hover: false, count: 0 },
+      social: { title: 'S&D', hover: false, count: 0 },
+      greens: { title: 'Greens/EFA', hover: false, count: 0 },
+      renew: { title: 'Renew', hover: false, count: 0 },
+      epp: { title: 'EPP', hover: false, count: 0 },
+      ecr: { title: 'ECR', hover: false, count: 0 },
     }
   : {
       regering: { title: 'Regering', hover: false, count: 0 },
