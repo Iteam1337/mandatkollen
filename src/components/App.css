@@ -97,6 +97,13 @@ body {
   max-width: 100%;
 }
 
+.EU .App-main > svg {
+  max-width: 50%;
+}
+.EU small {
+  display: block;
+}
+
 .App-main small {
   opacity: 0.4;
   font-size: 14px;
