@@ -34,6 +34,13 @@ spec:
             - 'VITE_EU=true npm run build && npm run start'
           ports:
             - containerPort: 80
+          resources:
+            limits:
+              cpu: '500m'
+              memory: '512Mi'
+            requests:
+              cpu: '200m'
+              memory: '256Mi'
           readinessProbe:
             httpGet:
               path: /
@@ -45,4 +52,9 @@ spec:
               path: /
               port: 80
             initialDelaySeconds: 5
-            periodSeconds: 5
+            periodSeconds: 60
+      strategy:
+        type: RollingUpdate
+        rollingUpdate:
+          maxSurge: 1
+          maxUnavailable: 0
