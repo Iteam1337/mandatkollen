@@ -97,11 +97,16 @@ body {
   max-width: 100%;
 }
 
+/* EU */
 .EU .App-main > svg {
   max-width: 50%;
 }
 .EU small {
   display: block;
+}
+
+.EU .party:after {
+  display: none;
 }
 
 .App-main small {
@@ -170,6 +175,7 @@ body {
 .LegendContainer {
   display: flex;
   margin: 15px 0;
+  overflow-x: auto;
 }
 
 .LegendContainer > span {
@@ -226,6 +232,7 @@ body {
   position: relative;
 }
 
+/*EU*/
 .EU .wide {
   display: none;
 }
@@ -239,6 +246,11 @@ body {
   color: #fff;
   margin-left: 40px;
   margin-right: 30px;
+}
+
+.EU .party h1,
+.EU .party h2 {
+  margin-right: 3px;
 }
 
 .party.below {
