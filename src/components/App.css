@@ -37,7 +37,6 @@ body {
   }
 }
 
-
 .App {
   text-align: center;
 }
@@ -64,7 +63,7 @@ body {
   margin: auto;
 }
 
-.App-sliders {
+.App-sliders span {
   align-items: center;
   color: #fff;
   margin-left: auto;
@@ -150,7 +149,7 @@ body {
   display: flex;
 }
 
-.App-sliders {
+.App-sliders span {
   background: #333;
   flex: 1;
   display: flex;
@@ -218,6 +217,14 @@ body {
   cursor: grab;
   margin: 5px;
   position: relative;
+}
+
+.EU .wide {
+  display: none;
+}
+
+.EU .small {
+  display: block;
 }
 
 .party h1,
@@ -291,7 +298,7 @@ body {
     display: block;
   }
 
-  .App-sliders {
+  .App-sliders span {
     padding: 0;
   }
 }
@@ -343,7 +350,7 @@ body {
 }
 
 @media only screen and (max-width: 850px) {
-  .App-sliders {
+  .App-sliders span {
     flex-direction: row;
     margin-left: 0;
     margin-right: 0;
