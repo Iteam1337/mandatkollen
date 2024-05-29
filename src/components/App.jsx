@@ -24,7 +24,7 @@ class App extends Component {
           ...group,
           name: key,
           parties: parties
-            .filter((a) => a.affiliation === key || a.eu === key)
+            .filter((a) => (EU ? a.eu === key : a.affiliation === key))
             .sort((a, b) => b.seats - a.seats),
         },
       ],
@@ -44,7 +44,7 @@ class App extends Component {
   render() {
     const { parties, coalitions, groups, polls } = this.props
     const legendGroups = this.sumGroups(parties, groups)
-    const allParties = legendGroups.reduce((a, b) => a.concat(b.parties), [])
+    const allParties = legendGroups.reduce((a, b) => [...a, ...b.parties], [])
     const totalPercentage = Math.round(
       parties.reduce((t, party) => t + party.percentage, 0)
     )
@@ -119,7 +119,8 @@ class App extends Component {
           <br />
           <h2>Eller experimentera själv %</h2>
           <Sliders
-            parties={parties}
+            groups={groups}
+            parties={allParties}
             editCoalitions={coalitions.editCoalitions}
           />
           {totalPercentage < 99.6 || totalPercentage > 100.4 ? (

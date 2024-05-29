@@ -16,7 +16,6 @@ const initialState = EU
 
 export default function (state = initialState, action) {
   const group = state[action.group]
-  console.log('action', action, group, state)
   switch (action.type) {
     case 'GROUP_ENTER': {
       const count = group.count + 1

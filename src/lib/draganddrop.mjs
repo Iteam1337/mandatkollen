@@ -26,13 +26,11 @@ const dropUpdate = (affiliation) => (event) => {
 
 const dragEnter = (group) => (event) => {
   event.preventDefault()
-  console.log('dropenter', group)
   groupEnter(group)
 }
 
 const dragLeave = (group) => (event) => {
   event.preventDefault()
-  console.log('dropleave', group)
   groupLeave(group)
 }
 

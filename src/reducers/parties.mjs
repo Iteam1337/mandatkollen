@@ -102,7 +102,11 @@ export default function (state = initialState, action) {
       const updatedParties = state
         .map((party) =>
           party.abbreviation === action.abbreviation
-            ? { ...party, affiliation: action.affiliation }
+            ? {
+                ...party,
+                affiliation: action.affiliation,
+                eu: action.affiliation,
+              }
             : party
         )
         .sort(parliament.sort)
