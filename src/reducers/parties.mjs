@@ -1,6 +1,6 @@
 import { Parliament } from '../lib/parliament.mjs'
-
-const SEATS = parseFloat(import.meta.env.VITE_PARLIAMENT_SEATS || 349)
+const EU = import.meta.env.VITE_EU
+const SEATS = EU ? 21 : 349
 const parties = [
   {
     id: 1,
@@ -8,6 +8,7 @@ const parties = [
     percentage: 5.34,
     seats: 19,
     affiliation: 'regering',
+    eu: 'epp',
     colour: '#3163A6',
     abbreviation: 'KD',
   },
@@ -17,6 +18,7 @@ const parties = [
     percentage: 19.1,
     seats: 68,
     affiliation: 'regering',
+    eu: 'ecr',
     colour: '#2F80ED',
     abbreviation: 'M',
   },
@@ -26,6 +28,7 @@ const parties = [
     percentage: 4.61,
     seats: 16,
     affiliation: 'regering',
+    eu: 'renew',
     colour: '#56CCF2',
     abbreviation: 'L',
   },
@@ -35,6 +38,7 @@ const parties = [
     percentage: 6.71,
     seats: 24,
     affiliation: 'opposition',
+    eu: 'renew',
     colour: '#27AE60',
     abbreviation: 'C',
   },
@@ -44,6 +48,7 @@ const parties = [
     percentage: 20.54,
     seats: 73,
     affiliation: 'stod',
+    eu: 'ecr',
     colour: '#F2C94C',
     abbreviation: 'SD',
   },
@@ -53,6 +58,7 @@ const parties = [
     percentage: 30.33,
     seats: 107,
     affiliation: 'opposition',
+    eu: 'social',
     colour: '#E04B49',
     abbreviation: 'S',
   },
@@ -62,6 +68,7 @@ const parties = [
     percentage: 5.08,
     seats: 18,
     affiliation: 'opposition',
+    eu: 'greens',
     colour: '#219653',
     abbreviation: 'MP',
   },
@@ -71,6 +78,7 @@ const parties = [
     percentage: 6.75,
     seats: 24,
     affiliation: 'opposition',
+    eu: 'left',
     colour: '#B12827',
     abbreviation: 'V',
   },

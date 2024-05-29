@@ -13,64 +13,44 @@ import Seating from './Seating'
 import Sliders from './Sliders'
 import Polls from './Polls'
 import Footer from './Footer'
+const EU = import.meta.env.VITE_EU === 'true'
 
 class App extends Component {
-  sumGroups(parties) {
-    const regering = parties
-      .filter((a) => a.affiliation === 'regering')
-      .sort((a, b) => b.seats - a.seats)
-    const opposition = parties
-      .filter((a) => a.affiliation === 'opposition')
-      .sort((a, b) => b.seats - a.seats)
-    const stod = parties
-      .filter((a) => a.affiliation === 'stod')
-      .sort((a, b) => b.seats - a.seats)
+  sumGroups(parties, groups) {
+    const partiesByGroup = Object.entries(groups).reduce(
+      (acc, [key, group]) => [
+        ...acc,
+        {
+          ...group,
+          name: key,
+          parties: parties
+            .filter((a) => a.affiliation === key || a.eu === key)
+            .sort((a, b) => b.seats - a.seats),
+        },
+      ],
+      []
+    )
 
-    return [
-      {
-        name: 'regering',
-        parties: regering,
-        title: `Regering`,
-        seats: regering.reduce((t, party) => t + party.seats, 0),
-        percentage:
-          Math.round(
-            regering.reduce((t, party) => t + party.seatPercentage, 0) * 1000
-          ) / 10,
-      },
-
-      {
-        name: 'stod',
-        parties: stod,
-        title: `Stödpartier`,
-        seats: stod.reduce((t, party) => t + party.seats, 0),
-        percentage:
-          Math.round(
-            stod.reduce((t, party) => t + party.seatPercentage, 0) * 1000
-          ) / 10,
-      },
-      {
-        name: 'opposition',
-        parties: opposition,
-        title: `Opposition`,
-        percentage:
-          Math.round(
-            opposition.reduce((t, party) => t + party.seatPercentage, 0) * 1000
-          ) / 10,
-        seats: opposition.reduce((t, party) => t + party.seats, 0),
-      },
-    ]
+    return partiesByGroup.map((group) => ({
+      ...group,
+      seats: group.parties.reduce((t, party) => t + party.seats, 0),
+      percentage:
+        Math.round(
+          group.parties.reduce((t, party) => t + party.seatPercentage, 0) * 1000
+        ) / 10,
+    }))
   }
 
   render() {
     const { parties, coalitions, groups, polls } = this.props
-    const legendGroups = this.sumGroups(parties)
+    const legendGroups = this.sumGroups(parties, groups)
     const allParties = legendGroups.reduce((a, b) => a.concat(b.parties), [])
     const totalPercentage = Math.round(
       parties.reduce((t, party) => t + party.percentage, 0)
     )
 
     return (
-      <div className="App">
+      <div className={`App ${EU ? 'EU' : 'Riksdag'}`}>
         <div className="App-header">
           <header className="App-header-inner">
             <img alt="Mandatkollen logotyp" src="/images/icon.png" />

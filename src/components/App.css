@@ -37,7 +37,6 @@ body {
   }
 }
 
-
 .App {
   text-align: center;
 }
@@ -218,6 +217,14 @@ body {
   cursor: grab;
   margin: 5px;
   position: relative;
+}
+
+.EU .wide {
+  display: none;
+}
+
+.EU .small {
+  display: block;
 }
 
 .party h1,

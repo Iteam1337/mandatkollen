@@ -31,7 +31,7 @@ spec:
           command:
             - /bin/sh
             - -c
-            - 'VITE_PARLIAMENT_SEATS=21 npm run build && npm run start'
+            - 'VITE_EU=true npm run build && npm run start'
           ports:
             - containerPort: 80
           readinessProbe:
