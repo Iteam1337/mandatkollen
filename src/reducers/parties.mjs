@@ -18,7 +18,7 @@ const parties = [
     percentage: 19.1,
     seats: 68,
     affiliation: 'regering',
-    eu: 'ecr',
+    eu: 'epp',
     colour: '#2F80ED',
     abbreviation: 'M',
   },
