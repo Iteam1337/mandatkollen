@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: mandatkollen-eu
-          image: ghcr.io/iteam1337/mandatkollen:0.67.13 # {"$imagepolicy": "flux-system:mandatkollen"}
+          image: ghcr.io/iteam1337/mandatkollen:0.67.14 # {"$imagepolicy": "flux-system:mandatkollen"}
           command:
             - /bin/sh
             - -c
