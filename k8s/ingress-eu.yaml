@@ -23,6 +23,7 @@ spec:
   tls:
     - hosts:
         - mandatkollen.eu
+        - www.mandatkollen.eu
       secretName: mandatkollen-eu-prod-tls
   rules:
     - host: mandatkollen.eu
