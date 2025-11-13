@@ -1,0 +1,71 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: GatewayClass
+metadata:
+  name: mandatkollen-gateway-class-eu
+spec:
+  controllerName: k8s-gateway-nginx/nginx-gateway-controller
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: mandatkollen-gateway-eu
+  namespace: mandatkollen
+  annotations:
+    cert-manager.io/cluster-issuer: 'letsencrypt-prod'
+    external-dns.alpha.kubernetes.io/hostname: mandatkollen.eu.
+spec:
+  gatewayClassName: mandatkollen-gateway-class-eu
+  listeners:
+    - name: http
+      port: 80
+      protocol: HTTP
+      hostname: "*.mandatkollen.eu"
+    - name: https
+      port: 443
+      protocol: HTTPS
+      hostname: "*.mandatkollen.eu"
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - kind: Secret
+            name: mandatkollen-eu-prod-tls
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: mandatkollen-eu-route
+  namespace: mandatkollen
+spec:
+  parentRefs:
+    - name: mandatkollen-gateway-eu
+      sectionName: https
+  hostnames:
+    - mandatkollen.eu
+    - www.mandatkollen.eu
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: mandatkollen-eu
+          port: 80
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: mandatkollen-eu-tls-redirect
+  namespace: mandatkollen
+spec:
+  parentRefs:
+    - name: mandatkollen-gateway-eu
+      sectionName: http
+  hostnames:
+    - mandatkollen.eu
+    - www.mandatkollen.eu
+  rules:
+    - filters:
+        - type: RequestRedirect
+          requestRedirect:
+            scheme: https
+            port: 443
