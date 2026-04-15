@@ -40,7 +40,7 @@ spec:
     - name: mandatkollen-gateway-eu
       sectionName: https
   hostnames:
-    - mandatkollensssss.eu
+    - mandatkollen.eu
     - www.mandatkollen.eu
   rules:
     - matches:
