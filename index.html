@@ -24,8 +24,28 @@
 
     <title>Mandatkollen</title>
 
-    <!-- Umami Analytics (självhostad, statistik.iteam.se) -->
-    <script defer src="https://statistik.iteam.se/script.js" data-website-id="1873da6c-0d2d-4ba2-b14f-1139395853b7"></script>
+    <!-- Umami Analytics (självhostad, iteam-umami-u69690.vm.elestio.app) -->
+    <script defer src="https://iteam-umami-u69690.vm.elestio.app/script.js" data-website-id="1873da6c-0d2d-4ba2-b14f-1139395853b7"></script>
+    
+    <!-- Matomo (självhostad, statistik.iteam.se) -->
+    <script>
+      var _paq = (window._paq = window._paq || [])
+      _paq.push(['trackPageView'])
+      _paq.push(['enableLinkTracking'])
+      ;(function () {
+        var u = '//statistik.iteam.se/'
+        _paq.push(['setTrackerUrl', u + 'matomo.php'])
+        _paq.push(['setSiteId', '1'])
+        var d = document,
+          g = d.createElement('script'),
+          s = d.getElementsByTagName('script')[0]
+        g.async = true
+        g.src = u + 'matomo.js'
+        s.parentNode.insertBefore(g, s)
+      })()
+    </script>
+    <!-- End Matomo Code -->
+    
   </head>
 
   <body>
