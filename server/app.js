@@ -1,7 +1,7 @@
 import express from 'express'
 import fetch from 'node-fetch'
 import apicache from 'apicache'
-import cheerio from 'cheerio'
+import { load } from 'cheerio'
 import { getParties } from './valnatt.js'
 import staticGzip from 'express-static-gzip'
 
@@ -51,7 +51,7 @@ app.get('/polls', cache('12 hours'), (req, res) => {
   })
     .then((res) => res.text())
     .then((text) => {
-      return cheerio.load(text)
+      return load(text)
     })
     .then(($) => {
       return $('table.csvtohtml tbody')

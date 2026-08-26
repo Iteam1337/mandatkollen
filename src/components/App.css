@@ -84,6 +84,19 @@ body {
   margin-bottom: 0;
   margin-top: 13px;
 }
+.App-header h2 {
+  padding: 10px;
+}
+.App-header h2 a,
+.App-header h2 a:visited {
+  color: #fff;
+  text-decoration: underline;
+}
+.App-header h2 a:hover,
+.App-header h2 a:active {
+  color: #eee;
+  text-decoration: none;
+}
 
 .App-main {
   box-sizing: border-box;
