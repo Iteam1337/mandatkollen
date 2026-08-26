@@ -24,8 +24,8 @@ Om du har förbättringsförslag kan du antingen lägga till en [issue](../../is
 
 För att få igång utecklingsmiljön lokalt behöver du bara köra följande kommandon
 
-    npm install
-    npm run dev
+    pnpm install
+    pnpm run dev
 
 Vi använder oss av Vite som bygger och slår ihop alla js och css filer till ett paket. I produktion körs applikationen i Docker i Kubernetes och den miljön konfigureras enklast genom att köra följande:
 
@@ -35,9 +35,9 @@ Applikationen byggs med hjälp av Github Actions som sammanställer en deploymen
 
 ## Avsändare
 
-Iteam
-Lennox PR
+- Iteam
+- Lennox PR
 
 ## Licens
 
-MIT Copyright (c) 2024 Iteam Solutions AB
+MIT Copyright (c) 2026 Iteam Solutions AB
