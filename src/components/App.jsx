@@ -42,12 +42,13 @@ class App extends Component {
   }
 
   render() {
-    const { parties, coalitions, groups, polls } = this.props
+    const { parties, coalitions, groups, polls, source } = this.props
     const legendGroups = this.sumGroups(parties, groups)
     const allParties = legendGroups.reduce((a, b) => [...a, ...b.parties], [])
     const totalPercentage = Math.round(
       parties.reduce((t, party) => t + party.percentage, 0)
     )
+    const currentPollName = source?.name || 'Val 2022'
 
     return (
       <div className={`App ${EU ? 'EU' : 'Riksdag'}`}>
@@ -56,6 +57,10 @@ class App extends Component {
             <img alt="Mandatkollen logotyp" src="/images/icon.png" />
             <h1>Mandatkollen</h1>
           </header>
+          <h2>
+            <a href="#summary">Dra och släpp partierna</a> för olika scenarier, eller <a href="#choose_source">välj
+            opinionsundersökning</a> nedan eller <a href="#adjust_values">justera siffrorna själv</a>. <br/><br/>Nu visas: {currentPollName}
+          </h2>
         </div>
         <main className="App-main">
           <Seating parties={allParties} seatCount={false} />
@@ -108,16 +113,13 @@ class App extends Component {
               </section>
             ))}
           </div>
-          <small>
-            Dra och släpp partierna för olika scenarier. Välj
-            opinionsundersökning nedan eller justera själv.
-          </small>
+
         </main>
         <div className="App-settings">
-          <h2>Välj opinionsundersökning:</h2>
+          <h2 id="choose_source">Välj opinionsundersökning:</h2>
           <Polls polls={polls} />
           <br />
-          <h2>Eller experimentera själv %</h2>
+          <h2 id="adjust_values">Eller experimentera själv %</h2>
           <Sliders
             groups={groups}
             parties={allParties}
