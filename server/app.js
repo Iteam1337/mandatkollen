@@ -8,6 +8,14 @@ import staticGzip from 'express-static-gzip'
 const app = express()
 const cache = apicache.middleware
 
+// Redirect apex -> www (www är den kanoniska adressen)
+app.use((req, res, next) => {
+  if (req.headers.host === 'mandatkollen.se') {
+    return res.redirect(301, 'https://www.mandatkollen.se' + req.url)
+  }
+  next()
+})
+
 // Serve static assets
 app.use(
   staticGzip('dist', {
