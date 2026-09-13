@@ -24,3 +24,4 @@ yarn-error.log*
 # github outputs that we don't want to commit
 /bin
 /.skaffold
+.env

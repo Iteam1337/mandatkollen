@@ -32,21 +32,23 @@ app.use(
 app.use('/images', staticGzip('images'))
 app.use('/.well-known/', staticGzip('.well-known'))
 
-app.get('/valnatt', cache('24 hours'), (req, res) => {
-  getParties(req.query.year).then((valnatt) => {
+app.get('/valnatt', cache('1 minute'), (req, res) => {
+  getParties(req.query.year || '2026').then((valnatt) => {
     console.log('valnatt', valnatt)
     const parties = valnatt.parties.reduce(
       (parties, { percentage, abbreviation }) =>
         Object.assign(parties, { [abbreviation]: percentage || 0 }),
       {}
     )
-    parties.date = parties.date
     res.json({
       parties,
       date: valnatt.date,
       totalVotes: valnatt.totalVotes,
       countPercentage: valnatt.countPercentage,
     })
+  }).catch((err) => {
+    console.error('valnatt error', err)
+    res.status(500).json({ error: 'Could not fetch valnatt data' })
   })
 })
 

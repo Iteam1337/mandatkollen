@@ -145,7 +145,7 @@ const basePolls = [
   },
 ]
 
-const timeout = (ms) => new Promise((resolve) => setTimeout(() => resolve))
+const timeout = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const fetchPolls = () =>
   fetch('/polls')
