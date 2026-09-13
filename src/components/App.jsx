@@ -48,6 +48,7 @@ class App extends Component {
     const totalPercentage = Math.round(
       parties.reduce((t, party) => t + party.percentage, 0)
     )
+    const valnatt = polls.find((poll) => poll.totalVotes)
 
     return (
       <div className={`App ${EU ? 'EU' : 'Riksdag'}`}>
@@ -112,6 +113,18 @@ class App extends Component {
             Dra och släpp partierna för olika scenarier. Välj
             opinionsundersökning nedan eller justera själv.
           </small>
+          {valnatt ? (
+            <small>
+              {valnatt.totalVotes.toLocaleString('sv-SE')} röster räknade
+              {valnatt.countPercentage
+                ? `, valdeltagande ${valnatt.countPercentage.toLocaleString(
+                    'sv-SE'
+                  )} %`
+                : ''}
+              {' · '}
+              Källa: Valmyndigheten
+            </small>
+          ) : null}
         </main>
         <div className="App-settings">
           <h2>Välj opinionsundersökning:</h2>

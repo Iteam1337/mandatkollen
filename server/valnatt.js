@@ -65,7 +65,8 @@ function getParties(year = '2026') {
     try {
       const json = await fetchValData(valtillfalle)
       const parties = getPartiesFromJson(json)
-      parties.countPercentage = parseFloat(json.valdeltagande) || undefined
+      parties.countPercentage =
+        parseFloat(String(json.valdeltagande).replace(',', '.')) || undefined
       resolve(parties)
     } catch (err) {
       reject(err)
