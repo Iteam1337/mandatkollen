@@ -1,4 +1,6 @@
 import polls from '../lib/polls.mjs'
+import moment from 'moment'
+
 const finalResult = {
   KD: 5.34,
   M: 19.1,
@@ -23,13 +25,17 @@ let initialState = [
 export default function (state = initialState, action) {
   switch (action.type) {
     case 'LOAD_POLLS':
-      return polls
-        .fetchPolls() /*, polls.fetchValnatt()*/
-        .then((polls) => [
-          /*{ ...valnatt, institute: 'Valnatt 2022', dates: moment(valnatt.date).format('YYYY-MM-DD HH:mm') },*/
+      return Promise.all([polls.fetchPolls(), polls.fetchValnatt()]).then(
+        ([polls, valnatt]) => [
+          {
+            ...valnatt,
+            institute: 'Valnatt 2026',
+            dates: moment(valnatt.date).format('YYYY-MM-DD HH:mm'),
+          },
           ...polls,
           ...initialState,
-        ])
+        ]
+      )
 
     default:
       return state

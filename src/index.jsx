@@ -25,14 +25,9 @@ store.subscribe(() => {
 setTimeout(() => store.dispatch({ type: 'LOAD_POLLS' }), 100)
 store.dispatch()
 
-/*
-
-This is for next election to activate to get live polls
-
 const update = () => polls.fetchValnatt().then(valnatt => {
   store.dispatch({ type: 'CHOOSE_BASE_VOTES', votes: valnatt })
 })
 
 setInterval(update, 60000)
 update()
-*/
