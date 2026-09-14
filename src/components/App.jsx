@@ -24,8 +24,9 @@ class App extends Component {
           ...group,
           name: key,
           parties: parties
-            .filter((a) => (EU ? a.eu === key : a.affiliation === key))
-            .sort((a, b) => b.seats - a.seats),
+            // Behåll den ordning användaren konfigurerat – datauppdateringar
+            // ska bara uppdatera siffrorna, inte flytta om partierna
+            .filter((a) => (EU ? a.eu === key : a.affiliation === key)),
         },
       ],
       []
@@ -127,15 +128,14 @@ class App extends Component {
           ) : null}
         </main>
         <div className="App-settings">
-          <h2>Välj opinionsundersökning:</h2>
-          <Polls polls={polls} />
-          <br />
           <h2>Eller experimentera själv %</h2>
           <Sliders
             groups={groups}
             parties={allParties}
             editCoalitions={coalitions.editCoalitions}
           />
+          <h2>Välj opinionsundersökning:</h2>
+          <Polls polls={polls} />
           {totalPercentage < 99.6 || totalPercentage > 100.4 ? (
             <p className="invalid">
               Vänligen justera manuellt. Totalt antal procent: {totalPercentage}

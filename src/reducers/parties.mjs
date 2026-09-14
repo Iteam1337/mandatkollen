@@ -99,18 +99,16 @@ let initialState = parliament.seats
 export default function (state = initialState, action) {
   switch (action.type) {
     case 'UPDATE_PARTY_AFFILIATION': {
-      const updatedParties = state
-        .map((party) =>
-          party.abbreviation === action.abbreviation
-            ? {
-                ...party,
-                affiliation: action.affiliation,
-                eu: action.affiliation,
-              }
-            : party
-        )
-        .sort(parliament.sort)
-      return updatedParties
+      // Behåll ordningen – endast grupp/affiliation ändras vid dra och släpp
+      return state.map((party) =>
+        party.abbreviation === action.abbreviation
+          ? {
+              ...party,
+              affiliation: action.affiliation,
+              eu: action.affiliation,
+            }
+          : party
+      )
     }
     case 'UPDATE_PARTY_PERCENTAGE': {
       const seatsRemoved = state.map((party) => delete party.seats && party)
