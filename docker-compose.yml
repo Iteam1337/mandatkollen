@@ -1,8 +1,8 @@
-web:
-  build: .
-  links:
-    - elastic:elasticsearch
-elastic:
-  image: elasticsearch
-  ports:
-    - 9200:9200
+services:
+  mandatkollen:
+    build: .
+    restart: unless-stopped
+    environment:
+      - NODE_OPTIONS=--unhandled-rejections=warn
+    ports:
+      - '172.17.0.1:3000:80'
