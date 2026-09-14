@@ -25,6 +25,7 @@ class App extends Component {
           name: key,
           parties: parties
             .filter((a) => (EU ? a.eu === key : a.affiliation === key))
+            // Legendblocken: störst antal mandat överst
             .sort((a, b) => b.seats - a.seats),
         },
       ],
@@ -44,7 +45,8 @@ class App extends Component {
   render() {
     const { parties, coalitions, groups, polls } = this.props
     const legendGroups = this.sumGroups(parties, groups)
-    const allParties = legendGroups.reduce((a, b) => [...a, ...b.parties], [])
+    // Sliders/ryttkartan använder state-ordningen (stabil vid datauppdatering)
+    const allParties = parties
     const totalPercentage = Math.round(
       parties.reduce((t, party) => t + party.percentage, 0)
     )
@@ -127,15 +129,14 @@ class App extends Component {
           ) : null}
         </main>
         <div className="App-settings">
-          <h2>Välj opinionsundersökning:</h2>
-          <Polls polls={polls} />
-          <br />
           <h2>Eller experimentera själv %</h2>
           <Sliders
             groups={groups}
             parties={allParties}
             editCoalitions={coalitions.editCoalitions}
           />
+          <h2>Välj opinionsundersökning:</h2>
+          <Polls polls={polls} />
           {totalPercentage < 99.6 || totalPercentage > 100.4 ? (
             <p className="invalid">
               Vänligen justera manuellt. Totalt antal procent: {totalPercentage}

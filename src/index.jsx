@@ -29,5 +29,5 @@ const update = () => polls.fetchValnatt().then(valnatt => {
   store.dispatch({ type: 'CHOOSE_BASE_VOTES', votes: valnatt })
 })
 
-setInterval(update, 60000)
+// Engångshämtning vid start – ingen automatisk refresh
 update()
