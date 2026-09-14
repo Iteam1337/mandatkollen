@@ -24,9 +24,9 @@ class App extends Component {
           ...group,
           name: key,
           parties: parties
-            // Behåll den ordning användaren konfigurerat – datauppdateringar
-            // ska bara uppdatera siffrorna, inte flytta om partierna
-            .filter((a) => (EU ? a.eu === key : a.affiliation === key)),
+            .filter((a) => (EU ? a.eu === key : a.affiliation === key))
+            // Legendblocken: störst antal mandat överst
+            .sort((a, b) => b.seats - a.seats),
         },
       ],
       []
@@ -45,7 +45,8 @@ class App extends Component {
   render() {
     const { parties, coalitions, groups, polls } = this.props
     const legendGroups = this.sumGroups(parties, groups)
-    const allParties = legendGroups.reduce((a, b) => [...a, ...b.parties], [])
+    // Sliders/ryttkartan använder state-ordningen (stabil vid datauppdatering)
+    const allParties = parties
     const totalPercentage = Math.round(
       parties.reduce((t, party) => t + party.percentage, 0)
     )
