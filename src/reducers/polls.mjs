@@ -1,23 +1,24 @@
 import polls from '../lib/polls.mjs'
 import moment from 'moment'
+import { isValnatt } from '../lib/elections.mjs'
 
+// Statisk reserv om /valnatt inte kan hämtas – uppdateras vid varje val
 const finalResult = {
-  KD: 5.34,
-  M: 19.1,
-  L: 4.61,
-  C: 6.71,
-  SD: 20.54,
-  S: 30.33,
-  MP: 5.08,
-  V: 6.75,
-  FI: 0.46,
-  Ö: 1.54,
+  M: 19.8,
+  L: 5.3,
+  KD: 6.2,
+  C: 7,
+  SD: 17.5,
+  S: 28,
+  MP: 6.1,
+  V: 8.4,
+  Ö: 1.6,
 }
 
 let initialState = [
   {
-    institute: 'Val 2022',
-    dates: '2022-09-11',
+    institute: 'Val 2026',
+    dates: '2026-09-13',
     parties: finalResult,
   },
 ]
@@ -27,13 +28,28 @@ export default function (state = initialState, action) {
     case 'LOAD_POLLS':
       return Promise.all([polls.fetchPolls(), polls.fetchValnatt()]).then(
         ([polls, valnatt]) => [
-          {
-            ...valnatt,
-            institute: 'Valnatt 2026',
-            dates: moment(valnatt.date).format('YYYY-MM-DD HH:mm'),
-          },
+          // På valnatten visas live-resultatet som eget alternativ
+          ...(valnatt && isValnatt()
+            ? [
+                {
+                  ...valnatt,
+                  institute: `Valnatt ${valnatt.year}`,
+                  dates: moment(valnatt.date).format('YYYY-MM-DD HH:mm'),
+                },
+              ]
+            : []),
           ...polls,
-          ...initialState,
+          // Mellan valen är /valnatt aktuellt valresultat (ersätter den
+          // statiska reserven, slutligt när val.se-räkningen är klar)
+          ...(valnatt && !isValnatt()
+            ? [
+                {
+                  ...valnatt,
+                  institute: `Val ${valnatt.year}`,
+                  dates: valnatt.valdatum,
+                },
+              ]
+            : initialState),
         ]
       )
 
