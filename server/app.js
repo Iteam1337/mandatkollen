@@ -33,7 +33,7 @@ app.use('/images', staticGzip('images'))
 app.use('/.well-known/', staticGzip('.well-known'))
 
 app.get('/valnatt', cache('1 minute'), (req, res) => {
-  getParties(req.query.year || '2026').then((valnatt) => {
+  getParties(req.query.year).then((valnatt) => {
     console.log('valnatt', valnatt)
     const parties = valnatt.parties.reduce(
       (parties, { percentage, abbreviation }) =>
@@ -43,8 +43,11 @@ app.get('/valnatt', cache('1 minute'), (req, res) => {
     res.json({
       parties,
       date: valnatt.date,
+      valdatum: valnatt.valdatum,
       totalVotes: valnatt.totalVotes,
       countPercentage: valnatt.countPercentage,
+      year: valnatt.year,
+      final: valnatt.final,
     })
   }).catch((err) => {
     console.error('valnatt error', err)
