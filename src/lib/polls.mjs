@@ -160,7 +160,8 @@ const fetchValnatt = () =>
   Promise.race([fetch('/valnatt'), timeout(3000)])
     .then((res) => res.json())
     .catch(
-      (err) => console.error('valnatt error', err) || Promise.resolve(basePolls)
+      (err) =>
+        console.error('valnatt error', err) || Promise.resolve(null)
     )
 
 export default {

@@ -3,10 +3,14 @@ const EU = import.meta.env.VITE_EU === 'true'
 const SEATS = EU ? 21 : 349
 const parties = [
   {
+    // Faktiskt valresultat 2026 (preliminär räkning, samtliga
+    // valdistrikt). Röster från val.se så att mandatfördelningen
+    // blir exakt – uppdateras vid nästa val.
     id: 1,
     name: 'Kristdemokraterna',
-    percentage: 5.34,
-    seats: 19,
+    percentage: 6.2,
+    votes: 415870,
+    seats: 22,
     affiliation: 'regering',
     eu: 'epp',
     colour: '#3163A6',
@@ -15,8 +19,9 @@ const parties = [
   {
     id: 2,
     name: 'Moderaterna',
-    percentage: 19.1,
-    seats: 68,
+    percentage: 19.8,
+    votes: 1336810,
+    seats: 70,
     affiliation: 'regering',
     eu: 'epp',
     colour: '#2F80ED',
@@ -25,8 +30,9 @@ const parties = [
   {
     id: 3,
     name: 'Liberalerna',
-    percentage: 4.61,
-    seats: 16,
+    percentage: 5.3,
+    votes: 359845,
+    seats: 19,
     affiliation: 'regering',
     eu: 'renew',
     colour: '#56CCF2',
@@ -35,8 +41,9 @@ const parties = [
   {
     id: 4,
     name: 'Centerpartiet',
-    percentage: 6.71,
-    seats: 24,
+    percentage: 7,
+    votes: 474548,
+    seats: 25,
     affiliation: 'opposition',
     eu: 'renew',
     colour: '#27AE60',
@@ -45,8 +52,9 @@ const parties = [
   {
     id: 5,
     name: 'Sverigedemokraterna',
-    percentage: 20.54,
-    seats: 73,
+    percentage: 17.5,
+    votes: 1176840,
+    seats: 62,
     affiliation: 'stod',
     eu: 'ecr',
     colour: '#F2C94C',
@@ -55,8 +63,9 @@ const parties = [
   {
     id: 6,
     name: 'Socialdemokraterna',
-    percentage: 30.33,
-    seats: 107,
+    percentage: 28,
+    votes: 1886465,
+    seats: 99,
     affiliation: 'opposition',
     eu: 'social',
     colour: '#E04B49',
@@ -65,8 +74,9 @@ const parties = [
   {
     id: 7,
     name: 'Miljöpartiet',
-    percentage: 5.08,
-    seats: 18,
+    percentage: 6.1,
+    votes: 413097,
+    seats: 22,
     affiliation: 'opposition',
     eu: 'greens',
     colour: '#219653',
@@ -75,8 +85,9 @@ const parties = [
   {
     id: 8,
     name: 'Vänsterpartiet',
-    percentage: 6.75,
-    seats: 24,
+    percentage: 8.4,
+    votes: 565614,
+    seats: 30,
     affiliation: 'opposition',
     eu: 'left',
     colour: '#B12827',
@@ -87,7 +98,8 @@ const parties = [
     name: 'Övriga',
     affiliation: 'opposition',
     colour: '#4D4D4D',
-    percentage: 1.54,
+    percentage: 1.6,
+    votes: 106540,
     seats: 0,
     abbreviation: 'Ö',
   },
