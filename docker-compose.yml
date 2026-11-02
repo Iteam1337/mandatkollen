@@ -5,4 +5,4 @@ services:
     environment:
       - NODE_OPTIONS=--unhandled-rejections=warn
     ports:
-      - '172.17.0.1:3000:80'
+      - '172.17.0.1:3002:80'
